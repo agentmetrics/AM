@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MySql" database="MySql" >
+	<schema name="agent_metrics" catalogname="agent_metrics" defo="y" >
+		<table name="account" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="email" type="VARCHAR" length="40" jt="12" mandatory="y" />
+			<column name="name" type="VARCHAR" length="20" jt="12" mandatory="y" />
+			<column name="permission" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="team_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="title" type="VARCHAR" length="20" jt="12" mandatory="y" />
+			<column name="group_id" type="INT" jt="4" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" jt="4" />
+			<column name="modifier" type="INT" jt="4" />
+			<index name="pk_account" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="idx_account" unique="NORMAL" >
+				<column name="group_id" />
+			</index>
+		</table>
+		<table name="customer" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="name" type="VARCHAR" length="20" jt="12" mandatory="y" />
+			<column name="address" type="VARCHAR" length="200" jt="12" />
+			<column name="agent_id" type="INT" length="10" jt="4" />
+			<column name="identify_no" type="VARCHAR" length="10" jt="12" />
+			<column name="birthday" type="VARCHAR" length="100" jt="12" />
+			<column name="cellphone" type="VARCHAR" length="20" jt="12" />
+			<column name="email" type="VARCHAR" length="100" jt="12" />
+			<column name="gender" type="VARCHAR" length="1" jt="12" />
+			<column name="marriage" type="BIT" jt="-7" />
+			<column name="telephone" type="VARCHAR" length="20" jt="12" />
+			<column name="thumbnail" type="VARCHAR" length="200" jt="12" />
+			<column name="fb_id" type="VARCHAR" length="50" jt="12" />
+			<column name="child_boy" type="INT" length="10" jt="4" />
+			<column name="child_girl" type="INT" length="10" jt="4" />
+			<column name="company_name" type="VARCHAR" length="100" jt="12" />
+			<column name="company_address" type="VARCHAR" length="400" jt="12" />
+			<column name="company_phone" type="VARCHAR" length="20" jt="12" />
+			<column name="company_fax" type="VARCHAR" length="20" jt="12" />
+			<column name="company_job_desc" type="VARCHAR" length="400" jt="12" />
+			<column name="company_category" type="INT" length="10" jt="4" />
+			<column name="company_title" type="VARCHAR" length="50" jt="12" />
+			<column name="company_worktime_start" type="VARCHAR" length="10" jt="12" />
+			<column name="company_worktime_end" type="VARCHAR" length="10" jt="12" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" jt="4" />
+			<column name="modifier" type="INT" jt="4" />
+			<index name="pk_customer" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="idx_customer" unique="NORMAL" >
+				<column name="agent_id" />
+			</index>
+		</table>
+		<table name="customer_evaluation" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="customer_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="age" type="INT" length="10" jt="4" />
+			<column name="contact_difficulty" type="INT" length="10" jt="4" />
+			<column name="contact_frequency" type="INT" length="10" jt="4" />
+			<column name="dependent_count" type="INT" length="10" jt="4" />
+			<column name="income_monthly" type="INT" length="10" jt="4" />
+			<column name="known_time" type="INT" length="10" jt="4" />
+			<column name="level" type="INT" length="10" jt="4" />
+			<column name="marriage" type="INT" length="10" jt="4" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_customer_eval" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="idx_customer_eval" unique="NORMAL" >
+				<column name="customer_id" />
+			</index>
+		</table>
+		<table name="customer_relationship" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="customer_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="relationship_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" jt="4" />
+			<column name="modifier" type="INT" jt="4" />
+			<index name="pk_customer_relationship" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pk_customer_relationship_0" unique="UNIQUE" >
+				<column name="customer_id" />
+			</index>
+			<index name="idx_customer_relationship" unique="NORMAL" >
+				<column name="relationship_id" />
+			</index>
+		</table>
+		<table name="customer_tags" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="customer_id" type="INT" jt="4" mandatory="y" />
+			<column name="tag" type="VARCHAR" length="15" jt="12" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" jt="4" />
+			<column name="modifier" type="INT" jt="4" />
+			<index name="pk_customer_tags" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="idx_customer_tags" unique="NORMAL" >
+				<column name="customer_id" />
+			</index>
+		</table>
+		<table name="customer_visit_history" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="customer_id" type="INT" jt="4" />
+			<column name="detail" type="TEXT" length="65535" jt="-1" />
+			<column name="time" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="place" type="VARCHAR" length="100" jt="12" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" length="100" jt="4" />
+			<column name="modifier" type="INT" length="100" jt="4" />
+			<index name="pk_customer_visit_history" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pk_customer_visit_history_0" unique="UNIQUE" >
+				<column name="customer_id" />
+			</index>
+		</table>
+		<table name="group" >
+			<column name="id" type="INT" jt="4" mandatory="y" autoincrement="y" />
+			<column name="group_type" type="VARCHAR" length="20" jt="12" />
+			<column name="group_name" type="VARCHAR" length="100" jt="12" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_group" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="relationship" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="item" type="VARCHAR" length="30" jt="12" />
+			<column name="note" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_relationship" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="schedule" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="account_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="customer_visit_history_id" type="INT" length="10" jt="4" />
+			<column name="detail" type="TEXT" length="65535" jt="-1" />
+			<column name="end_day" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="end_month" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="end_time" type="DATETIME" length="19" jt="93" mandatory="y" />
+			<column name="end_year" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="start_day" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="start_month" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="start_time" type="DATETIME" length="19" jt="93" mandatory="y" />
+			<column name="start_year" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="title" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" jt="4" />
+			<column name="modifier" type="INT" jt="4" />
+			<index name="pk_schedule" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pk_schedule_0" unique="UNIQUE" >
+				<column name="customer_visit_history_id" />
+			</index>
+			<index name="idx_schedule" unique="NORMAL" >
+				<column name="account_id" />
+			</index>
+		</table>
+		<table name="team" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="account_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="team_name" type="VARCHAR" length="50" jt="12" mandatory="y" />
+			<index name="pk_team" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pk_team" unique="UNIQUE" >
+				<column name="account_id" />
+			</index>
+		</table>
+		<table name="transaction" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" />
+			<column name="customer_id" type="INT" length="10" jt="4" mandatory="y" />
+			<column name="detail" type="TEXT" length="65535" jt="-1" />
+			<column name="create_time" type="VARCHAR" length="100" jt="12" />
+			<column name="modify_time" type="VARCHAR" length="100" jt="12" />
+			<column name="delete_time" type="VARCHAR" length="100" jt="12" />
+			<column name="creator" type="INT" jt="4" />
+			<column name="modifier" type="INT" jt="4" />
+			<index name="pk_transaction" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="pk_transaction_0" unique="UNIQUE" >
+				<column name="customer_id" />
+			</index>
+		</table>
+	</schema>
+	<connector name="MySql" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-5.1.20-bin.jar" host="localhost" port="3306" user="root" passwd="Y2hyaXNzMTAwOA==" schema_mapping="" />
+	<layout name="agent_metrics" show_relation_columns="y" >
+		<entity schema="agent_metrics" name="group" x="700" y="308" />
+		<entity schema="agent_metrics" name="relationship" x="714" y="42" />
+		<entity schema="agent_metrics" name="customer_tags" x="420" y="42" />
+		<entity schema="agent_metrics" name="customer_relationship" x="560" y="42" />
+		<entity schema="agent_metrics" name="schedule" x="42" y="518" />
+		<entity schema="agent_metrics" name="transaction" x="420" y="308" />
+		<entity schema="agent_metrics" name="account" x="560" y="308" />
+		<entity schema="agent_metrics" name="team" x="840" y="308" />
+		<entity schema="agent_metrics" name="customer_visit_history" x="252" y="308" />
+		<entity schema="agent_metrics" name="customer" x="42" y="42" />
+		<entity schema="agent_metrics" name="customer_evaluation" x="252" y="42" />
+	</layout>
+</project>
