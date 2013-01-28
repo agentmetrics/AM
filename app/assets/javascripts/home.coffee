@@ -10,4 +10,5 @@ $ ->
 	router = new AM.Router()
 	Backbone.history.start();
 
-	@
+	window.customers = new AM.Collection.CustomerCollection
+	window.customers.fetch()

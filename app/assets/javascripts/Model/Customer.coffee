@@ -4,10 +4,6 @@ class AM.Model.Customer extends Backbone.Model
 
 	url: "am_server/customer/"
 
-	# initialize: ->
-	# 	Backbone.Model.prototype.initialize.apply @, arguments
-	# 	_.bindAll(@)
-
 	getOverallScore: ->
 		evaluation 		   = @get('evaluation')
 		marriage 	       = parseInt(@get('marriage')) or 0
