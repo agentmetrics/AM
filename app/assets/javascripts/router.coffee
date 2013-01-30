@@ -9,8 +9,5 @@ class AM.Router extends Backbone.Router
 		newCustomerView = new AM.View.NewCustomerView()
 
 	listCustomers: ->
-		customerListView = new AM.View.CustomerListView()
+		customerListView = new AM.View.CustomerListView(collection: AM.Collection.customers)
 		customerListView.render()
-
-		
-		

@@ -2,26 +2,43 @@ AM.View or (AM.View = {})
 
 class AM.View.CustomerListView extends Backbone.View 
 
-	template: '<table id="customer_list_view" class="table table-striped"></table>'
+	info_template: Handlebars.compile "
+		<div class='span2'>
+			<button class='new_btn btn btn-danger  btn-block' type='button'>新增客戶</button>
+		</div>
+		<div class='span10'>
+			<table class='table table-striped'>
+			<tbody id='customer_list'>
+			<tr><th>姓名</th><th>級別</th><th>手機電話</th><th>最後連絡時間</th></tr>
+			{{#each customerlist}}<tr>
+			<td><a>{{name}}</a></td>
+			<td>{{evaluation_score}}</td>
+			<td>{{cellphone}}</td>
+			<td>{{date}}</td>
+			</tr>{{/each}}
+			</tbody></table>
+		</div>
+	"
 
 	el: "#content_panel"
 
+	events: 
+		"click .new_btn": "gotoAddCustomer"
+
 	initialize: ->
 		@collection = @options.collection
+		@collection.on "reset", @render, @ 
+
+	gotoAddCustomer:->
+  		AM.router.navigate "addcustomer", trigger: true
 
 	render: ->
-		
-		@$el.html(@template);
-		root = @$el.find('#customer_list_view')
-		
-		@collection.each((customer) ->
-			date_str = ""
-			last_visit_time = customer.get('last_visit_time')
-			date_str = new Date(parseInt(last_visit_time)).toGMTString() if last_visit_time?
-			content_str = ""
-			content_str += "<td>" + customer.get('name') + "</td>"
-			content_str += "<td>" + customer.get('evaluation_score') + "</td>"
-			content_str += "<td>" + customer.get('cellphone') + "</td>"
-			content_str += "<td>" + date_str + "</td>"
-			root.append('<tr>' + content_str + '</tr>')
-		)
+		@$el.html(@info_template(
+			customerlist: @collection.map (customer) ->
+  				date_str = customer.get("last_visit_time")
+  				name: customer.get("name")
+  				evaluation_score: customer.get("evaluation_score")
+  				cellphone: customer.get("cellphone")
+  				date: (if date_str then new Date(parseInt(date_str)).toGMTString() else "")
+  		))
+  	

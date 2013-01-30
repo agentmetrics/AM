@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require bootstrap
+//= require handlebars
 //= require underscore
 //= require backbone
 
 //= require_tree .//Model
 //= require_tree .//Collection
+//= require_tree .//View
 //= require_tree .

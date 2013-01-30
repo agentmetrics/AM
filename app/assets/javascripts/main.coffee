@@ -7,8 +7,14 @@ $ ->
 		$("#am_menu li.active").removeClass("active")
 		$(@).addClass "active"
 
-	router = new AM.Router()
-	Backbone.history.start();
+	AM.Collection.customers = new AM.Collection.CustomerCollection
+	AM.Collection.customers.fetch(
+		success: (model, response) ->
+        	console.log("fetch success")
 
-	window.customers = new AM.Collection.CustomerCollection
-	window.customers.fetch()
+        error: (model, response) ->
+        	console.log("fetch error")
+    )
+
+	AM.router = new AM.Router()
+	Backbone.history.start();

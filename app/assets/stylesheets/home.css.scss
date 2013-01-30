@@ -32,12 +32,18 @@ $dark_grey: #555555;
 	@include border-radius(3px);
 }
 #am_menu {
+	
 	.navbar-inner  {
 		border: none;
 		background: none;
 		box-shadow:none;
 
 		.container  {
+			width: 980px;
+			height: 40px;
+			margin-left: auto;
+			margin-right: auto;
+			
 			@include background-image(linear-gradient(white, $light_green));
 			@include border-radius(3px);
 			border: 1px solid $light_border_green;
