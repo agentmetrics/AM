@@ -30,7 +30,7 @@
     <!-- 主選單 -->
     <div class="main-nav">
       <ul>
-        <li class="current"><a href="#">首頁</a></li>
+        <li class="active"><a href="#">首頁</a></li>
         <li><a href="#schedule">行事曆</a></li>
         <li><a href="#customers">客戶資料</a></li>
         <li><a href="#">目標設定</a></li>
