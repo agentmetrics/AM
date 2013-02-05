@@ -6,6 +6,7 @@
   <script type="text/javascript">
     var AM = {};
   </script>
+  <link href="public/stylesheets/vendor.css" media="all" rel="stylesheet" type="text/css">
   <link href="public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css">
   <script src="public/javascripts/application.js" type="text/javascript"></script>
 

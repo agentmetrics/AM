@@ -6054,7 +6054,136 @@ a.badge:hover {
 
 
 
-/* line 17, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
+/* line 17, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+/* line 17, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 17, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
 body {
   word-wrap: break-word;
   font-size: 15px;
@@ -6063,7 +6192,7 @@ body {
   background: #f2f2f2;
 }
 
-/* line 25, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
+/* line 25, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
 #content_panel {
   background: #f2f2f2;
   margin-left: auto;
@@ -6072,62 +6201,127 @@ body {
   display: block;
 }
 
-/* line 33, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
+/* line 33, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
 form.form-horizontal .control-group {
   margin-bottom: 10px;
   /*.radio.inline, .checkbox.inline {
   	width: 80px;
   }*/
 }
-/* line 8, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+/* line 17, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
-/* line 9, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 22, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 10, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 28, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, /opt/local/lib/ruby1.9/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 8, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 9, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 10, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 fieldset, img {
   border: 0;
 }
 
-/* line 11, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 11, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 address, caption, cite, code, dfn, em, th, var {
   font-style: normal;
   font-weight: normal;
 }
 
-/* line 12, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 12, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 caption, th {
   text-align: left;
 }
 
-/* line 13, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 13, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 q:before, q:after {
   content: '';
 }
 
-/* line 14, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 14, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 abbr, acronym {
   border: 0;
 }
 
-/* line 15, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 15, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 textarea {
   overflow: auto;
 }
 
-/* line 16, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 16, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 li {
   list-style: none;
 }
 
-/* line 18, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 18, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header {
   width: 980px;
   height: 100px;
@@ -6137,36 +6331,36 @@ li {
   background: #cd0920;
   margin: 0px auto 20px auto;
 }
-/* line 27, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 27, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header a {
   color: #0873b9;
   text-decoration: none;
 }
-/* line 32, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 32, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header a, .header input {
   outline: none;
   /* for Firefox Google Chrome  */
   behavior: expression(this.onFocus=this.blur());
   /* for IE */
 }
-/* line 37, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 37, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .wrap {
   width: 970px;
   margin: 0 auto;
 }
-/* line 42, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 42, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .container {
   width: 970px;
   margin: 0 auto;
   display: table;
   padding: 12px 0 20px 0;
 }
-/* line 48, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 48, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main {
   width: 650px;
   float: left;
 }
-/* line 52, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 52, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .logo a {
   width: 271px;
   height: 50px;
@@ -6175,12 +6369,12 @@ li {
   float: left;
   margin-top: 3px;
 }
-/* line 59, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 59, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav {
   float: right;
   margin-top: 17px;
 }
-/* line 62, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 62, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li {
   -webkit-box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
   -moz-box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
@@ -6199,11 +6393,11 @@ li {
   -o-transition: background 0.5s ease;
   transition: background 0.5s ease;
 }
-/* line 69, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 69, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li:hover {
   background: #FF9900;
 }
-/* line 71, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 71, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li a {
   display: block;
   padding: 5px 8px;
@@ -6211,35 +6405,35 @@ li {
   font-size: 15px;
   text-shadow: 2px 1px 0px #ffdd55;
 }
-/* line 78, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 78, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li.signup {
   background: url(../images/icon-1.png) no-repeat 7px 7px #ffcc00;
   padding-left: 17px;
 }
-/* line 82, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 82, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li.signup:hover {
   background: url(../images/icon-1.png) no-repeat 7px 7px white;
 }
-/* line 87, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 87, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li.login {
   background: url(../images/icon-2.png) no-repeat 7px 7px #ffcc00;
   padding-left: 14px;
 }
-/* line 90, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 90, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .top-nav li.login:hover {
   background: url(../images/icon-2.png) no-repeat 7px 7px white;
 }
-/* line 97, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 97, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav {
   overflow: hidden;
   width: 100%;
   padding-top: 19px;
 }
-/* line 102, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 102, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav ul {
   margin-left: 5px;
 }
-/* line 105, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 105, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav li {
   float: left;
   padding: 5px 20px;
@@ -6259,25 +6453,25 @@ li {
   transition: background 0.5s ease;
   text-shadow: 2px 1px 0px black;
 }
-/* line 117, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 117, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav li a {
   color: white;
 }
-/* line 120, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 120, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav li:hover {
   background: #6d6d6d;
 }
-/* line 122, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 122, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav li:hover a {
   color: white;
   diplsy: block;
 }
-/* line 127, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 127, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav li.active {
   background: #ced0d0;
   text-shadow: none;
 }
-/* line 130, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+/* line 130, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.scss */
 .header .main-nav li.active a {
   color: black;
   font-weight: bold;
