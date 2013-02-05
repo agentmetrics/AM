@@ -287,22 +287,17 @@ class AM.View.NewCustomerView extends Backbone.View
 				work_start: $('input[name="work_start"]').val()
 				work_end: $('input[name="work_end"]').val()
 			evaluation:
-				known_time: new Date(
-					$('select[name="year"]').children("option").filter(":selected").text(),
-					$('select[name="month"]').children("option").filter(":selected").text(),
-					$('select[name="day"]').children("option").filter(":selected").text())
 				income_monthly:  $('input:radio[name=wage]:checked').val()
 				contact_difficulty: $('input:radio[name=contact_difficulty]:checked').val()
 				contact_frequency: $('input:radio[name=contact_frequency]:checked').val()
 				dependent_count: $('input:radio[name=raise_count]:checked').val()
+				known_time: "2"
+				weight: 1
 
-		window.customer = new AM.Model.Customer(
-			customer_info
-		)
+		# window.customer = new AM.Model.Customer(
+		# 	customer_info
+		# )
+
+		@collection.add(customer_info, merge: true)
 		
-		window.customer.save( {},
-			success: ->
-				console.log "save success"
-			error:-> 
-				console.log "save error"
-		)
+		#

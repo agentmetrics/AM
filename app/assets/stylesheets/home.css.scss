@@ -1,29 +1,11 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-//@import "gradients";
+@import "vars";
 @import "compass/css3/images";
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
-
-$light_green: #D5E869;
-$light_border_green: #D5E869;
-$dark_green:  #6FBA2C;
-$dark_green_border:  #6FBA2C;
-$light_grey: #eeeeee;
-$dark_grey: #555555;
-
-
-#am_banner {
-	width: 980px;
-	height: 40px;
-	margin-left: auto;
-	margin-right: auto;
-	clear: both;
-	display: block;
-}
 
 @mixin menu_highlight {
 	@include background-image(linear-gradient($light_grey, $dark_green));
@@ -31,91 +13,28 @@ $dark_grey: #555555;
 	border: 1px solid $dark_green_border;
 	@include border-radius(3px);
 }
-#am_menu {
-	
-	.navbar-inner  {
-		border: none;
-		background: none;
-		box-shadow:none;
 
-		.container  {
-			width: 980px;
-			height: 40px;
-			margin-left: auto;
-			margin-right: auto;
-			
-			@include background-image(linear-gradient(white, $light_green));
-			@include border-radius(3px);
-			border: 1px solid $light_border_green;
-			li {
-				&.active a {
-					@include menu_highlight;
-				};
-				a {
-					color: black;
-					&:hover {
-						@include menu_highlight;
-					};
-				}
-			}
-		}
-	}
+body {
+	word-wrap: break-word;
+	font-size:15px ;
+	color:#666;
+	font-family:Verdana,\5FAE\8EDF\6B63\9ED1\9AD4,\65B0\7D30\660E\9AD4;
+	background: $light_grey
 }
 
 #content_panel {
-	background-color: #eeeeee;
+	background: $light_grey;
 	margin-left: auto;
 	margin-right: auto;
 	width: 980px;
 	display: block;
-
-	.info_block {
-		width: 200px;
-		height: 250px;
-		background-color: white;
-		position: relative;
-		@include border-radius(3px);
-		@include box-shadow($dark_grey 2px 2px 10px);
-
-		.header_bar {
-			background-color: $dark_green;
-			display: block;
-			height: 2px;
-		}
-
-		.title {
-			text-align:center;
-			line-height:35px;
-			padding-top: 5px;
-		}
-		.divider {
-			background-color: $dark_grey;
-			width: 150px;
-			height: 1px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		ul {
-			list-style-type: none;
-			margin-top: 10px;
-			li:before {  
-   				content: " - ";  
-   				line-height: 25px;
-  			}	  
-		}
-		.footer_bar {
-			position:absolute;
-			right: 10px;
-			bottom: 10px;
-		}
-	}
 }
 
 form.form-horizontal .control-group {
 	margin-bottom: 10px;
-	.radio.inline, .checkbox.inline {
+	/*.radio.inline, .checkbox.inline {
 		width: 80px;
-	}
+	}*/
 }
 
 

@@ -14,142 +14,226 @@
 
 
 
-/* line 19, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#am_banner {
-  width: 980px;
-  height: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  clear: both;
-  display: block;
+/* line 17, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
+body {
+  word-wrap: break-word;
+  font-size: 15px;
+  color: #666;
+  font-family: Verdana,\5FAE\8EDF\6B63\9ED1\9AD4,\65B0\7D30\660E\9AD4;
+  background: #f2f2f2;
 }
 
-/* line 36, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#am_menu .navbar-inner {
-  border: none;
-  background: none;
-  box-shadow: none;
-}
-/* line 41, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#am_menu .navbar-inner .container {
-  width: 980px;
-  height: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #d5e869));
-  background-image: -webkit-linear-gradient(#ffffff, #d5e869);
-  background-image: -moz-linear-gradient(#ffffff, #d5e869);
-  background-image: -o-linear-gradient(#ffffff, #d5e869);
-  background-image: linear-gradient(#ffffff, #d5e869);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-  border: 1px solid #d5e869;
-}
-/* line 51, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#am_menu .navbar-inner .container li.active a {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #6fba2c));
-  background-image: -webkit-linear-gradient(#eeeeee, #6fba2c);
-  background-image: -moz-linear-gradient(#eeeeee, #6fba2c);
-  background-image: -o-linear-gradient(#eeeeee, #6fba2c);
-  background-image: linear-gradient(#eeeeee, #6fba2c);
-  color: white;
-  border: 1px solid #6fba2c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-}
-/* line 54, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#am_menu .navbar-inner .container li a {
-  color: black;
-}
-/* line 56, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#am_menu .navbar-inner .container li a:hover {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #6fba2c));
-  background-image: -webkit-linear-gradient(#eeeeee, #6fba2c);
-  background-image: -moz-linear-gradient(#eeeeee, #6fba2c);
-  background-image: -o-linear-gradient(#eeeeee, #6fba2c);
-  background-image: linear-gradient(#eeeeee, #6fba2c);
-  color: white;
-  border: 1px solid #6fba2c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-}
-
-/* line 65, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
+/* line 25, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
 #content_panel {
-  background-color: #eeeeee;
+  background: #f2f2f2;
   margin-left: auto;
   margin-right: auto;
   width: 980px;
   display: block;
 }
-/* line 72, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block {
-  width: 200px;
-  height: 250px;
-  background-color: white;
-  position: relative;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: #555555 2px 2px 10px;
-  -moz-box-shadow: #555555 2px 2px 10px;
-  box-shadow: #555555 2px 2px 10px;
-}
-/* line 80, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block .header_bar {
-  background-color: #6fba2c;
-  display: block;
-  height: 2px;
-}
-/* line 86, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block .title {
-  text-align: center;
-  line-height: 35px;
-  padding-top: 5px;
-}
-/* line 91, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block .divider {
-  background-color: #555555;
-  width: 150px;
-  height: 1px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* line 98, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block ul {
-  list-style-type: none;
-  margin-top: 10px;
-}
-/* line 101, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block ul li:before {
-  content: " - ";
-  line-height: 25px;
-}
-/* line 106, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-#content_panel .info_block .footer_bar {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
 
-/* line 114, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
+/* line 33, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
 form.form-horizontal .control-group {
   margin-bottom: 10px;
+  /*.radio.inline, .checkbox.inline {
+  	width: 80px;
+  }*/
 }
-/* line 116, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/home.css.scss */
-form.form-horizontal .control-group .radio.inline, form.form-horizontal .control-group .checkbox.inline {
-  width: 80px;
+/* line 8, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 9, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 10, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+fieldset, img {
+  border: 0;
+}
+
+/* line 11, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+address, caption, cite, code, dfn, em, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 12, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+caption, th {
+  text-align: left;
+}
+
+/* line 13, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+q:before, q:after {
+  content: '';
+}
+
+/* line 14, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+abbr, acronym {
+  border: 0;
+}
+
+/* line 15, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+textarea {
+  overflow: auto;
+}
+
+/* line 16, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+li {
+  list-style: none;
+}
+
+/* line 20, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header {
+  width: 980px;
+  height: 100px;
+  clear: both;
+  display: block;
+  border-bottom: 10px solid #ced0d0;
+  background: #cd0920;
+  margin: 0px auto 20px auto;
+}
+/* line 29, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header a {
+  color: #0873b9;
+  text-decoration: none;
+}
+/* line 34, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header a, .header input {
+  outline: none;
+  /* for Firefox Google Chrome  */
+  behavior: expression(this.onFocus=this.blur());
+  /* for IE */
+}
+/* line 39, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .wrap {
+  width: 970px;
+  margin: 0 auto;
+}
+/* line 44, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .container {
+  width: 970px;
+  margin: 0 auto;
+  display: table;
+  padding: 12px 0 20px 0;
+}
+/* line 50, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main {
+  width: 650px;
+  float: left;
+}
+/* line 54, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .logo a {
+  width: 271px;
+  height: 50px;
+  display: block;
+  background: url(../images/logo.png);
+  float: left;
+  margin-top: 3px;
+}
+/* line 61, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav {
+  float: right;
+  margin-top: 17px;
+}
+/* line 63, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li {
+  -webkit-box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
+  -moz-box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
+  box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
+  list-style: none;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: #FFCC00;
+  margin-left: 10px;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+}
+/* line 71, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li:hover {
+  background: #FF9900;
+}
+/* line 73, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li a {
+  display: block;
+  padding: 5px 8px;
+  color: #000;
+  font-size: 15px;
+  text-shadow: 2px 1px 0px #ffdd55;
+}
+/* line 80, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li.signup {
+  background: url(../images/icon-1.png) no-repeat 7px 7px #ffcc00;
+  padding-left: 17px;
+}
+/* line 85, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li.signup:hover {
+  background: url(../images/icon-1.png) no-repeat 7px 7px white;
+}
+/* line 87, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li.login {
+  background: url(../images/icon-2.png) no-repeat 7px 7px #ffcc00;
+  padding-left: 14px;
+}
+/* line 92, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .top-nav li.login:hover {
+  background: url(../images/icon-2.png) no-repeat 7px 7px white;
+}
+/* line 94, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main-nav {
+  overflow: hidden;
+  width: 100%;
+  padding-top: 19px;
+}
+/* line 99, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main-nav li {
+  float: left;
+  padding: 5px 20px;
+  background: #4C4C4C;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 4px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+  text-shadow: 2px 1px 0px black;
+}
+/* line 112, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main-nav li:hover {
+  background: #6D6D6D;
+}
+/* line 116, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main-nav li a {
+  color: #fff;
+  diplsy: block;
+}
+/* line 121, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main-nav li.current {
+  background: #CED0D0;
+  text-shadow: none;
+}
+/* line 126, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/menu.css.scss */
+.header .main-nav li.current a {
+  color: #000;
+  font-weight: bold;
 }
 /*!
  * Bootstrap v2.2.2
