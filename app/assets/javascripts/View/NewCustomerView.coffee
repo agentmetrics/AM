@@ -232,8 +232,10 @@ friendship_template = '
       </a>
     </div>
 	<div class="accordion-body collapse" id="friendship_info">
+		<div id="relationship_block">
+		</div>
 		<div class="accordion-inner">
-			<p>Not implemented yet</p>
+			<button class="add_relationship btn" type="submit">新增好友</button>
 		</div>
 	</div>
 </div>'
@@ -248,6 +250,7 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	events: 
 		"click .create": "submit"
+		"click .add_relationship": "addFriend"
 		
 	initialize: ->
 		@collection = @options.collection
@@ -257,6 +260,10 @@ class AM.View.NewCustomerView extends Backbone.View
 		@$el.html('<div class="accordion" id="accordion2">' + 
 		@basic_info_template() + company_info_template + value_info_template + friendship_template + 
 	    '</div>' + commit_button)
+
+	addFriend: ->
+		relations = @$el.find('#relationship_block')
+		
 
 	submit: ->
 

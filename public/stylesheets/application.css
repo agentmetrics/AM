@@ -6200,8 +6200,16 @@ body {
   width: 980px;
   display: block;
 }
+/* line 32, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
+#content_panel .toolbar {
+  height: 40px;
+}
+/* line 35, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
+#content_panel input[type="text"] {
+  margin-bottom: 0;
+}
 
-/* line 33, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
+/* line 40, /Users/matthuang/Works/am/amtest/app/assets/stylesheets/main.scss */
 form.form-horizontal .control-group {
   margin-bottom: 10px;
   /*.radio.inline, .checkbox.inline {

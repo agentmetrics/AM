@@ -28,6 +28,13 @@ body {
 	margin-right: auto;
 	width: 980px;
 	display: block;
+
+	.toolbar {
+		height: 40px;
+	}
+	input[type="text"] {
+		margin-bottom: 0;
+	}
 }
 
 form.form-horizontal .control-group {
