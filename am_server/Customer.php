@@ -334,7 +334,7 @@ class Customer extends Control implements RESTfulInterface
   function getCustomerPartial() {
   	$data = array();
   	
-  	$sql = "SELECT id, name, cellphone FROM customer ";
+  	$sql = "SELECT id, name, cellphone, gender FROM customer ";
   	
   	$result = $this->db->queryAll($sql);
   	if( !$result ) 

@@ -263,7 +263,8 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
-		
+		relations.append('<p>new relationship</p>')
+
 
 	submit: ->
 
