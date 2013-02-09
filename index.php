@@ -1,3 +1,7 @@
+<?php
+  header('Content-Type: text/html; charset=UTF-8');
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +46,7 @@
     <!-- /主選單 -->
 </div>
 
-<div id="content_panel">
+<div id="content_panel" class="row container">
 </div>
 
 </body>
