@@ -2,7 +2,7 @@ AM.Model or (AM.Model = {})
 
 class AM.Model.Customer extends Backbone.Model
 
-	url: "am_server/customer/"
+	urlRoot: "am_server/customer/"
 
 	getOverallScore: ->
 		evaluation 		   = @get('evaluation')
@@ -33,4 +33,6 @@ class AM.Model.Customer extends Backbone.Model
 
 	save: ->
 		Backbone.Model.prototype.save.apply @, arguments
+
+
 

@@ -7,12 +7,12 @@ Handlebars.registerHelper "event_day",  ->
 	while i <= l
 		out += "<tr>"
 		out += "<td>" + i + ":00"+ "</td>"
-		out += "<td class='time_slot'> </td>"
+		out += "<td class='time_slot' data-toggle='tooltip'> </td>"
 		out + "</tr>"
 		i++
 	out
 
-class AM.View.CustomerListView extends Backbone.View 
+AM.View.CustomerListView = Backbone.View.extend
 
 	tool_bar: '
 		<div class="span12 toolbar">
@@ -32,22 +32,24 @@ class AM.View.CustomerListView extends Backbone.View
 			</select>
 			個性
 			<select class="span1" name="personality">
-				<option>D
-				<option>I
-				<option>S
-				<option>C
+				<option value="n">
+				<option value="D">D
+				<option value="I">I
+				<option value="S">S
+				<option value="C">C
 			</select>
-			<a class="new_btn btn btn-danger" >新增客戶</a>
+			<a class="new_btn btn btn-danger">新增客戶</a>
 		</div>
 		'
 	list_view_template: Handlebars.compile '
 		<table class="table table-striped">
 		<tbody>
-		<tr><th>姓名</th><th>級別</th><th>手機電話</th><th>最後連絡時間</th></tr>
+		<tr><th>姓名</th><th>級別</th><th>個性</th><th>手機電話</th><th>最後連絡時間</th></tr>
 		{{#each customerlist}}
 			<tr class="{{gender}}">
-			<td><a class="indicator" draggable="true" customer_id={{id}} href="#customer/{{id}}">{{name}}</a></td>
+			<td><a class="indicator" draggable="true" data-customer-id={{id}} href="#customer/{{id}}">{{name}}</a></td>
 			<td>{{evaluation_score}}</td>
+			<td>{{personality}}</td>
 			<td>{{cellphone}}</td>
 			<td>{{date}}</td>
 			</tr>
@@ -72,7 +74,8 @@ class AM.View.CustomerListView extends Backbone.View
 
 	events: 
 		"click .new_btn": "gotoAddCustomer"
-		"change .gender": "render"
+		"change select[name='gender']": "render"
+		"change select[name='personality']": "render"
 		"change input[name='name']": "render"
 		"dragstart .indicator": "handleDragStart" 
 		"dragenter .time_slot": "handleDrop"
@@ -90,7 +93,7 @@ class AM.View.CustomerListView extends Backbone.View
   	AM.router.navigate "addcustomer", trigger: true
 
 	handleDragStart: (e) ->
-  	e.originalEvent.dataTransfer.setData('customer_id', $(e.target).attr('customer_id'))
+  	e.originalEvent.dataTransfer.setData('customer_id', $(e.target).attr('data-customer-id'))
 
   handleDrop: (e)->
   	e.preventDefault()
@@ -102,21 +105,26 @@ class AM.View.CustomerListView extends Backbone.View
   	customer_id = e.originalEvent.dataTransfer.getData('customer_id')
   	customer = @collection.get(customer_id)
   	$(e.target).html(customer.get("name"))
-  	#$(e.target).popover().show()
+  	$(e.target).popover('show')
 
 	render: ->
-		gender = $('select[name="gender"]').children("option").filter(":selected").val()
 		filtered = @collection
-		if gender isnt "n" 
+		selected_gender = $('select[name="gender"]').children("option").filter(":selected").val()
+		if selected_gender isnt "n" 
 			filtered = filtered.filter((customer) ->
-				customer.get("gender") == gender
+				customer.get("gender") is selected_gender
 			)
 
 		name = $('input[name="name"]').val()
-		console.log name
 		if name
 			filtered = filtered.filter((customer) ->
 				customer.get("name").indexOf(name) >= 0
+			)
+
+		selected_personality = $('select[name="personality"]').children('option').filter(':selected').val() 
+		if selected_personality isnt 'n'
+			filtered = filtered.filter((customer) ->
+				customer.get('personality') is selected_personality
 			)
 
 		@$el.find('.customer_list').html(@list_view_template(
@@ -124,6 +132,7 @@ class AM.View.CustomerListView extends Backbone.View
   				date_str = customer.get("last_visit_time")
   				name: customer.get("name")
   				evaluation_score: customer.get("evaluation_score")
+  				personality: customer.get('personality')
   				cellphone: customer.get("cellphone")
   				gender: customer.get("gender")
   				date: (if date_str then new Date(parseInt(date_str)).toGMTString() else "")

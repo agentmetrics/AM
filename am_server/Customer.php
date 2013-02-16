@@ -63,6 +63,7 @@ class Customer extends Control implements RESTfulInterface
 		$customer['child_boy'] = $data["child"]['boy'];
 		$customer['child_girl'] = $data["child"]['girl'];
 		$customer['note'] = $data["note"];
+    $customer['personality'] = $data["personality"];
 		$customer['company_name'] = $data["company"]['name'];
 		$customer['company_address'] = $data["company"]["address"];
 		$customer['company_phone'] = $data["company"]["phone"];
@@ -121,6 +122,7 @@ class Customer extends Control implements RESTfulInterface
 		$customer['child_boy'] = $data["child"]['boy'];
 		$customer['child_girl'] = $data["child"]['girl'];
 		$customer['note'] = $data["note"];
+    $customer['personality'] = $data["personality"];
 		$customer['company_name'] = $data["company"]['name'];
 		$customer['company_address'] = $data["company"]["address"];
 		$customer['company_phone'] = $data["company"]["phone"];
@@ -283,6 +285,7 @@ class Customer extends Control implements RESTfulInterface
   	$customer['note'] = $data["note"];
   	$personal['create_time'] = $result['create_time'];
   	$personal['modify_time'] = $result['modify_time'];
+    $personal['personality'] = $result['personality'];
   	
   	//children
   	$child['boy'] = $result['child_boy'];
@@ -334,7 +337,7 @@ class Customer extends Control implements RESTfulInterface
   function getCustomerPartial() {
   	$data = array();
   	
-  	$sql = "SELECT id, name, cellphone, gender FROM customer ";
+  	$sql = "SELECT id, name, cellphone, gender, personality FROM customer ";
   	
   	$result = $this->db->queryAll($sql);
   	if( !$result ) 
