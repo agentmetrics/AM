@@ -11,10 +11,11 @@ $ ->
 	AM.Collection.customers.fetch(
 		success: (model, response) ->
         	console.log("fetch success")
+        	AM.router = new AM.Router()
+        	Backbone.history.start()
 
         error: (model, response) ->
         	console.log("fetch error")
     )
 
-	AM.router = new AM.Router()
-	Backbone.history.start();
+	
