@@ -11,7 +11,7 @@ basic_info_template = '
 	<div class="accordion-body collapse in" id="basic_info">
 		<div class="accordion-inner">
 			<div class="row"><div class="span2"><p class="pull-right">姓名</p></div><div class="span10">{{name}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">性別</p></div><div class="span9">{{gender}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">性別</p></div><div class="span10">{{gender}}</div></div>
 			<div class="row"><div class="span2"><p class="pull-right">手機電話</p></div><div class="span9">{{cellphone}}</div></div>
 			<div class="row"><div class="span2"><p class="pull-right">生日</p></div><div class="span9">{{birthday}}</div></div>
 			<div class="row"><div class="span2"><p class="pull-right">Email</p></div><div class="span9">{{email}}</div></div>	
@@ -50,12 +50,12 @@ value_info_template = '
     </div>
 	<div class="accordion-body collapse" id="value_info">
 		<div class="accordion-inner">
-			<div class="row"><div class="span3">個性</div><div class="span9">{{personality}}</div></div>
-			<div class="row"><div class="span3">月收入</div><div class="span9">{{wage}}</div></div>
-			<div class="row"><div class="span3">撫養人數</div><div class="span9">{{raise_count}}</div></div>
-			<div class="row"><div class="span3">接觸難度</div><div class="span9">{{contact_difficulty}}</div></div>
-			<div class="row"><div class="span3">聯絡頻率</div><div class="span9">{{contact_frequency}}</div></div>	
-			<div class="row"><div class="span3">備註</div><div class="span9">{{description}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">個性</p></div><div class="span9">{{personality}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">月收入</p></div><div class="span9">{{wage}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">撫養人數</p></div><div class="span9">{{raise_count}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">接觸難度</p></div><div class="span9">{{contact_difficulty}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">聯絡頻率</p></div><div class="span9">{{contact_frequency}}</div></div>	
+			<div class="row"><div class="span2"><p class="pull-right">備註</p></div><div class="span9">{{description}}</div></div>
 		</div>
 	</div>
 </div>

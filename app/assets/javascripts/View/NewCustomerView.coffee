@@ -30,7 +30,6 @@ Handlebars.registerHelper "list_day",  ->
     i++
   out
 
-
 basic_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
@@ -157,7 +156,7 @@ company_info_template = '
 	</div>
 </div>'
 
-value_info_template = '
+_value_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#value_info">
@@ -168,21 +167,21 @@ value_info_template = '
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
-					<label class="control-label">個性</label>
+					<label class="control-label">{{personality.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="personality" type="radio" value="D">D</label>
-						<label class="radio inline"><input name="personality" type="radio" value="I">I</label>
-						<label class="radio inline"><input name="personality" type="radio" value="S">S</label>
-						<label class="radio inline"><input name="personality" type="radio" value="C">C</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.a}}">{{personality.label.a}}</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.b}}">{{personality.label.b}}</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.c}}">{{personality.label.c}}</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.d}}">{{personality.label.d}}</label>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">月收入</label>
+					<label class="control-label">{{wage.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="wage" type="radio" value="1">3萬以下</label>
-						<label class="radio inline"><input name="wage" type="radio" value="2">3萬-6萬</label>
-						<label class="radio inline"><input name="wage" type="radio" value="3">6萬-10萬</label>
-						<label class="radio inline"><input name="wage" type="radio" value="4">10萬以上</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.a}}">{{wage.label.a}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.b}}">{{wage.label.b}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.c}}">{{wage.label.c}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.d}}">{{wage.label.d}}</label>
 					</div>
 				</div>
 				<div class="control-group">
@@ -195,21 +194,21 @@ value_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">接觸難度</label>
+					<label class="control-label">{{difficulty.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="1">非常困難</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="2">有點困難</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="3">容易</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="4">非常容易</label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.a}}">{{difficulty.label.a}}</label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.b}}">{{difficulty.label.b}}</label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.c}}">{{difficulty.label.c}}</label> 	
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.d}}">{{difficulty.label.d}}</label>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">聯絡頻率</label>
+					<label class="control-label">{{frequency.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="1">一年2次以下</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="2">一年3~6次</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="3">一年7~12次</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="4">經常聯絡</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.a}}">{{frequency.label.a}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.b}}">{{frequency.label.b}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.c}}">{{frequency.label.c}}/label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.d}}">{{frequency.label.d}}/label>
 					</div>
 				</div>
 				<div class="control-group">
@@ -247,18 +246,28 @@ class AM.View.NewCustomerView extends Backbone.View
 	el: "#content_panel"
 
 	basic_info_template: Handlebars.compile(basic_info_template)
+	value_info_template: Handlebars.compile(_value_info_template)
 
 	events: 
 		"click .create": "submit"
 		"click .add_relationship": "addFriend"
 		
 	initialize: ->
+		_.bindAll @
 		@collection = @options.collection
 		@render()
 
 	render: ->
 		@$el.html('<div class="accordion" id="accordion2">' + 
-		@basic_info_template() + company_info_template + value_info_template + friendship_template + 
+		@basic_info_template() + 
+		company_info_template + 
+		@value_info_template(
+			difficulty: AM.Setting.ContactDifficulty
+			wage: AM.Setting.Wage
+			frequency: AM.Setting.ContactFrequency
+			personality: AM.Setting.Personality
+		) + 
+		friendship_template + 
 	    '</div>' + commit_button)
 
 	addFriend: ->
