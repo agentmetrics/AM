@@ -30,7 +30,7 @@ Handlebars.registerHelper "list_day",  ->
     i++
   out
 
-basic_info_template = '
+_basic_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
@@ -111,7 +111,7 @@ basic_info_template = '
 	</div>
 </div>'
 
-company_info_template = '
+_company_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#company_info">
@@ -148,7 +148,11 @@ company_info_template = '
 				<div class="control-group">
 					<label class="control-label">工作類別</label>
 					<div class="controls">
-						<input size="50" maxlength="50" style="width:255px;" name="job_category" type="text">
+						<select class="span4" name="job_category">
+							{{#each job_category}}
+								<option >{{this}}
+							{{/each}}
+						</select>
 					</div>
 				</div>
 			</form>
@@ -245,22 +249,30 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	el: "#content_panel"
 
-	basic_info_template: Handlebars.compile(basic_info_template)
+	basic_info_template: Handlebars.compile(_basic_info_template)
 	value_info_template: Handlebars.compile(_value_info_template)
+	company_info_template: Handlebars.compile(_company_info_template)
 
 	events: 
 		"click .create": "submit"
 		"click .add_relationship": "addFriend"
-		
+		"change .job_category": "updateJobCategory"
+
 	initialize: ->
 		_.bindAll @
 		@collection = @options.collection
 		@render()
 
+	updateJobCategory: (e)->
+		console.log e
+
+
 	render: ->
 		@$el.html('<div class="accordion" id="accordion2">' + 
 		@basic_info_template() + 
-		company_info_template + 
+		@company_info_template(
+			job_category: AM.Setting.JobCategory
+		) + 
 		@value_info_template(
 			difficulty: AM.Setting.ContactDifficulty
 			wage: AM.Setting.Wage
@@ -274,7 +286,6 @@ class AM.View.NewCustomerView extends Backbone.View
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
 		relations.append('<p>new relationship</p>')
-
 
 	submit: ->
 
@@ -302,8 +313,6 @@ class AM.View.NewCustomerView extends Backbone.View
 				job_desc: $('input[name="job_description"]').val()
 				category: $('input[name="job_category"]').val()
 				title: $('input[name="job_title"]').val()
-				work_start: $('input[name="work_start"]').val()
-				work_end: $('input[name="work_end"]').val()
 			evaluation:
 				income_monthly:  $('input:radio[name=wage]:checked').val()
 				contact_difficulty: $('input:radio[name=contact_difficulty]:checked').val()
