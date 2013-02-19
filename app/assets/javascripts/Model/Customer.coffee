@@ -4,6 +4,9 @@ class AM.Model.Customer extends Backbone.Model
 
 	urlRoot: "am_server/customer/"
 
+
+	#validate: (attributes)->
+
 	getOverallScore: ->
 		evaluation 		   = @get('evaluation')
 		marriage 	       = parseInt(@get('marriage')) or 0
@@ -33,6 +36,3 @@ class AM.Model.Customer extends Backbone.Model
 
 	save: ->
 		Backbone.Model.prototype.save.apply @, arguments
-
-
-

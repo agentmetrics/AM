@@ -207,6 +207,8 @@ class Customer extends Control implements RESTfulInterface
   	"tags" : ["可愛","大方","健談","辣妹"]
   	*/
   	
+    if(is_null($data)) return;
+ 
   	$now = time();
   	
   	//Do delete record first

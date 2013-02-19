@@ -1,10 +1,15 @@
 AM.Setting or (AM.Setting = {})
 
-AM.Setting.Marrage = 
-	"single" : 1
-	"married" : 2
-	"divorce" : 3
-
+AM.Setting.Marriage = 
+	title: "婚姻"
+	value:
+		"a": "1"
+		"b": "2"
+		"c": "3"
+	label:
+		"a": "未婚"
+		"b": "已婚"
+		"c": "單親"
 
 AM.Setting.ContactDifficulty = 
 	title: "接觸難度"
