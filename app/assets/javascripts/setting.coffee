@@ -33,7 +33,6 @@ AM.Setting.Wage =
 		"c": "6萬-10萬"
 		"d": "10萬以上"
 
-
 AM.Setting.ContactFrequency = 
 	title: "聯絡頻率"
 	value: 
@@ -47,15 +46,28 @@ AM.Setting.ContactFrequency =
 		"c": "一年7~12次"
 		"d": "經常聯絡"
 
+AM.Setting.Raise = 
+	title: "撫養人數"
+	value: 
+		"a": "1"
+		"b": "2"
+		"c": "3"
+		"d": "4"
+	label: 
+		"a": "無"
+		"b": "1個"
+		"c": "2個"
+		"d": "2個以上"
+
 AM.Setting.Personality = 
 	title: "個性"
 	value: 
 		"a": "D"
-		"b": "S"
-		"c": "I"
+		"b": "I"
+		"c": "S"
 		"d": "C"
 	label: 
 		"a": "D"
-		"b": "S"
-		"c": "I"
+		"b": "I"
+		"c": "S"
 		"d": "C"

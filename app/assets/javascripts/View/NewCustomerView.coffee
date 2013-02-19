@@ -185,12 +185,12 @@ _value_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">撫養人數</label>
+					<label class="control-label">{{raise.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="raise_count" type="radio" value="1">無</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="2">1個</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="3">2個</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="4">2個以上</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.a}}">{{raise.label.a}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.b}}">{{raise.label.b}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.c}}">{{raise.label.c}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.d}}">{{raise.label.d}}</label>
 					</div>
 				</div>
 				<div class="control-group">
@@ -207,8 +207,8 @@ _value_info_template = '
 					<div class="controls">
 						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.a}}">{{frequency.label.a}}</label>
 						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.b}}">{{frequency.label.b}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.c}}">{{frequency.label.c}}/label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.d}}">{{frequency.label.d}}/label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.c}}">{{frequency.label.c}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.d}}">{{frequency.label.d}}</label>
 					</div>
 				</div>
 				<div class="control-group">
@@ -266,6 +266,7 @@ class AM.View.NewCustomerView extends Backbone.View
 			wage: AM.Setting.Wage
 			frequency: AM.Setting.ContactFrequency
 			personality: AM.Setting.Personality
+			raise: AM.Setting.Raise
 		) + 
 		friendship_template + 
 	    '</div>' + commit_button)

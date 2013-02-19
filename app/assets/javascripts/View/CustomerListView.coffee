@@ -7,7 +7,7 @@ Handlebars.registerHelper "event_day",  ->
 	while i <= l
 		out += "<tr>"
 		out += "<td>" + i + ":00"+ "</td>"
-		out += "<td class='time_slot' data-toggle='tooltip'> </td>"
+		out += "<td class='time_slot' data-toggle='popover' data-placement='left' data-content='' title='' data-original-title='New Task'> </td>"
 		out + "</tr>"
 		i++
 	out
