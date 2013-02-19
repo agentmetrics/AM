@@ -13,6 +13,7 @@ AM.Collection.CustomerCollection = Backbone.Collection.extend (
 					console.log response
 					model.set('id', response.id)
 					model.set('evaluation_score', response.score)
+					AM.router.navigate 'customers', trigger: true
 				error: (model, xhr, options) -> 
 					console.log xhr
    	

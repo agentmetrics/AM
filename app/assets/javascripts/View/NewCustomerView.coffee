@@ -91,15 +91,17 @@ _basic_info_template = '
 						<input size="50" maxlength="50" class="input-medium" name="identify_no" type="text">
 					</div>
 				</div>
+				{{#with marriage}}
 				<div class="control-group">
-					<label class="control-label">婚姻</label>
+					<label class="control-label">{{title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="marriage" type="radio" value="single">未婚</label>
-						<label class="radio inline"><input name="marriage" type="radio" value="married"><p>已婚</p></label>
-						<label class="radio inline"><input name="marriage" type="radio" value="divorce"><p>單親</p></label>
+						<label class="radio inline"><input name="marriage" type="radio" value="{{value.a}}"><p>{{label.a}}</p></label>
+						<label class="radio inline"><input name="marriage" type="radio" value="{{value.b}}"><p>{{label.b}}</p></label>
+						<label class="radio inline"><input name="marriage" type="radio" value="{{value.c}}"><p>{{label.c}}</p></label>
 					</div>
 				</div>
-					<div class="control-group">
+				{{/with}}
+				<div class="control-group">
 					<label class="control-label">小孩</label>
 					<div class="controls">
 						<input class="input-mini" name="boy" type="text">子
@@ -226,6 +228,23 @@ _value_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label">評等</label>
+					<div class="controls">
+						<select class="span2" name="weight">
+							<option> 0.1
+							<option> 0.2
+							<option> 0.3
+							<option> 0.4
+							<option> 0.5
+							<option> 0.6
+							<option> 0.7
+							<option> 0.8
+							<option> 0.9
+							<option> 1.0
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label">備註</label>
 					<div class="controls">
 						<textarea rows="3"  style="width:255px;"></textarea>
@@ -279,7 +298,9 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	render: ->
 		@$el.html('<div class="accordion" id="accordion2">' + 
-		@basic_info_template() + 
+		@basic_info_template(
+			marriage: AM.Setting.Marriage
+		) + 
 		@company_info_template(
 			job_category: AM.Setting.JobCategory
 		) + 
@@ -298,9 +319,6 @@ class AM.View.NewCustomerView extends Backbone.View
 		relations.append('<p>new relationship</p>')
 
 	submit: ->
-
-		marriage = AM.Setting.Marrage[$('input:radio[name=marriage]:checked').val()];
-
 		customer_info = 
 			name: $('input[name="full_name"]').val()
 			cellphone: $('input[name="cellphone"]').val()
@@ -309,12 +327,12 @@ class AM.View.NewCustomerView extends Backbone.View
 				month: $('select[name="month"]').children("option").filter(":selected").text()
 				day: $('select[name="day"]').children("option").filter(":selected").text()
 			email: $('input[name="email"]').val()
-			gender: $('input:radio[name=gender]:checked').val();
+			gender: $('input:radio[name=gender]:checked').val()
 			address: $('input[name="address"]').val()
 			children: 
 				boy: $('input[name="boy"]').val()
 				girl: $('input[name="girl"]').val()
-			marriage: marriage;
+			marriage: if $('input:radio[name=marriage]:checked').length is 1 then $('input:radio[name=marriage]:checked').val() else "0"
 			company: 
 				name: $('input[name="company_name"]').val()
 				phone: $('input[name="company_phone"]').val()
@@ -329,7 +347,7 @@ class AM.View.NewCustomerView extends Backbone.View
 				contact_frequency: $('input:radio[name=contact_frequency]:checked').val()
 				dependent_count: $('input:radio[name=raise_count]:checked').val()
 				known_time: "2"
-				weight: 1
+				weight: $('select[name="weight"]').children("option").filter(":selected").text()
 
 		console.log customer_info
 		@collection.add(customer_info, merge: true)

@@ -4,6 +4,15 @@ class AM.Model.Customer extends Backbone.Model
 
 	urlRoot: "am_server/customer/"
 
+
+	#validate: (attributes)->
+
+	# initialize: ->
+	# 	@on "success", (model, response, options) ->
+	# 		console.log response
+	# 		model.set('id', response.id)
+	# 		model.set('evaluation_score', response.score)
+
 	getOverallScore: ->
 		evaluation 		   = @get('evaluation')
 		marriage 	       = parseInt(@get('marriage')) or 0
@@ -35,4 +44,11 @@ class AM.Model.Customer extends Backbone.Model
 		Backbone.Model.prototype.save.apply @, arguments
 
 
-
+	# success: (model, response, options) ->
+	# 	console.log response
+	# 	model.set('id', response.id)
+	# 	model.set('evaluation_score', response.score)
+	
+	# error: (model, xhr, options) -> 
+	# 	console.log xhr
+   	
