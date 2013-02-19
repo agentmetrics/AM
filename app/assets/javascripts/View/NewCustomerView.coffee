@@ -171,48 +171,58 @@ _value_info_template = '
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
-					<label class="control-label">{{personality.title}}</label>
+					<label class="control-label">{{title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.a}}">{{personality.label.a}}</label>
-						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.b}}">{{personality.label.b}}</label>
-						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.c}}">{{personality.label.c}}</label>
-						<label class="radio inline"><input name="personality" type="radio" value="{{personality.value.d}}">{{personality.label.d}}</label>
+						{{#with personality}}
+						<label class="radio inline"><input name="personality" type="radio" value="{{value.a}}">{{label.a}}</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{value.b}}">{{label.b}}</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{value.c}}">{{label.c}}</label>
+						<label class="radio inline"><input name="personality" type="radio" value="{{value.d}}">{{label.d}}</label>
+						{{/with}}
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">{{wage.title}}</label>
+					<label class="control-label">{{title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.a}}">{{wage.label.a}}</label>
-						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.b}}">{{wage.label.b}}</label>
-						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.c}}">{{wage.label.c}}</label>
-						<label class="radio inline"><input name="wage" type="radio" value="{{wage.value.d}}">{{wage.label.d}}</label>
+						{{#with wage}}
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.a}}">{{label.a}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.b}}">{{label.b}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.c}}">{{label.c}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.d}}">{{label.d}}</label>
+						{{/with}}
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{raise.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.a}}">{{raise.label.a}}</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.b}}">{{raise.label.b}}</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.c}}">{{raise.label.c}}</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{raise.value.d}}">{{raise.label.d}}</label>
+						{{#with raise}}
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.a}}">{{label.a}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.b}}">{{label.b}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.c}}">{{label.c}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.d}}">{{label.d}}</label>
+						{{/with}}
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{difficulty.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.a}}">{{difficulty.label.a}}</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.b}}">{{difficulty.label.b}}</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.c}}">{{difficulty.label.c}}</label> 	
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{difficulty.value.d}}">{{difficulty.label.d}}</label>
+						{{#with difficulty}}
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.a}}">{{label.a}}</label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.b}}">{{label.b}}</label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.c}}">{{label.c}}</label> 
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.d}}">{{label.d}}</label>
+						{{/with}}
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{frequency.title}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.a}}">{{frequency.label.a}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.b}}">{{frequency.label.b}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.c}}">{{frequency.label.c}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{frequency.value.d}}">{{frequency.label.d}}</label>
+						{{#with frequency}}
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.a}}">{{label.a}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.b}}">{{label.b}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.c}}">{{label.c}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.d}}">{{label.d}}</label>
+						{{/with}}
 					</div>
 				</div>
 				<div class="control-group">
@@ -256,16 +266,16 @@ class AM.View.NewCustomerView extends Backbone.View
 	events: 
 		"click .create": "submit"
 		"click .add_relationship": "addFriend"
-		"change .job_category": "updateJobCategory"
+		"change select[name=job_category]": "updateJobCategory"
 
 	initialize: ->
 		_.bindAll @
 		@collection = @options.collection
+		@jobCategoryIndex = 0
 		@render()
 
 	updateJobCategory: (e)->
-		console.log e
-
+		@jobCategoryIndex = e.target.selectedIndex
 
 	render: ->
 		@$el.html('<div class="accordion" id="accordion2">' + 
@@ -311,7 +321,7 @@ class AM.View.NewCustomerView extends Backbone.View
 				address: $('input[name="company_address"]').val()
 				fax: $('input[name="company_fax"]').val()
 				job_desc: $('input[name="job_description"]').val()
-				category: $('input[name="job_category"]').val()
+				category: @jobCategoryIndex
 				title: $('input[name="job_title"]').val()
 			evaluation:
 				income_monthly:  $('input:radio[name=wage]:checked').val()
@@ -321,10 +331,6 @@ class AM.View.NewCustomerView extends Backbone.View
 				known_time: "2"
 				weight: 1
 
-		# window.customer = new AM.Model.Customer(
-		# 	customer_info
-		# )
-
+		console.log customer_info
 		@collection.add(customer_info, merge: true)
-		
-		#
+		@
