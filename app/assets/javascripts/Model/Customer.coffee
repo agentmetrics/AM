@@ -36,3 +36,4 @@ class AM.Model.Customer extends Backbone.Model
 
 	save: ->
 		Backbone.Model.prototype.save.apply @, arguments
+
