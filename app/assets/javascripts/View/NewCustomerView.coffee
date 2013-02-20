@@ -120,7 +120,7 @@ _company_info_template = '
         公司資訊
       </a>
     </div>
-	<div class="accordion-body collapse" id="company_info">
+	<div class="accordion-body collapse in" id="company_info">
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
@@ -169,7 +169,7 @@ _value_info_template = '
         額外資訊
       </a>
     </div>
-	<div class="accordion-body collapse" id="value_info">
+	<div class="accordion-body collapse in" id="value_info">
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
@@ -263,7 +263,7 @@ friendship_template = '
         客戶人際關係
       </a>
     </div>
-	<div class="accordion-body collapse" id="friendship_info">
+	<div class="accordion-body collapse in" id="friendship_info">
 		<div id="relationship_block">
 		</div>
 		<div class="accordion-inner">

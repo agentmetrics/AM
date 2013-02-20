@@ -30,7 +30,7 @@ company_info_template = '
         公司資訊
       </a>
     </div>
-	<div class="accordion-body collapse" id="company_info">
+	<div class="accordion-body collapse in" id="company_info">
 		<div class="accordion-inner">
 			<div class="row"><div class="span2"><p class="pull-right">公司名稱</p></div><div class="span10">{{company_name}}</div></div>
 			<div class="row"><div class="span2"><p class="pull-right">公司地址</p></div><div class="span10">{{company_address}}</div></div>
@@ -48,7 +48,7 @@ value_info_template = '
         額外資訊
       </a>
     </div>
-	<div class="accordion-body collapse" id="value_info">
+	<div class="accordion-body collapse in" id="value_info">
 		<div class="accordion-inner">
 			<div class="row"><div class="span2"><p class="pull-right">個性</p></div><div class="span9">{{personality}}</div></div>
 			<div class="row"><div class="span2"><p class="pull-right">月收入</p></div><div class="span9">{{wage}}</div></div>
