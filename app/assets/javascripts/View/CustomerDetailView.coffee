@@ -96,10 +96,19 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		, @
 		@customer.fetch()
 
+	_getKeyByValue: (object, value) ->
+		for key of object
+			if value is object[key]
+				return key
+  		null
 
 	render: ->
 		console.log @customer.get('birthday') 
-		@$el.html(@basic_info( 
+		company = @customer.get('company')
+		evaluation = @customer.get('evaluation')
+
+		console.log evaluation
+		@$el.html(@basic_info({
 			name: @customer.get('name')
 			gender: if @customer.get('gender') is "m" then "男" else "女"
 			cellphone: @customer.get('cellphone')
@@ -107,7 +116,20 @@ AM.View.CustomerDetailView = Backbone.View.extend
 			email:  @customer.get('email')
 			address:  @customer.get('address')
 			identify_no:  @customer.get('identify_no')
-		) + @company_info({}) + @value_info({}))
+			marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]
+		}) + @company_info({
+			company_name: company['name']
+			company_address: company['address']
+			company_phone: company['phone']
+			job_title: company['title']
+			job_category: AM.Setting.JobCategory[parseInt(company['category'])]
+		}) + @value_info({
+			personality: @customer.get('personality')
+			wage: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])]
+			raise_count: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])]
+			contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
+			contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
+		}))
 
 
 		
