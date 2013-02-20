@@ -8,7 +8,7 @@ Handlebars.registerHelper "list_year",  ->
   while i >= l
     out = out + "<option>" + i
     i--
-  out
+  return out
 
 Handlebars.registerHelper "list_month",  ->
   out = ""
@@ -18,7 +18,7 @@ Handlebars.registerHelper "list_month",  ->
   while i <= l
     out = out + "<option>" + i
     i++
-  out
+  return out
 
 Handlebars.registerHelper "list_day",  ->
   out = ""
@@ -28,7 +28,7 @@ Handlebars.registerHelper "list_day",  ->
   while i <= l
     out = out + "<option>" + i
     i++
-  out
+  return out
 
 _basic_info_template = '
 <div class="accordion-group">
@@ -228,7 +228,7 @@ _value_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">評等</label>
+					<label class="control-label">{{label.weight}}</label>
 					<div class="controls">
 						<select class="span2" name="weight">
 							<option> 0.1
@@ -240,7 +240,7 @@ _value_info_template = '
 							<option> 0.7
 							<option> 0.8
 							<option> 0.9
-							<option> 1.0
+							<option selected> 1.0
 						</select>
 					</div>
 				</div>
@@ -310,6 +310,10 @@ class AM.View.NewCustomerView extends Backbone.View
 			frequency: AM.Setting.ContactFrequency
 			personality: AM.Setting.Personality
 			raise: AM.Setting.Raise
+			label: {
+				weight: AM.String['weight']
+
+			}
 		) + 
 		friendship_template + 
 	    '</div>' + commit_button)
