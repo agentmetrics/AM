@@ -1,7 +1,7 @@
 AM.View or (AM.View = {})
 
 Handlebars.registerHelper "list_year",  ->
-  out = ""
+  out = "<option> "
   l = 1900
   i = new Date().getFullYear()
 
@@ -11,7 +11,7 @@ Handlebars.registerHelper "list_year",  ->
   return out
 
 Handlebars.registerHelper "list_month",  ->
-  out = ""
+  out = "<option> "
   i = 1
   l = 12
 
@@ -21,7 +21,7 @@ Handlebars.registerHelper "list_month",  ->
   return out
 
 Handlebars.registerHelper "list_day",  ->
-  out = ""
+  out = "<option> "
   i = 1
   l = 31
 
@@ -173,7 +173,7 @@ _value_info_template = '
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
-					<label class="control-label">{{title}}</label>
+					<label class="control-label">{{personality.title}}</label>
 					<div class="controls">
 						{{#with personality}}
 						<label class="radio inline"><input name="personality" type="radio" value="{{value.a}}">{{label.a}}</label>
@@ -184,13 +184,13 @@ _value_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">{{title}}</label>
+					<label class="control-label">{{wage.title}}</label>
 					<div class="controls">
 						{{#with wage}}
-						<label class="radio inline"><input name="wage" type="radio" value="{{value.a}}">{{label.a}}</label>
-						<label class="radio inline"><input name="wage" type="radio" value="{{value.b}}">{{label.b}}</label>
-						<label class="radio inline"><input name="wage" type="radio" value="{{value.c}}">{{label.c}}</label>
-						<label class="radio inline"><input name="wage" type="radio" value="{{value.d}}">{{label.d}}</label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.a}}"><p>{{label.a}}</p></label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.b}}"><p>{{label.b}}</p></label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.c}}"><p>{{label.c}}</p></label>
+						<label class="radio inline"><input name="wage" type="radio" value="{{value.d}}"><p>{{label.d}}</p></label>
 						{{/with}}
 					</div>
 				</div>
@@ -198,10 +198,10 @@ _value_info_template = '
 					<label class="control-label">{{raise.title}}</label>
 					<div class="controls">
 						{{#with raise}}
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.a}}">{{label.a}}</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.b}}">{{label.b}}</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.c}}">{{label.c}}</label>
-						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.d}}">{{label.d}}</label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.a}}"><p>{{label.a}}</p></label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.b}}"><p>{{label.b}}</p></label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.c}}"><p>{{label.c}}</p></label>
+						<label class="radio inline"><input name="raise_count" type="radio" value="{{value.d}}"><p>{{label.d}}</p></label>
 						{{/with}}
 					</div>
 				</div>
@@ -209,10 +209,10 @@ _value_info_template = '
 					<label class="control-label">{{difficulty.title}}</label>
 					<div class="controls">
 						{{#with difficulty}}
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.a}}">{{label.a}}</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.b}}">{{label.b}}</label>
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.c}}">{{label.c}}</label> 
-						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.d}}">{{label.d}}</label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.a}}"><p>{{label.a}}</p></label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.b}}"><p>{{label.b}}</p></label>
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.c}}"><p>{{label.c}}</p></label> 
+						<label class="radio inline"><input name="contact_difficulty" type="radio" value="{{value.d}}"><p>{{label.d}}</p></label>
 						{{/with}}
 					</div>
 				</div>
@@ -220,10 +220,10 @@ _value_info_template = '
 					<label class="control-label">{{frequency.title}}</label>
 					<div class="controls">
 						{{#with frequency}}
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.a}}">{{label.a}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.b}}">{{label.b}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.c}}">{{label.c}}</label>
-						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.d}}">{{label.d}}</label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.a}}"><p>{{label.a}}</p></label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.b}}"><p>{{label.b}}</p></label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.c}}"><p>{{label.c}}</p></label>
+						<label class="radio inline"><input name="contact_frequency" type="radio" value="{{value.d}}"><p>{{label.d}}</p></label>
 						{{/with}}
 					</div>
 				</div>
