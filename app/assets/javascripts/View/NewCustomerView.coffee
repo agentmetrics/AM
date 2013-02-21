@@ -104,8 +104,8 @@ _basic_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.children}}</label>
 					<div class="controls">
-						<input class="input-mini" name="boy" type="text">子
-						<input class="input-mini" name="girl" type="text">女
+						<input class="input-mini" name="boy" type="text">{{label.boy}}
+						<input class="input-mini" name="girl" type="text">{{label.girl}}
 					</div>
 				</div>
 			</form>
@@ -126,29 +126,29 @@ _company_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.company_name}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" style="width:255px;" name="company_name" type="text">
+						<input size="50" maxlength="50" class="input-medium"  name="company_name" type="text">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">公司地址</label>
+					<label class="control-label">{{label.company_address}}</label>
 					<div class="controls">
 						<input size="50" maxlength="50" name="company_address" type="text">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">公司電話</label>
+					<label class="control-label">{{label.company_phone}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" style="width:255px;" name="company_phone" type="text">
+						<input size="50" maxlength="50" class="input-medium"  name="company_phone" type="text">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">職位</label>
+					<label class="control-label">{{label.job_title}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" style="width:255px;" name="job_title" type="text">
+						<input size="50" maxlength="50" class="input-medium"  name="job_title" type="text">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">工作類別</label>
+					<label class="control-label">{{label.job_category}}</label>
 					<div class="controls">
 						<select class="span4" name="job_category">
 							{{#each job_category}}
@@ -166,7 +166,7 @@ _value_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#value_info">
-        額外資訊
+        {{label.value_info}}
       </a>
     </div>
 	<div class="accordion-body collapse in" id="value_info">
@@ -245,7 +245,7 @@ _value_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">備註</label>
+					<label class="control-label">{{label.note}}</label>
 					<div class="controls">
 						<textarea rows="3"  style="width:255px;"></textarea>
 					</div>
@@ -256,18 +256,18 @@ _value_info_template = '
 </div>
 '
 
-friendship_template = '
+_friendship_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#friendship_info">
-        客戶人際關係
+        {{label.friendship_info}}
       </a>
     </div>
 	<div class="accordion-body collapse in" id="friendship_info">
 		<div id="relationship_block">
 		</div>
 		<div class="accordion-inner">
-			<button class="add_relationship btn" type="submit">新增好友</button>
+			<button class="add_relationship btn" type="submit">{{label.add_relationship}}</button>
 		</div>
 	</div>
 </div>'
@@ -281,6 +281,7 @@ class AM.View.NewCustomerView extends Backbone.View
 	basic_info_template: Handlebars.compile(_basic_info_template)
 	value_info_template: Handlebars.compile(_value_info_template)
 	company_info_template: Handlebars.compile(_company_info_template)
+	friendship_template: Handlebars.compile(_friendship_template)
 
 	events: 
 		"click .create": "submit"
@@ -302,43 +303,38 @@ class AM.View.NewCustomerView extends Backbone.View
 			data: {
 				marriage: AM.Setting.Marriage
 			}
-			label: {
-				basic_info: AM.String['basic_info']
-				name: AM.String['name']
-				gender: AM.String['gender']
-				cellphone: AM.String['cellphone']
-				male: AM.String['male']
-				female: AM.String['female']
-				birthday: AM.String['birthday']
-				address: AM.String['address']
-				children: AM.String.children
-				identification: AM.String.identification
-			}
+			label: AM.String
 		)
 
-	render: ->
-		@$el.html('<div class="accordion" id="accordion2">' + 
-		@_getBasicInfoTemplate() + 
+	_getCompanyInfoTemplate: ->
 		@company_info_template(
 			job_category: AM.Setting.JobCategory
-			label: {
-				company_info: AM.String.company_info
-				company_name: AM.String.company_name
-			}
-		) + 
-		@value_info_template(
+			label: AM.String
+		) 
+
+	_getValueInfoTemplate: ->
+		@value_info_template({
 			difficulty: AM.Setting.ContactDifficulty
 			wage: AM.Setting.Wage
 			frequency: AM.Setting.ContactFrequency
 			personality: AM.Setting.Personality
 			raise: AM.Setting.Raise
-			label: {
-				weight: AM.String['weight']
+			label:  AM.String
+		}) 
 
-			}
-		) + 
-		friendship_template + 
-	    '</div>' + commit_button)
+	_getFriendshipInfoTemplate: ->
+		@friendship_template({
+			label: AM.String
+		})
+
+	render: ->
+		@$el.html('<div class="accordion" id="accordion2">' + 
+			@_getBasicInfoTemplate() + 
+			@_getCompanyInfoTemplate() + 
+			@_getValueInfoTemplate() + 
+			@_getFriendshipInfoTemplate() + 
+		    '</div>' + commit_button
+		)
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
