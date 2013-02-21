@@ -56,7 +56,7 @@ _basic_info_template = '
 				<div class="control-group">
 						<label class="control-label">{{label.cellphone}}</label>
 						<div class="controls">
-							<input size="50" maxlength="50" class="input-medium" name="cellphone" type="text">
+							<input size="50" maxlength="50" class="input-medium" name="cellphone" type="text" value="{{data.cellphone}}">
 						</div>
 				</div>
 				<div class="control-group">
@@ -76,13 +76,13 @@ _basic_info_template = '
 				<div class="control-group">
 					<label class="control-label">Email</label>
 					<div class="controls">
-						<input size="50" maxlength="50"  class="input-large" name="email" type="text">
+						<input size="50" maxlength="50" class="input-large" name="email" type="text" value="{{data.email}}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{label.address}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" style="width:255px;" name="address" type="text">
+						<input size="50" maxlength="50" class="input-large" name="address" type="text" value="{{data.address}}">
 					</div>
 				</div>
 				<div class="control-group">
@@ -307,7 +307,9 @@ class AM.View.NewCustomerView extends Backbone.View
 			label: AM.String
 			data: {
 				name: @customer.get('name')
-				gender: @customer.get('gender')
+				cellphone: @customer.get('cellphone')
+				address: @customer.get('address')
+				email: @customer.get('email')
 			} if @customer
 		)
 
