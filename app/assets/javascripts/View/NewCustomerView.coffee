@@ -34,33 +34,33 @@ _basic_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
-        基本資訊
+        {{label.basic_info}}
       </a>
     </div>
 	<div class="accordion-body collapse in" id="basic_info">
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
-					<label class="control-label">姓名</label>
+					<label class="control-label">{{label.name}}</label>
 					<div class="controls">
 						<input size="50" maxlength="50" class="input-medium" name="full_name" type="text">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">性別</label>
+					<label class="control-label">{{label.gender}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="gender" type="radio" value="m">男</label>
-						<label class="radio inline"><input name="gender" type="radio" value="f">女</label>
+						<label class="radio inline"><input name="gender" type="radio" value="m">{{label.male}}</label>
+						<label class="radio inline"><input name="gender" type="radio" value="f">{{label.female}}</label>
 					</div>
 				</div>
 				<div class="control-group">
-						<label class="control-label">手機電話</label>
+						<label class="control-label">{{label.cellphone}}</label>
 						<div class="controls">
 							<input size="50" maxlength="50" class="input-medium" name="cellphone" type="text">
 						</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">生日</label>
+					<label class="control-label">{{label.birthday}}</label>
 					<div class="controls">
 						<select class="span2" name="month">
 							{{#list_month}}{{/list_month}}
@@ -80,18 +80,18 @@ _basic_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">地址</label>
+					<label class="control-label">{{label.address}}</label>
 					<div class="controls">
 						<input size="50" maxlength="50" style="width:255px;" name="address" type="text">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">身份證字號</label>
+					<label class="control-label">{{label.identification}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" class="input-medium" name="identify_no" type="text">
+						<input size="50" maxlength="50" class="input-medium" name="identification" type="text">
 					</div>
 				</div>
-				{{#with marriage}}
+				{{#with data.marriage}}
 				<div class="control-group">
 					<label class="control-label">{{title}}</label>
 					<div class="controls">
@@ -102,7 +102,7 @@ _basic_info_template = '
 				</div>
 				{{/with}}
 				<div class="control-group">
-					<label class="control-label">小孩</label>
+					<label class="control-label">{{label.children}}</label>
 					<div class="controls">
 						<input class="input-mini" name="boy" type="text">子
 						<input class="input-mini" name="girl" type="text">女
@@ -117,14 +117,14 @@ _company_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#company_info">
-        公司資訊
+        {{label.company_info}}
       </a>
     </div>
 	<div class="accordion-body collapse in" id="company_info">
 		<div class="accordion-inner">
 			<form class="form-horizontal">
 				<div class="control-group">
-					<label class="control-label">公司名稱</label>
+					<label class="control-label">{{label.company_name}}</label>
 					<div class="controls">
 						<input size="50" maxlength="50" style="width:255px;" name="company_name" type="text">
 					</div>
@@ -296,13 +296,35 @@ class AM.View.NewCustomerView extends Backbone.View
 	updateJobCategory: (e)->
 		@jobCategoryIndex = e.target.selectedIndex
 
+
+	_getBasicInfoTemplate: ->	
+		@basic_info_template(
+			data: {
+				marriage: AM.Setting.Marriage
+			}
+			label: {
+				basic_info: AM.String['basic_info']
+				name: AM.String['name']
+				gender: AM.String['gender']
+				cellphone: AM.String['cellphone']
+				male: AM.String['male']
+				female: AM.String['female']
+				birthday: AM.String['birthday']
+				address: AM.String['address']
+				children: AM.String.children
+				identification: AM.String.identification
+			}
+		)
+
 	render: ->
 		@$el.html('<div class="accordion" id="accordion2">' + 
-		@basic_info_template(
-			marriage: AM.Setting.Marriage
-		) + 
+		@_getBasicInfoTemplate() + 
 		@company_info_template(
 			job_category: AM.Setting.JobCategory
+			label: {
+				company_info: AM.String.company_info
+				company_name: AM.String.company_name
+			}
 		) + 
 		@value_info_template(
 			difficulty: AM.Setting.ContactDifficulty
@@ -323,19 +345,20 @@ class AM.View.NewCustomerView extends Backbone.View
 		relations.append('<p>new relationship</p>')
 
 	submit: ->
-		customer_info = 
+		customer_info = {
 			name: $('input[name="full_name"]').val()
 			cellphone: $('input[name="cellphone"]').val()
 			birthday: 
-				year: $('select[name="year"]').children("option").filter(":selected").text()
-				month: $('select[name="month"]').children("option").filter(":selected").text()
-				day: $('select[name="day"]').children("option").filter(":selected").text()
-			email: $('input[name="email"]').val()
+				year: $('select[name=year]').children("option").filter(":selected").text()
+				month: $('select[name=month]').children("option").filter(":selected").text()
+				day: $('select[name=day]').children("option").filter(":selected").text()
+			email: $('input[name=email]').val() if $('input[name=email]').val() 
 			gender: $('input:radio[name=gender]:checked').val()
-			address: $('input[name="address"]').val()
+			address: $('input[name=address]').val()
+			identify_no: $('input[name=identification]').val()
 			children: 
-				boy: $('input[name="boy"]').val()
-				girl: $('input[name="girl"]').val()
+				boy: $('input[name=boy]').val()
+				girl: $('input[name=girl]').val()
 			marriage: if $('input:radio[name=marriage]:checked').length is 1 then $('input:radio[name=marriage]:checked').val() else "0"
 			company: 
 				name: $('input[name="company_name"]').val()
@@ -352,7 +375,7 @@ class AM.View.NewCustomerView extends Backbone.View
 				dependent_count: $('input:radio[name=raise_count]:checked').val()
 				known_time: "2"
 				weight: $('select[name="weight"]').children("option").filter(":selected").text()
-
+		}
 		console.log customer_info
 		@collection.add(customer_info, merge: true)
 		@

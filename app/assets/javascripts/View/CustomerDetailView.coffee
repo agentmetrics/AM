@@ -10,15 +10,15 @@ basic_info_template = '
     </div>
 	<div class="accordion-body collapse in" id="basic_info">
 		<div class="accordion-inner">
-			<div class="row"><div class="span2"><p class="pull-right">姓名</p></div><div class="span10">{{name}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">性別</p></div><div class="span10">{{gender}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">手機電話</p></div><div class="span9">{{cellphone}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">生日</p></div><div class="span9">{{birthday}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">Email</p></div><div class="span9">{{email}}</div></div>	
-			<div class="row"><div class="span2"><p class="pull-right">地址</p></div><div class="span9">{{address}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">身份證字號</p></div><div class="span9">{{identify_no}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">婚姻</p></div><div class="span9">{{marriage}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">小孩</p></div><div class="span9">{{children}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">姓名</p></div><div class="span10">{{data.name}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">性別</p></div><div class="span10">{{data.gender}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">手機電話</p></div><div class="span9">{{data.cellphone}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">生日</p></div><div class="span9">{{data.birthday}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">Email</p></div><div class="span9">{{data.email}}</div></div>	
+			<div class="row"><div class="span2"><p class="pull-right">地址</p></div><div class="span9">{{data.address}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">身份證字號</p></div><div class="span9">{{data.identify_no}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">婚姻</p></div><div class="span9">{{data.marriage}}</div></div>
+			<div class="row"><div class="span2"><p class="pull-right">小孩</p></div><div class="span9">{{data.children}}</div></div>
 		</div>
 	</div>
 </div>'
@@ -109,14 +109,16 @@ AM.View.CustomerDetailView = Backbone.View.extend
 
 		console.log evaluation
 		@$el.html(@basic_info({
-			name: @customer.get('name')
-			gender: if @customer.get('gender') is "m" then "男" else "女"
-			cellphone: @customer.get('cellphone')
-			birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
-			email:  @customer.get('email')
-			address:  @customer.get('address')
-			identify_no:  @customer.get('identify_no')
-			marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]
+			data: {
+				name: @customer.get('name')
+				gender: if @customer.get('gender') is "m" then "男" else "女"
+				cellphone: @customer.get('cellphone')
+				birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
+				email:  @customer.get('email')
+				address:  @customer.get('address')
+				identify_no:  @customer.get('identify_no')
+				marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]
+			}
 		}) + @company_info({
 			company_name: company['name']
 			company_address: company['address']
