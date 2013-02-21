@@ -3,7 +3,7 @@ AM.String or (AM.String = {})
 AM.String = {
 	address: "地址"
 	add_relationship: "新增好友"
-	
+
 	basic_info: "基本資訊"
 	birthday: "生日"
 	boy: "子"
@@ -27,6 +27,7 @@ AM.String = {
 	job_title: "職位"
 	
 	male: "男"
+	modify: "修改"
 	
 	name: "姓名"
 	note: "備註"

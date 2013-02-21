@@ -43,7 +43,7 @@ _basic_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.name}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" class="input-medium" name="full_name" type="text">
+						<input size="50" maxlength="50" class="input-medium" name="full_name" type="text" value="{{data.name}}">
 					</div>
 				</div>
 				<div class="control-group">
@@ -91,7 +91,7 @@ _basic_info_template = '
 						<input size="50" maxlength="50" class="input-medium" name="identification" type="text">
 					</div>
 				</div>
-				{{#with data.marriage}}
+				{{#with options.marriage}}
 				<div class="control-group">
 					<label class="control-label">{{title}}</label>
 					<div class="controls">
@@ -151,7 +151,7 @@ _company_info_template = '
 					<label class="control-label">{{label.job_category}}</label>
 					<div class="controls">
 						<select class="span4" name="job_category">
-							{{#each job_category}}
+							{{#each options.job_category}}
 								<option >{{this}}
 							{{/each}}
 						</select>
@@ -291,6 +291,7 @@ class AM.View.NewCustomerView extends Backbone.View
 	initialize: ->
 		_.bindAll @
 		@collection = @options.collection
+		@customer = @collection.get(@options.customer_id) if @options.customer_id
 		@jobCategoryIndex = 0
 		@render()
 
@@ -300,15 +301,20 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	_getBasicInfoTemplate: ->	
 		@basic_info_template(
-			data: {
+			options : {
 				marriage: AM.Setting.Marriage
 			}
 			label: AM.String
+			data: {
+				name: @customer.get('name')
+				gender: @customer.get('gender')
+			} if @customer
 		)
 
 	_getCompanyInfoTemplate: ->
 		@company_info_template(
-			job_category: AM.Setting.JobCategory
+			options: 
+				job_category: AM.Setting.JobCategory
 			label: AM.String
 		) 
 
@@ -335,6 +341,9 @@ class AM.View.NewCustomerView extends Backbone.View
 			@_getFriendshipInfoTemplate() + 
 		    '</div>' + commit_button
 		)
+
+		if @customer 
+			@$el.find('input:radio[value=' + @customer.get("gender") + ']')[0].checked = true
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')

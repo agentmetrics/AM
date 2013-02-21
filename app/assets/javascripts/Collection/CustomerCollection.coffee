@@ -10,7 +10,6 @@ AM.Collection.CustomerCollection = Backbone.Collection.extend (
  		@on 'add', (customer) ->
  			customer.save {},  
 				success: (model, response, options) ->
-					console.log response
 					model.set('id', response.id)
 					model.set('evaluation_score', response.score)
 					AM.router.navigate 'customers', trigger: true

@@ -77,6 +77,8 @@ friendship_template = '
 	</div>
 </div>'
 
+_commit_button = '<div class="btn modify">{{label.modify}}</div>'
+
 AM.View.CustomerDetailView = Backbone.View.extend
 	
 	el: '#content_panel'
@@ -86,6 +88,12 @@ AM.View.CustomerDetailView = Backbone.View.extend
 	company_info: Handlebars.compile(company_info_template)
 
 	value_info: Handlebars.compile(value_info_template)
+
+	commit_button: Handlebars.compile(_commit_button)
+
+	events: {
+		"click .modify": "modify"
+	}
 
 	initialize:->
 		@collection = @options.collection
@@ -109,29 +117,35 @@ AM.View.CustomerDetailView = Backbone.View.extend
 
 		console.log evaluation
 		@$el.html(@basic_info({
-			data: {
-				name: @customer.get('name')
-				gender: if @customer.get('gender') is "m" then "男" else "女"
-				cellphone: @customer.get('cellphone')
-				birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
-				email:  @customer.get('email')
-				address:  @customer.get('address')
-				identify_no:  @customer.get('identify_no')
-				marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]
-			}
-		}) + @company_info({
-			company_name: company['name']
-			company_address: company['address']
-			company_phone: company['phone']
-			job_title: company['title']
-			job_category: AM.Setting.JobCategory[parseInt(company['category'])]
-		}) + @value_info({
-			personality: @customer.get('personality')
-			wage: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])]
-			raise_count: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])]
-			contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
-			contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
-		}))
+				data: {
+					name: @customer.get('name')
+					gender: if @customer.get('gender') is "m" then "男" else "女"
+					cellphone: @customer.get('cellphone')
+					birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
+					email:  @customer.get('email')
+					address:  @customer.get('address')
+					identify_no:  @customer.get('identify_no')
+					marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]
+				}
+			}) + @company_info({
+				company_name: company['name']
+				company_address: company['address']
+				company_phone: company['phone']
+				job_title: company['title']
+				job_category: AM.Setting.JobCategory[parseInt(company['category'])]
+			}) + @value_info({
+				personality: @customer.get('personality')
+				wage: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])]
+				raise_count: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])]
+				contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
+				contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
+			}) + @commit_button({
+				label: AM.String
+			})
+		)
+
+	modify: ->
+		AM.router.navigate "customer/" + @options.customer_id + "/modify",  trigger: true
 
 
 		
