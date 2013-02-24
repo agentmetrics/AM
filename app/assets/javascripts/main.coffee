@@ -9,8 +9,11 @@ $ ->
 
 	AM.Collection.customers = new AM.Collection.CustomerCollection
 	AM.Collection.customers.fetch(
-		success: (model, response) ->
-        	console.log("fetch success")
+		success: (collection, response) ->
+        	console.log collection
+        	collection.each (customer) ->
+        		customer.isPartial = true
+
         	AM.router = new AM.Router()
         	Backbone.history.start()
 

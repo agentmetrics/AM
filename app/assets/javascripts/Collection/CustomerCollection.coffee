@@ -1,6 +1,6 @@
 AM.Collection or (AM.Collection = {})
 
-AM.Collection.CustomerCollection = Backbone.Collection.extend (
+AM.Collection.CustomerCollection = Backbone.Collection.extend 
 	
 	model: AM.Model.Customer
 	
@@ -16,4 +16,5 @@ AM.Collection.CustomerCollection = Backbone.Collection.extend (
 				error: (model, xhr, options) -> 
 					console.log xhr
    	
-)
+   	
+

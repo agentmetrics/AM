@@ -86,9 +86,9 @@ _basic_info_template = '
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">{{label.identification}}</label>
+					<label class="control-label">{{label.identify_no}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" class="input-medium" name="identification" type="text">
+						<input size="50" maxlength="50" class="input-medium" name="identify_no" type="text" value="{{data.identify_no}}">
 					</div>
 				</div>
 				{{#with options.marriage}}
@@ -126,25 +126,25 @@ _company_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.company_name}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" class="input-medium"  name="company_name" type="text">
+						<input size="50" maxlength="50" class="input-medium"  name="company_name" type="text" value="{{data.company.name}}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{label.company_address}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" name="company_address" type="text">
+						<input size="50" maxlength="50" name="company_address" type="text" value="{{data.company.address}}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{label.company_phone}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" class="input-medium"  name="company_phone" type="text">
+						<input size="50" maxlength="50" class="input-medium"  name="company_phone" type="text" value="{{data.company.phone}}">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{label.job_title}}</label>
 					<div class="controls">
-						<input size="50" maxlength="50" class="input-medium"  name="job_title" type="text">
+						<input size="50" maxlength="50" class="input-medium"  name="job_title" type="text" value="{{data.company.title}}">
 					</div>
 				</div>
 				<div class="control-group">
@@ -247,7 +247,7 @@ _value_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.note}}</label>
 					<div class="controls">
-						<textarea rows="3"  style="width:255px;"></textarea>
+						<textarea rows="3"  class="input-large" >{{data.note}}</textarea>
 					</div>
 				</div>
 			</form>
@@ -272,7 +272,7 @@ _friendship_template = '
 	</div>
 </div>'
 
-commit_button = '<div class="btn create">新增</div>'
+_footer_template = '<div class="btn create">{{label.submit}}</div>'
 
 class AM.View.NewCustomerView extends Backbone.View
 
@@ -282,6 +282,7 @@ class AM.View.NewCustomerView extends Backbone.View
 	value_info_template: Handlebars.compile(_value_info_template)
 	company_info_template: Handlebars.compile(_company_info_template)
 	friendship_template: Handlebars.compile(_friendship_template)
+	footer_template: Handlebars.compile(_footer_template)
 
 	events: 
 		"click .create": "submit"
@@ -290,10 +291,23 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	initialize: ->
 		_.bindAll @
+		
+		@jobCategoryIndex = 0
+
 		@collection = @options.collection
 		@customer = @collection.get(@options.customer_id) if @options.customer_id
-		@jobCategoryIndex = 0
-		@render()
+		if @customer 
+			if @customer.isPartial 
+				console.log "fetch"
+				@customer.on 'change', ()->
+					console.log(@customer.attributes)
+					@render()
+				, @ 
+				@customer.fetch() 
+				@customer.isPartial = false
+				@collection.update(@customer, remove: false)
+			else
+				@render()
 
 	updateJobCategory: (e)->
 		@jobCategoryIndex = e.target.selectedIndex
@@ -305,12 +319,7 @@ class AM.View.NewCustomerView extends Backbone.View
 				marriage: AM.Setting.Marriage
 			}
 			label: AM.String
-			data: {
-				name: @customer.get('name')
-				cellphone: @customer.get('cellphone')
-				address: @customer.get('address')
-				email: @customer.get('email')
-			} if @customer
+			data : @customer.attributes if @customer
 		)
 
 	_getCompanyInfoTemplate: ->
@@ -318,6 +327,7 @@ class AM.View.NewCustomerView extends Backbone.View
 			options: 
 				job_category: AM.Setting.JobCategory
 			label: AM.String
+			data : @customer.attributes if @customer
 		) 
 
 	_getValueInfoTemplate: ->
@@ -328,6 +338,7 @@ class AM.View.NewCustomerView extends Backbone.View
 			personality: AM.Setting.Personality
 			raise: AM.Setting.Raise
 			label:  AM.String
+			data: @customer.attributes if @customer
 		}) 
 
 	_getFriendshipInfoTemplate: ->
@@ -335,17 +346,35 @@ class AM.View.NewCustomerView extends Backbone.View
 			label: AM.String
 		})
 
+	_getFooterTemplate: ->
+		@footer_template(
+			label: {
+				submit: if @customer then AM.String['modify'] else AM.String['add']
+			}
+		)
+
 	render: ->
 		@$el.html('<div class="accordion" id="accordion2">' + 
 			@_getBasicInfoTemplate() + 
 			@_getCompanyInfoTemplate() + 
 			@_getValueInfoTemplate() + 
 			@_getFriendshipInfoTemplate() + 
-		    '</div>' + commit_button
+		  '</div>' + 
+		  @_getFooterTemplate()
 		)
 
 		if @customer 
+			evalObj = @customer.get("evaluation")
 			@$el.find('input:radio[value=' + @customer.get("gender") + ']')[0].checked = true
+			@$el.find('input:radio[name=wage][value=' + evalObj['income_monthly'] + ']')[0].checked = true
+			@$el.find('input:radio[name=contact_difficulty][value=' + evalObj['contact_difficulty'] + ']')[0].checked = true
+			@$el.find('input:radio[name=contact_frequency][value=' + evalObj['contact_frequency'] + ']')[0].checked = true
+			@$el.find('input:radio[name=raise_count][value=' + evalObj['dependent_count'] + ']')[0].checked = true
+			@$el.find('input:radio[value=' + @customer.get("personality") + ']')[0].checked = true
+
+			if evalObj['weight']
+				$('select[name="weight"]').children("option").filter(":selected").removeAttr('selected')
+				@$el.find('select[name="weight"] option:contains(' + evalObj['weight'] + ')').attr("selected", true)
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
@@ -362,7 +391,7 @@ class AM.View.NewCustomerView extends Backbone.View
 			email: $('input[name=email]').val() if $('input[name=email]').val() 
 			gender: $('input:radio[name=gender]:checked').val()
 			address: $('input[name=address]').val()
-			identify_no: $('input[name=identification]').val()
+			identify_no: $('input[name=identify_no]').val()
 			children: 
 				boy: $('input[name=boy]').val()
 				girl: $('input[name=girl]').val()

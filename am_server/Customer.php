@@ -294,7 +294,7 @@ class Customer extends Control implements RESTfulInterface
   	$child['girl'] = $result['child_girl'];
   	
   	//visit_history
-  	$last_visit = $this->getLastVisit($customer_id);
+  	$visit_records = $this->getVisitRecords($customer_id);
   	
   	//evaluation
   	$evaluations = $this->getEvaluation($customer_id);
@@ -322,8 +322,8 @@ class Customer extends Control implements RESTfulInterface
   	if( $evaluations )
   		$data['evaluation'] = $evaluations;
   	
-  	if( $last_visit )
-  		$data['visit_history'] = $last_visit;
+  	if( $visit_records )
+  		$data['visit_history'] = $visit_records;
   	
   	if( $tags )
   		$data['tags'] = $tags;
@@ -397,6 +397,41 @@ class Customer extends Control implements RESTfulInterface
   	$result = $this->db->query($sql, array($customer_id));
   
   	return $result;
+  }
+
+
+  /* <Internal>
+   * request: customer id
+   * response: visit records[]
+   */
+  function getVisitRecords($customer_id) {
+
+    $history = array();
+    $sql = "SELECT 
+              id,
+              detail, 
+              place, 
+              time 
+            FROM 
+              customer_visit_history 
+            WHERE 
+              customer_id=? 
+            ORDER BY 
+              create_time DESC";
+    
+    $result = $this->db->queryAll($sql, array($customer_id));
+
+    error_log(print_r($result,1));
+
+
+    foreach($result as $visit) {
+      $record = array();
+      $record['time'] = $visit['time'];
+      $record['content'] = $visit['detail'];
+      array_push($history, $record);
+    }
+  
+    return $history;
   }
   
   
