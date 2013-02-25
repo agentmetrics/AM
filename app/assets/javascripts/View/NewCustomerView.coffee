@@ -289,6 +289,10 @@ class AM.View.NewCustomerView extends Backbone.View
 		"click .add_relationship": "addFriend"
 		"change select[name=job_category]": "updateJobCategory"
 
+	remove: ->
+		@undelegateEvents() 
+		@$el.html()
+
 	initialize: ->
 		_.bindAll @
 		
@@ -300,8 +304,8 @@ class AM.View.NewCustomerView extends Backbone.View
 			if @customer.isPartial 
 				console.log "fetch"
 				@customer.on 'change', ()->
-					console.log(@customer.attributes)
 					@render()
+					@customer.off 'change'
 				, @ 
 				@customer.fetch() 
 				@customer.isPartial = false
@@ -311,6 +315,7 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	updateJobCategory: (e)->
 		@jobCategoryIndex = e.target.selectedIndex
+
 
 
 	_getBasicInfoTemplate: ->	
@@ -365,7 +370,7 @@ class AM.View.NewCustomerView extends Backbone.View
 
 		if @customer 
 			evalObj = @customer.get("evaluation")
-			@$el.find('input:radio[value=' + @customer.get("gender") + ']')[0].checked = true
+			@$el.find('input:radio[value=' + @customer.get("gender") + ']')[0].checked = true if @customer.get('gender')
 			@$el.find('input:radio[name=wage][value=' + evalObj['income_monthly'] + ']')[0].checked = true
 			@$el.find('input:radio[name=contact_difficulty][value=' + evalObj['contact_difficulty'] + ']')[0].checked = true
 			@$el.find('input:radio[name=contact_frequency][value=' + evalObj['contact_frequency'] + ']')[0].checked = true
@@ -381,6 +386,7 @@ class AM.View.NewCustomerView extends Backbone.View
 		relations.append('<p>new relationship</p>')
 
 	submit: ->
+		console.log 'submit'
 		customer_info = {
 			name: $('input[name="full_name"]').val()
 			cellphone: $('input[name="cellphone"]').val()
@@ -411,7 +417,17 @@ class AM.View.NewCustomerView extends Backbone.View
 				dependent_count: $('input:radio[name=raise_count]:checked').val()
 				known_time: "2"
 				weight: $('select[name="weight"]').children("option").filter(":selected").text()
+			personality: $('input:radio[name=personality]:checked').val()
 		}
 		console.log customer_info
-		@collection.add(customer_info, merge: true)
+
+		if @customer
+			@customer.save(customer_info, 
+				success: (model, response, options) ->
+					console.log "save success", model
+					model.set('evaluation_score', response.score)
+					AM.router.navigate 'customers', trigger: true
+			)
+		else	
+			@collection.add(customer_info, merge: true)
 		@

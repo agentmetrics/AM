@@ -126,12 +126,8 @@ class Customer extends Control implements RESTfulInterface
 		$customer['company_name'] = $data["company"]['name'];
 		$customer['company_address'] = $data["company"]["address"];
 		$customer['company_phone'] = $data["company"]["phone"];
-		//$customer['company_fax'] = $data["company"]["fax"];
-		//$customer['company_job_desc'] = $data["company"]["job_desc"];
 		$customer['company_category'] = $data["company"]["category"];
 		$customer['company_title'] = $data["company"]["title"];
-		//$customer['company_worktime_start'] = $data["company"]["worktime_start"];
-		//$customer['company_worktime_end'] = $data["company"]["worktime_end"];
 		$customer['modify_time'] = time();
 		
 		$result = $this->db->update("agent_metrics.customer", $customer, array("id"=>$data["id"]));
@@ -147,7 +143,7 @@ class Customer extends Control implements RESTfulInterface
 			$count_list = array_slice($data["evaluation"], 0, count($data["evaluation"])-1);
 			$sum = array_sum($count_list) * $weight;
 			
-			print_r(json_encode( array("id"=>$result, "score"=>$sum) ));
+			print_r(json_encode( array("id"=>$data["id"], "score"=>$sum) ));
 		}
 		else {
 			self::exceptionResponse(500, "can not insert data into DB!");

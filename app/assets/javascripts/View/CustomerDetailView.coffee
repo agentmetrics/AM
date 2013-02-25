@@ -126,6 +126,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		if @customer.isPartial
 			@customer.on 'change', ()->
 				@render()
+				@customer.off('change')
 			, @
 			@customer.fetch()
 			@customer.isPartial = false
@@ -151,11 +152,9 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		return null
 
 	render: ->
-		console.log @customer.get('birthday') 
 		company = @customer.get('company')
 		evaluation = @customer.get('evaluation')
 
-		console.log evaluation
 		@$el.html(@basic_info({
 				data: {
 					name: @customer.get('name')

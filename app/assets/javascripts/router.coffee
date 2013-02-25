@@ -8,23 +8,32 @@ class AM.Router extends Backbone.Router
 		"customer/:id": "showCustomer"
 
 	addCustomer: (id, action)->
-		newCustomerView = new AM.View.NewCustomerView(collection: AM.Collection.customers)
-		newCustomerView.render()
+		if AM.newCustomerView 
+			AM.newCustomerView.remove()
+		
+		AM.newCustomerView = new AM.View.NewCustomerView(collection: AM.Collection.customers)
+		Am.newCustomerView.render()
 
 	listCustomers: ->
 		customerListView = new AM.View.CustomerListView(collection: AM.Collection.customers)
 
 	showCustomer: (id, action)->
-		if(action and action is "modify") 
-			newCustomerView = new AM.View.NewCustomerView(collection: AM.Collection.customers)
+
+		if(action and action is "modify")
+			if AM.newCustomerView
+				AM.newCustomerView.remove()  
+			AM.newCustomerView = new AM.View.NewCustomerView(collection: AM.Collection.customers)
 		else 
 			customerView = new AM.View.CustomerDetailView
 				customer_id: id,
 				collection: AM.Collection.customers
 
 	modifyCustomer: (id, action)->
+
+		if AM.newCustomerView
+			AM.newCustomerView.remove() 
 		if action is "modify"
-			newCustomerView = new AM.View.NewCustomerView(
+			AM.newCustomerView = new AM.View.NewCustomerView(
 				customer_id: id
 				collection: AM.Collection.customers
 			)
