@@ -276,8 +276,6 @@ _footer_template = '<div class="btn create">{{label.submit}}</div>'
 
 class AM.View.NewCustomerView extends Backbone.View
 
-	el: "#content_panel"
-
 	basic_info_template: Handlebars.compile(_basic_info_template)
 	value_info_template: Handlebars.compile(_value_info_template)
 	company_info_template: Handlebars.compile(_company_info_template)
@@ -380,6 +378,8 @@ class AM.View.NewCustomerView extends Backbone.View
 			if evalObj['weight']
 				$('select[name="weight"]').children("option").filter(":selected").removeAttr('selected')
 				@$el.find('select[name="weight"] option:contains(' + evalObj['weight'] + ')').attr("selected", true)
+
+		@
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')

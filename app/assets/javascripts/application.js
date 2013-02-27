@@ -15,6 +15,8 @@
 //= require handlebars
 //= require underscore
 //= require backbone
+//= require VM
+
 
 //= require_tree .//Model
 //= require_tree .//Collection

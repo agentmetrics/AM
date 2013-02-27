@@ -1,39 +1,33 @@
 
 class AM.Router extends Backbone.Router 
 
+	container: '#content_panel'
+
 	routes: 
 		"addcustomer": "addCustomer"
 		"customers":   "listCustomers"
 		"customer/:id/:action": "modifyCustomer"
 		"customer/:id": "showCustomer"
 
-	addCustomer: (id, action)->
-		if AM.newCustomerView 
-			AM.newCustomerView.remove()
-		
-		AM.newCustomerView = new AM.View.NewCustomerView(collection: AM.Collection.customers)
-		Am.newCustomerView.render()
+	addCustomer: ->
+		AM.VM.showView new AM.View.NewCustomerView(collection: AM.customers)
 
 	listCustomers: ->
-		customerListView = new AM.View.CustomerListView(collection: AM.Collection.customers)
+		console.log AM.customers
+		AM.VM.showView new AM.View.CustomerListView(collection: AM.customers)
 
 	showCustomer: (id, action)->
-
 		if(action and action is "modify")
-			if AM.newCustomerView
-				AM.newCustomerView.remove()  
-			AM.newCustomerView = new AM.View.NewCustomerView(collection: AM.Collection.customers)
+			AM.VM.showView new AM.View.NewCustomerView(collection: AM.customers)
 		else 
-			customerView = new AM.View.CustomerDetailView
+			AM.VM.showView new AM.View.CustomerDetailView(
 				customer_id: id,
-				collection: AM.Collection.customers
+				collection: AM.customers
+			)
 
 	modifyCustomer: (id, action)->
-
-		if AM.newCustomerView
-			AM.newCustomerView.remove() 
 		if action is "modify"
-			AM.newCustomerView = new AM.View.NewCustomerView(
+			AM.VM.showView new AM.View.NewCustomerView(
 				customer_id: id
-				collection: AM.Collection.customers
+				collection: AM.customers
 			)

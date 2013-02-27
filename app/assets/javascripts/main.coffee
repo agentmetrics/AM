@@ -7,15 +7,15 @@ $ ->
 		$("#am_menu li.active").removeClass("active")
 		$(@).addClass "active"
 
-	AM.Collection.customers = new AM.Collection.CustomerCollection
-	AM.Collection.customers.fetch(
+	AM.customers = new AM.Collection.CustomerCollection
+	AM.customers.fetch(
 		success: (collection, response) ->
-        	console.log collection
-        	collection.each (customer) ->
-        		customer.isPartial = true
-
-        	AM.router = new AM.Router()
-        	Backbone.history.start()
+            collection.each( (customer) ->
+                customer.isPartial = true
+            )
+            console.log collection
+            AM.router = new AM.Router()
+            Backbone.history.start()
 
         error: (model, response) ->
         	console.log("fetch error")

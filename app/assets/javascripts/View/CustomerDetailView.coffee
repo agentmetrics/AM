@@ -106,8 +106,6 @@ _friendship_template = '
 _commit_button = '<div class="btn modify">{{label.modify}}</div>'
 
 AM.View.CustomerDetailView = Backbone.View.extend
-	
-	el: '#content_panel'
 
 	basic_info: Handlebars.compile(_basic_info_template)
 	company_info: Handlebars.compile(_company_info_template)
@@ -125,13 +123,12 @@ AM.View.CustomerDetailView = Backbone.View.extend
 
 		if @customer.isPartial
 			@customer.on 'change', ()->
-				@render()
+				@customer.isPartial = false
 				@customer.off('change')
+				@collection.update(@customer, remove: false)
+				@render()
 			, @
 			@customer.fetch()
-			@customer.isPartial = false
-			console.log @customer.attributes
-			@collection.update(@customer, remove: false)
 		else 
 			@render()
 
@@ -152,6 +149,9 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		return null
 
 	render: ->
+		if @customer.isPartial 
+			return 
+		
 		company = @customer.get('company')
 		evaluation = @customer.get('evaluation')
 
@@ -164,7 +164,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 					email:  @customer.get('email')
 					address:  @customer.get('address')
 					identify_no:  @customer.get('identify_no')
-					marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]
+					marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])] 
 				}
 				label: AM.String
 			}) + @company_info({

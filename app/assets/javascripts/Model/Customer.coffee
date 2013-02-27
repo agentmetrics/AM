@@ -4,6 +4,8 @@ class AM.Model.Customer extends Backbone.Model
 
 	urlRoot: "am_server/customer/"
 
+	isPartial: true
+
 	getOverallScore: ->
 		evaluation 		   = @get('evaluation')
 		marriage 	       = parseInt(@get('marriage')) or 0

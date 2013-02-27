@@ -70,8 +70,6 @@ AM.View.CustomerListView = Backbone.View.extend
 			</table>
 		</div>'
 
-	el: "#content_panel"
-
 	events: 
 		"click .new_btn": "gotoAddCustomer"
 		"change select[name='gender']": "render"
@@ -85,43 +83,41 @@ AM.View.CustomerListView = Backbone.View.extend
 
 	initialize: ->
 		@collection = @options.collection
-		@collection.on "reset", @render, @ 
 		@$el.html(@tool_bar + @day_event_template() + @list_view_container)
-		@render()
 
 	gotoAddCustomer:->
-  	AM.router.navigate "addcustomer", trigger: true
+  		AM.router.navigate "addcustomer", trigger: true
 
 	handleDragStart: (e) ->
-  	e.originalEvent.dataTransfer.setData('customer_id', $(e.target).attr('data-customer-id'))
+  		e.originalEvent.dataTransfer.setData('customer_id', $(e.target).attr('data-customer-id'))
 
-  handleDrop: (e)->
-  	e.preventDefault()
-  	e.stopPropagation()
+	handleDrop: (e)->
+		e.preventDefault()
+		e.stopPropagation()
 
-  createEvent: (e)->
-  	e.preventDefault()
-  	e.stopPropagation()
-  	customer_id = e.originalEvent.dataTransfer.getData('customer_id')
-  	customer = @collection.get(customer_id)
-  	$(e.target).html(customer.get("name"))
-  	$(e.target).popover('show')
+	createEvent: (e)->
+		e.preventDefault()
+		e.stopPropagation()
+		customer_id = e.originalEvent.dataTransfer.getData('customer_id')
+		customer = @collection.get(customer_id)
+		$(e.target).html(customer.get("name"))
+		$(e.target).popover('show')
 
 	render: ->
 		filtered = @collection
-		selected_gender = $('select[name="gender"]').children("option").filter(":selected").val()
+		selected_gender = @$el.find('select[name="gender"]').children("option").filter(":selected").val()
 		if selected_gender isnt "n" 
 			filtered = filtered.filter((customer) ->
 				customer.get("gender") is selected_gender
 			)
 
-		name = $('input[name="name"]').val()
+		name = @$el.find('input[name="name"]').val()
 		if name
 			filtered = filtered.filter((customer) ->
 				customer.get("name").indexOf(name) >= 0
 			)
 
-		selected_personality = $('select[name="personality"]').children('option').filter(':selected').val() 
+		selected_personality = @$el.find('select[name="personality"]').children('option').filter(':selected').val() 
 		if selected_personality isnt 'n'
 			filtered = filtered.filter((customer) ->
 				customer.get('personality') is selected_personality
