@@ -314,8 +314,6 @@ class AM.View.NewCustomerView extends Backbone.View
 	updateJobCategory: (e)->
 		@jobCategoryIndex = e.target.selectedIndex
 
-
-
 	_getBasicInfoTemplate: ->	
 		@basic_info_template(
 			options : {

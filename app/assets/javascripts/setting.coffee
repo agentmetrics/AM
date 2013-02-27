@@ -65,7 +65,7 @@ AM.Setting.Raise =
 		"d": "2個以上"
 
 AM.Setting.Personality = 
-	title: "個性"
+	title: AM.String.personality
 	value: 
 		"a": "D"
 		"b": "I"

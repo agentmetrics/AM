@@ -91,14 +91,11 @@ _friendship_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#friendship_info">
-        客戶人際關係
+        {{label.friendship_info}}
       </a>
     </div>
 	<div class="accordion-body collapse" id="friendship_info">
 		<div id="relationship_block">
-		</div>
-		<div class="accordion-inner">
-			<button class="add_relationship btn" type="submit">新增好友</button>
 		</div>
 	</div>
 </div>'
@@ -111,6 +108,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 	company_info: Handlebars.compile(_company_info_template)
 	value_info: Handlebars.compile(_value_info_template)
 	visit_history_template: Handlebars.compile(_visit_history_template)
+	friendship_template: Handlebars.compile(_friendship_template)
 	commit_button: Handlebars.compile(_commit_button)
 
 	events: {
@@ -142,6 +140,11 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		else 
 			""
 
+	_getFriendShipTemplate: ->
+		@friendship_template({
+			label: AM.String
+		})
+
 	_getKeyByValue: (object, value) ->
 		for key of object
 			if value is object[key]
@@ -151,7 +154,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 	render: ->
 		if @customer.isPartial 
 			return 
-		
+
 		company = @customer.get('company')
 		evaluation = @customer.get('evaluation')
 
@@ -183,7 +186,9 @@ AM.View.CustomerDetailView = Backbone.View.extend
 				contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
 				contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
 				label: AM.String
-			}) + @_getVisitHistoryTemplate() + 
+			}) + 
+			@_getFriendShipTemplate() +
+			@_getVisitHistoryTemplate() + 
 			@commit_button({
 				label: AM.String
 			})

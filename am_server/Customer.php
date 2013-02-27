@@ -306,9 +306,7 @@ class Customer extends Control implements RESTfulInterface
   	//$company['job_desc'] = $result['company_job_desc'];
   	$company['category'] = $result['company_category'];
   	$company['title'] = $result['company_title'];
-  	//$company['worktime_start'] = $result['company_worktime_start'];
-  	//$company['worktime_end'] = $result['company_worktime_end'];
-  	
+
   	
   	//combine the data
   	$data = $personal;

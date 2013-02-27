@@ -16,7 +16,7 @@
 //= require underscore
 //= require backbone
 //= require VM
-
+//= require string
 
 //= require_tree .//Model
 //= require_tree .//Collection
