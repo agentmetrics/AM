@@ -298,6 +298,7 @@ class Customer extends Control implements RESTfulInterface
   	//tag
   	$tags = $this->getTags($customer_id);
   	
+   
   	//company
   	$company['name'] = $result['company_name'];
   	$company['address'] = $result['company_address'];
@@ -321,6 +322,11 @@ class Customer extends Control implements RESTfulInterface
   	
   	if( $tags )
   		$data['tags'] = $tags;
+
+    //relationship
+    $relationship = $this->getRelationship($customer_id);
+    if($relationship)
+      $data['relationship'] = $relationship;
   	
   	return $data;
   }
@@ -417,7 +423,6 @@ class Customer extends Control implements RESTfulInterface
 
     error_log(print_r($result,1));
 
-
     foreach($result as $visit) {
       $record = array();
       $record['time'] = $visit['time'];
@@ -453,6 +458,34 @@ class Customer extends Control implements RESTfulInterface
   	$result = $this->db->query($sql, array($customer_id));
   
   	return $result;
+  }
+ 
+  /* <Internal>
+   * request: customer id
+   * response: relationship[]
+   */
+  function getRelationship($customer_id) {
+
+    $relationship = array();
+    $sql = "SELECT 
+              related, 
+              relationship_id
+            FROM 
+              customer_relationship
+            WHERE 
+              customer_id=?";
+    
+    $result = $this->db->queryAll($sql, array($customer_id));
+
+    foreach($result as $friendship) {
+      $record = array();
+      $record['relationship_id'] = $friendship['relationship_id'];
+      $record['related'] = $friendship['related'];
+      array_push($relationship, $record);
+    }
+
+  
+    return $relationship;
   }
 
   

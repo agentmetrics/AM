@@ -123,6 +123,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 			@customer.on 'change', ()->
 				@customer.isPartial = false
 				@customer.off('change')
+				console.log @customer
 				@collection.update(@customer, remove: false)
 				@render()
 			, @
