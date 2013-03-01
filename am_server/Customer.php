@@ -303,8 +303,6 @@ class Customer extends Control implements RESTfulInterface
   	$company['name'] = $result['company_name'];
   	$company['address'] = $result['company_address'];
   	$company['phone'] = $result['company_phone'];
-  	//$company['fax'] = $result['company_fax'];
-  	//$company['job_desc'] = $result['company_job_desc'];
   	$company['category'] = $result['company_category'];
   	$company['title'] = $result['company_title'];
 
@@ -325,7 +323,7 @@ class Customer extends Control implements RESTfulInterface
 
     //relationship
     $relationship = $this->getRelationship($customer_id);
-    if($relationship)
+    if( $relationship )
       $data['relationship'] = $relationship;
   	
   	return $data;
@@ -421,8 +419,6 @@ class Customer extends Control implements RESTfulInterface
     
     $result = $this->db->queryAll($sql, array($customer_id));
 
-    error_log(print_r($result,1));
-
     foreach($result as $visit) {
       $record = array();
       $record['time'] = $visit['time'];
@@ -501,24 +497,5 @@ class Customer extends Control implements RESTfulInterface
 		return $result;
 	}
 	
-	
-	/* <Internal>
-	 * request: customer id
-	 * response: tags[]
-	 */
-	function getRelationship($customer_id) {
-		$sql = "SELECT 
-							id,
-							customer_id,
-							relationship_id
-		 				FROM 
-							customer_relationship 
-						WHERE 
-							customer_id=? ";
-		
-		$result = $this->db->queryAll($sql, array($customer_id), PDO::FETCH_COLUMN);
-		
-		return $result;
-	}
 }
 ?>

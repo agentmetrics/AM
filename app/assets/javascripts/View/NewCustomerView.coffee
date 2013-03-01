@@ -277,12 +277,15 @@ _friend_selection_template ='
 	<form class="form-inline">
 			{{label.name}}<input size="50" maxlength="50" class="input-medium"  name="company_name" type="text">
 			{{label.relationship}}
-			<select class="span2" name="friendship_category">
-				<option>
-				<option> 朋友
-				<option> 同事
-				<option> 親屬
-			</select>
+			{{#with options.relationship}}
+				<select class="span2" name="friendship_category">
+					<option>
+					<option value="{{value.a}}">{{label.a}}
+					<option value="{{value.b}}">{{label.b}}
+					<option value="{{value.c}}">{{label.c}}
+					<option value="{{value.d}}">{{label.d}}
+				</select>
+			{{/with}}
 	</form>
 </div>
 '
@@ -397,7 +400,12 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
-		relations.append(@friend_selection_template(label: AM.String))
+		relations.append(@friend_selection_template(
+			options: {
+				relationship: AM.Setting.Relationship
+			}
+			label: AM.String
+		))
 
 	submit: ->
 		console.log 'submit'

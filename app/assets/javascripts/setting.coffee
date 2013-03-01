@@ -77,6 +77,19 @@ AM.Setting.Personality =
 		"c": "S"
 		"d": "C"
 
+AM.Setting.Relationship = 
+	title: AM.String.relationship
+	value: 
+		"a": "1"
+		"b": "2"
+		"c": "3"
+		"d": "4"
+	label: 
+		"a": "朋友"
+		"b": "同事"
+		"c": "同學"
+		"d": "親屬" 
+
 AM.Setting.JobCategory = [
 	'一般職業',
 	'農牧業',
