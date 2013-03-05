@@ -272,6 +272,24 @@ _friendship_template = '
 	</div>
 </div>'
 
+_friend_selection_template ='
+<div>
+	<form class="form-inline">
+			{{label.name}}<input size="50" maxlength="50" class="input-medium"  name="company_name" type="text">
+			{{label.relationship}}
+			{{#with options.relationship}}
+				<select class="span2" name="friendship_category">
+					<option>
+					<option value="{{value.a}}">{{label.a}}
+					<option value="{{value.b}}">{{label.b}}
+					<option value="{{value.c}}">{{label.c}}
+					<option value="{{value.d}}">{{label.d}}
+				</select>
+			{{/with}}
+	</form>
+</div>
+'
+
 _footer_template = '<div class="btn create">{{label.submit}}</div>'
 
 class AM.View.NewCustomerView extends Backbone.View
@@ -281,6 +299,7 @@ class AM.View.NewCustomerView extends Backbone.View
 	company_info_template: Handlebars.compile(_company_info_template)
 	friendship_template: Handlebars.compile(_friendship_template)
 	footer_template: Handlebars.compile(_footer_template)
+	friend_selection_template: Handlebars.compile(_friend_selection_template)
 
 	events: 
 		"click .create": "submit"
@@ -364,10 +383,10 @@ class AM.View.NewCustomerView extends Backbone.View
 		  @_getFooterTemplate()
 		)
 
-		if @customer 
+		if @customer and  @customer.get("evaluation")
 			evalObj = @customer.get("evaluation")
 			@$el.find('input:radio[value=' + @customer.get("gender") + ']')[0].checked = true if @customer.get('gender')
-			@$el.find('input:radio[name=wage][value=' + evalObj['income_monthly'] + ']')[0].checked = true
+			@$el.find('input:radio[name=wage][value=' + evalObj['income_monthly'] + ']')[0].checked = true if evalObj['income_monthly']
 			@$el.find('input:radio[name=contact_difficulty][value=' + evalObj['contact_difficulty'] + ']')[0].checked = true
 			@$el.find('input:radio[name=contact_frequency][value=' + evalObj['contact_frequency'] + ']')[0].checked = true
 			@$el.find('input:radio[name=raise_count][value=' + evalObj['dependent_count'] + ']')[0].checked = true
@@ -381,7 +400,12 @@ class AM.View.NewCustomerView extends Backbone.View
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
-		relations.append('<p>new relationship</p>')
+		relations.append(@friend_selection_template(
+			options: {
+				relationship: AM.Setting.Relationship
+			}
+			label: AM.String
+		))
 
 	submit: ->
 		console.log 'submit'

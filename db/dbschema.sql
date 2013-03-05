@@ -69,9 +69,7 @@ CREATE TABLE `customer` (
   `cellphone` varchar(20) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `telephone` varchar(20) DEFAULT NULL,
-  `company_fax` varchar(20) DEFAULT NULL,
   `company_title` varchar(50) DEFAULT NULL,
-  `company_job_desc` varchar(400) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `birthday` varchar(100) DEFAULT NULL,
   `marriage` tinyint(1) DEFAULT NULL,
@@ -105,14 +103,14 @@ CREATE TABLE `customer` (
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 INSERT INTO `customer` VALUES 
-(70,'李宗翰','0911222333','新北市新店區中興路三段88號','0227787778','02277640000','主任工程師','軟體開發','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',0,'1359045643','1359102345',NULL,NULL,NULL,NULL,'A123456789',NULL,0, 'D'),
-(71,'黃鈞塘','0911222333','新北市新店區中興路三段88號','0227787778','02277640000','主任工程師','軟體開發','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',1,'1359107343',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,1, 'I'),
-(72,'CT Huang','0911222333','新北市新店區中興路三段88號','0227787778','02277640000','主任工程師','軟體開發','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',0,'1359107344',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,2, 'S'),
-(73,'王教昌','0911222333','新北市新店區中興路三段88號','0227787778','02277640000','主任工程師','軟體開發','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',1,'1359107345',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,3, 'D'),
-(74,'史黛西','0911222333','新北市新店區中興路三段88號','0227787778','02277640000','主任工程師','軟體開發','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','f',1,'1359107346',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,4, 'C'),
-(75,'Ted','0911222333','新北市新店區中興路三段88號','0227787778',NULL,'主任工程師',NULL,'ct_huang@htc.com','1872739475',0,1,1,NULL,'宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',1,'1359887631',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,5, 'D'),
-(76,'機八芹','0911222333','新北市新店區中興路三段88號','0227787778',NULL,'主任工程師',NULL,'ct_huang@htc.com','1872739475',0,1,1,NULL,'宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','f',0,'1359888207',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,6, 'I'),
-(77,'杜孟芹','0911222333','新北市新店區中興路三段88號','0227787778',NULL,'主任工程師',NULL,'ct_huang@htc.com','1872739475',0,1,1,NULL,'宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','f',1,'1359888209',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,7, 'S');
+(70,'李宗翰','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',0,'1359045643','1359102345',NULL,NULL,NULL,NULL,'A123456789',NULL,0, 'D'),
+(71,'黃鈞塘','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',1,'1359107343',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,1, 'I'),
+(72,'CT Huang','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',0,'1359107344',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,2, 'S'),
+(73,'王教昌','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',1,'1359107345',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,3, 'D'),
+(74,'史黛西','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,'','宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','f',1,'1359107346',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,4, 'C'),
+(75,'Ted','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,NULL,'宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','m',1,'1359887631',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,5, 'D'),
+(76,'機八芹','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,NULL,'宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','f',0,'1359888207',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,6, 'I'),
+(77,'杜孟芹','0911222333','新北市新店區中興路三段88號','0227787778','主任工程師','ct_huang@htc.com','1872739475',0,1,1,NULL,'宏達國際股份有限公司','新北市新店區中興路三段88號4樓','0227761234','f',1,'1359888209',NULL,NULL,NULL,NULL,NULL,'A123456789',NULL,7, 'S');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,12 +158,11 @@ DROP TABLE IF EXISTS `customer_relationship`;
 CREATE TABLE `customer_relationship` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
-  `related` int(11) NOT NULL,
   `relationship_id` int(11) NOT NULL,
+  `related` int(11) NOT NULL,
   `create_time` varchar(100) DEFAULT NULL,
   `modify_time` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `pk_customer_relationship_0` (`customer_id`),
   KEY `idx_customer_relationship` (`relationship_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -177,6 +174,8 @@ CREATE TABLE `customer_relationship` (
 LOCK TABLES `customer_relationship` WRITE;
 /*!40000 ALTER TABLE `customer_relationship` DISABLE KEYS */;
 /*!40000 ALTER TABLE `customer_relationship` ENABLE KEYS */;
+INSERT INTO `customer_relationship` VALUES (1, 70, 71, 1, NULL, NULL), (2, 71, 70, 1, NULL, NULL), (3, 71, 72, 2, NULL, NULL), (4, 72, 71, 2, NULL, NULL), (5, 70, 73, 3, NULL, NULL), (6, 73, 70, 3, NULL, NULL);
+
 UNLOCK TABLES;
 
 --

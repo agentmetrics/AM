@@ -43,6 +43,8 @@ AM.String = {
 	paid_customer: "續繳客戶"
 	personality: "個性"
 
+	relationship: "關係"
+	
 	time: "時間"
 	
 	value_info:"額外資訊"

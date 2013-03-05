@@ -94,8 +94,11 @@ _friendship_template = '
         {{label.friendship_info}}
       </a>
     </div>
-	<div class="accordion-body collapse" id="friendship_info">
+	<div class="accordion-body" id="friendship_info">
 		<div id="relationship_block">
+			{{#each data}}
+				<p><a href="#customer/{{this.id}}">{{this.name}}</a> {{this.relation}}</p>
+			{{/each}}
 		</div>
 	</div>
 </div>'
@@ -133,17 +136,31 @@ AM.View.CustomerDetailView = Backbone.View.extend
 	_getVisitHistoryTemplate: ->
 		visitHistory = @customer.get('visit_history')
 		if visitHistory
-			@visit_history_template({
+			return @visit_history_template({
 				history: visitHistory
 				label: AM.String
 			})
 		else 
-			""
+			return ""
 
 	_getFriendShipTemplate: ->
-		@friendship_template({
-			label: AM.String
-		})
+		relationship = @customer.get('relationship')
+
+		if relationship
+			data = _.map(relationship, (relation) ->
+				customer = @collection.get(relation['relationship_id'])
+				if customer
+					name: customer.get('name') 
+					id: customer.id
+					relation: AM.Setting.Relationship.label[@_getKeyByValue(AM.Setting.Relationship.value, relation['related'])]
+			, @)
+			console.log data
+			return @friendship_template({
+				data: data
+				label: AM.String
+			})
+		else
+			return ""
 
 	_getKeyByValue: (object, value) ->
 		for key of object
