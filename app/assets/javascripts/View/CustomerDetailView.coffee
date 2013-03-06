@@ -97,7 +97,10 @@ _friendship_template = '
 	<div class="accordion-body" id="friendship_info">
 		<div id="relationship_block">
 			{{#each data}}
-				<p><a href="#customer/{{this.id}}">{{this.name}}</a> {{this.relation}}</p>
+				<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</p><div>
+					{{#each this.link}}
+						<div><div class="span2"/><a  class="second span2" href="#customer/{{this.id}}">{{this.name}}</a> <p>{{this.relation}}</p>
+					{{/each}}
 			{{/each}}
 		</div>
 	</div>
@@ -145,22 +148,32 @@ AM.View.CustomerDetailView = Backbone.View.extend
 
 	_getFriendShipTemplate: ->
 		relationship = @customer.get('relationship')
-
+		console.log relationship
 		if relationship
 			data = _.map(relationship, (relation) ->
-				customer = @collection.get(relation['relationship_id'])
-				if customer
-					name: customer.get('name') 
-					id: customer.id
-					relation: AM.Setting.Relationship.label[@_getKeyByValue(AM.Setting.Relationship.value, relation['related'])]
+				#customer = @collection.get(relation['relationship_id'])
+				@_getRelationObject(relation)
 			, @)
-			console.log data
+			console.log "data", data
 			return @friendship_template({
 				data: data
 				label: AM.String
 			})
 		else
 			return ""
+
+	_getRelationObject: (relation)->
+		customer = @collection.get(relation['relationship_id'])
+		if relation.link
+			related = _.map(relation.link, (related) ->
+				@_getRelationObject(related) 
+			, @)
+
+		if customer
+			name: customer.get('name') 
+			id: customer.id
+			relation: AM.Setting.Relationship.label[@_getKeyByValue(AM.Setting.Relationship.value, relation['related'])]
+			link: related if relation.link
 
 	_getKeyByValue: (object, value) ->
 		for key of object
