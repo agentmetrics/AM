@@ -264,9 +264,12 @@ _friendship_template = '
       </a>
     </div>
 	<div class="accordion-body collapse in" id="friendship_info">
-		<div id="relationship_block">
-		</div>
 		<div class="accordion-inner">
+			<div id="relationship_block">
+				{{#each data}}
+					<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</p></div>
+				{{/each}}
+			</div>
 			<button class="add_relationship btn" type="submit">{{label.add_relationship}}</button>
 		</div>
 	</div>
@@ -275,7 +278,7 @@ _friendship_template = '
 _friend_selection_template ='
 <div>
 	<form class="form-inline">
-			{{label.name}}<input size="50" maxlength="50" class="input-medium"  name="company_name" type="text">
+			{{label.name}}<input size="50" maxlength="50" class="input-medium friend_name" autocomplete="off" name="friend_name" type="text" data-provide="typeahead">
 			{{label.relationship}}
 			{{#with options.relationship}}
 				<select class="span2" name="friendship_category">
@@ -361,10 +364,41 @@ class AM.View.NewCustomerView extends Backbone.View
 			data: @customer.attributes if @customer
 		}) 
 
-	_getFriendshipInfoTemplate: ->
-		@friendship_template({
-			label: AM.String
-		})
+	_getFriendshipTemplate: ->
+		relationship = @customer.get('relationship') if @customer
+		console.log relationship
+		if relationship
+			data = _.map(relationship, (relation) ->
+				#customer = @collection.get(relation['relationship_id'])
+				@_getRelationObject(relation)
+			, @)
+			console.log "data", data
+			return @friendship_template({
+				data: data
+				label: AM.String
+			})
+		else
+			return ""
+
+	_getRelationObject: (relation)->
+		customer = @collection.get(relation['relationship_id'])
+		if relation.link
+			related = _.map(relation.link, (related) ->
+				@_getRelationObject(related) 
+			, @)
+
+		if customer
+			name: customer.get('name') 
+			id: customer.id
+			relation: AM.Setting.Relationship.label[@_getKeyByValue(AM.Setting.Relationship.value, relation['related'])]
+			link: related if relation.link
+
+	_getKeyByValue: (object, value) ->
+		for key of object
+			if value is object[key]
+				return key
+		return null
+
 
 	_getFooterTemplate: ->
 		@footer_template(
@@ -378,7 +412,7 @@ class AM.View.NewCustomerView extends Backbone.View
 			@_getBasicInfoTemplate() + 
 			@_getCompanyInfoTemplate() + 
 			@_getValueInfoTemplate() + 
-			@_getFriendshipInfoTemplate() + 
+			@_getFriendshipTemplate() + 
 		  '</div>' + 
 		  @_getFooterTemplate()
 		)
@@ -395,8 +429,7 @@ class AM.View.NewCustomerView extends Backbone.View
 			if evalObj['weight']
 				$('select[name="weight"]').children("option").filter(":selected").removeAttr('selected')
 				@$el.find('select[name="weight"] option:contains(' + evalObj['weight'] + ')').attr("selected", true)
-
-		@
+		return @
 
 	addFriend: ->
 		relations = @$el.find('#relationship_block')
@@ -406,6 +439,18 @@ class AM.View.NewCustomerView extends Backbone.View
 			}
 			label: AM.String
 		))
+		$('.friend_name').typeahead(
+			source: @getFriendList
+			updater: (item)->
+				console.log 'updater', item
+				item.split(',')[0]
+		)
+
+	getFriendList: (query, process) ->
+		@collection.map((customer)->
+			customer.get('name') + ", " + customer.get('cellphone')
+		)
+
 
 	submit: ->
 		console.log 'submit'

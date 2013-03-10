@@ -1,0 +1,48 @@
+AM.View or (AM.View = {})
+
+_friend_selection_template ='
+<div>
+	<form class="form-inline">
+			{{label.name}}<input size="50" maxlength="50" class="input-medium friend_name" autocomplete="off" name="friend_name" type="text" data-provide="typeahead">
+			{{label.relationship}}
+			{{#with options.relationship}}
+				<select class="span2" name="friendship_category">
+					<option>
+					<option value="{{value.a}}">{{label.a}}
+					<option value="{{value.b}}">{{label.b}}
+					<option value="{{value.c}}">{{label.c}}
+					<option value="{{value.d}}">{{label.d}}
+				</select>
+			{{/with}}
+	</form>
+</div>
+'
+
+class AM.View.NewRelationshipView extends Backbone.View
+
+	friend_selection_template: Handlebars.compile(_friend_selection_template)
+
+	initialize: ->
+		_.bindAll @
+		@collection = @options.collection
+
+
+	render: ->
+		html = @friend_selection_template(
+			options: {
+				relationship: AM.Setting.Relationship
+			}
+			label: AM.String
+		))
+		$('.friend_name').typeahead(
+			source: @getFriendList
+			updater: (item)->
+				item.split(',')[0]
+		)
+		return html
+		
+	getFriendList: (query, process) ->
+		@collection.map((customer)->
+			customer.get('name') + ", " + customer.get('cellphone')
+		)
+

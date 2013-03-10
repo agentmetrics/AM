@@ -97,7 +97,7 @@ _friendship_template = '
 	<div class="accordion-body" id="friendship_info">
 		<div id="relationship_block">
 			{{#each data}}
-				<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</p><div>
+				<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</p></div>
 					{{#each this.link}}
 						<div><div class="span2"/><a  class="second span2" href="#customer/{{this.id}}">{{this.name}}</a> <p>{{this.relation}}</p>
 					{{/each}}
