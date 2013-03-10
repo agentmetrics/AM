@@ -461,7 +461,19 @@ class Customer extends Control implements RESTfulInterface
    * response: relationship[]
    */
   function getRelationship($customer_id) {
+    $first_tier_relationship = $this->_getRelationship($customer_id);
+    $result = array();
+    foreach($first_tier_relationship as $relationship) {
+      $record = array();
+      $record['relationship_id'] = $relationship['relationship_id'];
+      $record['related'] = $relationship['related'];
+      $record['link'] = $this->_getRelationship($relationship['relationship_id'], $customer_id);
+      array_push($result, $record);
+    }
+    return $result;
+  }
 
+  function _getRelationship($customer_id, $exclude_id) {
     $relationship = array();
     $sql = "SELECT 
               related, 
@@ -474,13 +486,13 @@ class Customer extends Control implements RESTfulInterface
     $result = $this->db->queryAll($sql, array($customer_id));
 
     foreach($result as $friendship) {
-      $record = array();
-      $record['relationship_id'] = $friendship['relationship_id'];
-      $record['related'] = $friendship['related'];
-      array_push($relationship, $record);
+      if($exclude_id != $friendship['relationship_id']){
+        $record = array();
+        $record['relationship_id'] = $friendship['relationship_id'];
+        $record['related'] = $friendship['related'];
+        array_push($relationship, $record);
+      }
     }
-
-  
     return $relationship;
   }
 
