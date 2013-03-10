@@ -15,11 +15,20 @@
 }
 
 body {
-	word-wrap: break-word;
-	font-size:15px ;
-	color:#666;
-	font-family:Verdana,\5FAE\8EDF\6B63\9ED1\9AD4,\65B0\7D30\660E\9AD4;
-	background: $light_grey
+	word-wrap:break-word;
+	font-size:14px ;
+	line-height:1.3em;
+	color:#535353;
+	font-family: "Helvetica Neue",Trebuchet MS,微軟正黑體,"Microsoft JhengHei";
+	background:url(../images/bg.png) repeat;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }
 
 #content_panel {
@@ -35,6 +44,19 @@ body {
 	/*input[type="text"] {
 		margin-bottom: 0;
 	}*/
+}
+
+.footer{
+	background:url(../images/footer.png) repeat-x;
+	height:38px;
+	border-top:#2a313a 1px solid;
+	text-align:center;clear:both;
+	margin-top:30px;color:#e5e5e5;
+	font-size:13px;line-height:38px;
+	
+	a{
+		color:#e5e5e5
+	}
 }
 
 form.form-horizontal .control-group {

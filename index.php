@@ -29,24 +29,35 @@
       <li class="login"><a href="#">會員登入</a></li>
     </ul>
     <!-- /top nav -->
-    </div>
-
-    <!-- 主選單 -->
-    <div class="main-nav">
-      <ul>
-        <li class="active"><a href="#">首頁</a></li>
-        <li><a href="#schedule">行事曆</a></li>
-        <li><a href="#customers">客戶資料</a></li>
-        <li><a href="#">目標設定</a></li>
-        <li><a href="#">保險資料庫</a></li>
-        <li><a href="#">訂閱頻道</a></li>
-        <li><a href="#">設定</a></li>
-      </ul>
-    </div>
-    <!-- /主選單 -->
+  </div>
 </div>
+<div class="main-nav">
+  <div class="wrap">
+    <ul>
+      <li class="active"><a href="#">首頁</a></li>
+      <li><a href="#schedule">行事曆</a></li>
+      <li><a href="#customers">客戶資料</a></li>
+      <li><a href="#">目標設定</a></li>
+      <li><a href="#">保險資料庫</a></li>
+      <li><a href="#">訂閱頻道</a></li>
+      <li><a href="#">設定</a></li>
+    </ul>
+  </div>
+</div>
+    
 
 <div id="content_panel" class="row container">
+</div>
+
+<div class="footer">
+  <div class="wrap">
+    <div class="left">
+      © Copyright 2013 Nvesto Co., Ltd. All Rights Reserved.
+    </div>
+    <div class="right">
+      <a href="#">服務條款</a> | <a href="#">隱私政策</a> | <a href="#">聯絡我們</a>
+    </div>
+  </div>
 </div>
 
 </body>
