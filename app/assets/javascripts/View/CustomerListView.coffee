@@ -13,6 +13,9 @@ Handlebars.registerHelper "event_day",  ->
 	out
 
 _tool_bar_template = '
+	<div class="hd">
+		<h2>客戶表列</h2>
+	</div>
 	<div class="span12 toolbar">
 		<input class="search" type="text" name="name" placeholder="搜尋名字">
 		{{label.grade}}
