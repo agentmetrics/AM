@@ -16,14 +16,11 @@ class AM.Router extends Backbone.Router
 		console.log AM.customers
 		AM.VM.showView new AM.View.CustomerListView(collection: AM.customers)
 
-	showCustomer: (id, action)->
-		if(action and action is "modify")
-			AM.VM.showView new AM.View.NewCustomerView(collection: AM.customers)
-		else 
-			AM.VM.showView new AM.View.CustomerDetailView(
-				customer_id: id,
-				collection: AM.customers
-			)
+	showCustomer: (id)-> 
+		AM.VM.showView new AM.View.CustomerDetailView(
+			customer_id: id,
+			collection: AM.customers
+		)
 
 	modifyCustomer: (id, action)->
 		if action is "modify"

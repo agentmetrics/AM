@@ -48,7 +48,5 @@ class AM.View.HeaderView extends Backbone.View
 		))
 
 	changeNav: (e)->
-		console.log e
-		console.log @$el.find("ul.menu li.active")[0]
 		@$el.find("ul.menu li.active").removeClass("active")
 		$(e.currentTarget).addClass "active"

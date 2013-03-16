@@ -6,7 +6,6 @@ $ ->
 
     new AM.View.HeaderView()
    
-
 	AM.customers = new AM.Collection.CustomerCollection()
 	AM.customers.fetch(
 		success: (collection, response) ->
