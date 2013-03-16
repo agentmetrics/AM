@@ -13,9 +13,6 @@ Handlebars.registerHelper "event_day",  ->
 	out
 
 _tool_bar_template = '
-	<div class="hd">
-		<h2>客戶表列</h2>
-	</div>
 	<div class="span12 toolbar">
 		<input class="search" type="text" name="name" placeholder="搜尋名字">
 		{{label.grade}}
@@ -48,8 +45,10 @@ _tool_bar_template = '
 		</select>
 
 		<a class="new_btn btn btn-danger">新增客戶</a>
-	</div>
-	'
+	</div>'
+
+
+_body_template = '<div class="body"></div>'
 
 AM.View.CustomerListView = Backbone.View.extend
 	
@@ -70,6 +69,7 @@ AM.View.CustomerListView = Backbone.View.extend
 		{{/each}}
 		</tbody></table>
 	'
+	header_template: '<div class="hd"><h2>客戶表列</h2></div>'
 
 	list_view_container: '<div class="span10 customer_list"></div>'
 
@@ -84,6 +84,8 @@ AM.View.CustomerListView = Backbone.View.extend
 			</table>
 		</div>'
 
+	body_template: Handlebars.compile(_body_template)
+
 	events: 
 		"click .new_btn": "gotoAddCustomer"
 		"change select[name='gender']": "render"
@@ -97,9 +99,11 @@ AM.View.CustomerListView = Backbone.View.extend
 
 	initialize: ->
 		@collection = @options.collection
-		@$el.html(@tool_bar_template({
-			label: AM.String
-		}) + @day_event_template() + @list_view_container)
+		$body_container = $(@body_template())
+		$body_container.html(@tool_bar_template({label: AM.String}) + @day_event_template() + @list_view_container)
+		console.log $body_container
+
+		@$el.html(@header_template + $body_container.html())
 
 	gotoAddCustomer:->
   		AM.router.navigate "addcustomer", trigger: true
