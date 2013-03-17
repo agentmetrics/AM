@@ -3,16 +3,11 @@ AM.View or (AM.View = {})
 _header_template ='
 <div id="header">
 	<div class="wrap">
-	    <!-- logo -->
 	    <div class="logo"><a href="#"></a></div>    
-	    <!-- /logo -->
-	    
-	    <!-- top nav -->
 	    <ul class="top-nav">
-	      <li class="signup"><a href="#">申請會員</a></li>
-	      <li class="login"><a href="#">會員登入</a></li>
+	      <li><a class="signup" href="#">申請會員</a></li>
+	      <li><a class="login" href="#">會員登入</a></li>
 	    </ul>
-	    <!-- /top nav -->
 	  </div>
 	</div>
 </div>

@@ -25,20 +25,13 @@ li{list-style:none;}
 #header {
 	height: 93px;
 	display: block;
-	/*border-bottom: 10px solid $middle_grey;*/
 	background: $background_red;
-	//margin: 0px auto 20px auto;
 
 	a {
 		color:#0873b9;
 		text-decoration:none;
 	}
 
-	.container{
-		width:970px;margin:0 auto;
-		display:table;
-		padding:12px 0 20px 0;
-	}
 
 	.logo a{
 		width:300px;
@@ -51,48 +44,39 @@ li{list-style:none;}
 	}
 
 	.top-nav{
-		float:right;margin-top:17px;
+		float:right;
+		margin-top:36px;
 
 		li{
-			@include box-shadow(rgba($shadow_color, 0.4), 0, 1px, 3px);
-			list-style:none;float:left;
-			@include border-radius(3px);
-			background:#FFCC00;margin-left:10px;
-			@include single-transition(background, 0.5s, ease);
+			list-style:none;
+			float:left;
+			@include border-radius(20px);
+			margin-left:10px;
+			background:url(../images/account-nav.png) repeat-x left top #2daae7;
+			padding:3px 8px 4px 15px;
+			border:1px solid #1a8ab3;
+			line-height:18px;
 
-			&:hover{background:#FF9900;}
+			&:hover{
+				background:url(../images/account-nav-h.png) repeat-x left top #44c6ef;
+			}
 
 			a{
-				display:block;padding:5px 8px;
-				color:#000;
-				font-size:15px;
-				text-shadow: 2px 1px 0px #FFDD55;
-			}
+				display:block;
+				color:#fff;
+				text-decoration:none;
+				padding:0px 8px 0px 18px;
+				text-shadow:1px 1px 0px #525252;
+				&.signup {
+					background:url(../images/icon-1.png) no-repeat 0 3px;
+				}
 
-			&.signup {
-				background:url(../images/icon-1.png) no-repeat 7px 7px #FFCC00;
-				padding-left:17px;
-
-				&:hover{
-					background:url(../images/icon-1.png) no-repeat 7px 7px #fff;
+				&.login {
+					background:url(../images/icon-1.png) no-repeat 0 -24px;
 				}
 			}
 
-			&.login {
-				background:url(../images/icon-2.png) no-repeat 7px 7px #FFCC00;
-				padding-left:14px;
-				&:hover {
-					background:url(../images/icon-2.png) no-repeat 7px 7px #fff;
-				}
-			}
-
-			/*&.apply{
-				background:url(../images/icon-1.png) no-repeat 0 3px;
-			}
-
-			&.login{
-				background:url(../images/icon-1.png) no-repeat 0 -24px;
-			}*/
+			
 		}		
 	}
 }
@@ -115,6 +99,7 @@ li{list-style:none;}
 		font-size:16px;
 		text-align:center;
 		margin: auto 0px;
+
 	
 		a { color:$dark_grey; }
 		&:hover {
