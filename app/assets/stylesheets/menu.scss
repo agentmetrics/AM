@@ -21,19 +21,15 @@ li{list-style:none;}
 	overflow:hidden;
 }
 
-
 #header {
 	height: 93px;
 	display: block;
 	background: $background_red;
-
 	a {
 		color:#0873b9;
 		text-decoration:none;
 	}
-
-
-	.logo a{
+	.logo {
 		width:300px;
 		height:57px;
 		display:block;
@@ -42,11 +38,9 @@ li{list-style:none;}
 		margin-bottom:18px;
 		float:left;
 	}
-
 	.top-nav{
 		float:right;
 		margin-top:36px;
-
 		li{
 			list-style:none;
 			float:left;
@@ -56,11 +50,9 @@ li{list-style:none;}
 			padding:3px 8px 4px 15px;
 			border:1px solid #1a8ab3;
 			line-height:18px;
-
 			&:hover{
 				background:url(../images/account-nav-h.png) repeat-x left top #44c6ef;
 			}
-
 			a{
 				display:block;
 				color:#fff;
@@ -70,13 +62,10 @@ li{list-style:none;}
 				&.signup {
 					background:url(../images/icon-1.png) no-repeat 0 3px;
 				}
-
 				&.login {
 					background:url(../images/icon-1.png) no-repeat 0 -24px;
 				}
 			}
-
-			
 		}		
 	}
 }
@@ -87,31 +76,23 @@ li{list-style:none;}
 	padding-top: 5px;
 	padding-bottom: 5px;
 	font-size:17px;
-
 	ul {
 		margin: 0px auto 0px auto;
-		display: block;
+		display: inline-block;
 	}
 	li {
+		background:url(../images/line-1.png) repeat-y top left;
 		float:left;
 		display: block;
 		padding:5px 20px;
-		font-size:16px;
 		text-align:center;
 		margin: auto 0px;
-
-	
-		a { color:$dark_grey; }
-		&:hover {
+		a {color:white;  text-decoration:none;}
+		&:hover, &.active {
 			a{
-				color:white;
+				color:#313c44;
 				display:block;
-			}
-		}
-		&.active {
-			a{
-				color:white;
-				display:block;
+				background: #D8DDE2;
 			}
 		}
 	}

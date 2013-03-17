@@ -23,13 +23,8 @@ body {
 	background:url(../images/bg.png) repeat;
 }
 
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
+.left {float: left;}
+.right {float: right;}
 
 #content_panel {
 	background: white;
@@ -37,15 +32,14 @@ body {
 	margin-right: auto;
 	margin-top: 26px;
 	width: 980px;
+	min-height:600px;
 	display: block;
 
 	.hd{	
 		background:url(../images/widget-hd.png) no-repeat left top;
 		height:40px;
-
 		h2 {
 			font-size:18px;color:#fff;
-			//font-family: "Helvetica Neue",Arial,微軟正黑體,"Microsoft JhengHei";
 			line-height:38px;
 			text-shadow:1px 1px 0px #525252;
 			background:url(../images/icon-2.png) no-repeat 12px 8px;
@@ -73,13 +67,30 @@ body {
 				display:block;
 				&:hover{background-position:0px -27px;}
 			}
-			
 		}
 	}
 
 	.schedule_widget {
 		@include border-radius(8px);
 		border:1px solid #e8e7e5;
+		padding: 15px 10px;
+		.date-pick{
+			font-size:15px;
+			color:#88766b;margin-bottom:5px;
+		}
+		.prev, .next{
+			display:inline-block;
+			height:21px;width:21px;margin-bottom:-6px;
+			margin:0 3px -6px 3px;
+			&:hover{background-position:0 -21px}
+		}
+		.prev{
+			background:url(../images/arrow-prev.png) no-repeat 0px 0px;
+
+		}
+		.next{
+			background:url(../images/arrow-next.png) no-repeat 0px 0px;
+		}
 	}
 }
 
@@ -92,7 +103,7 @@ body {
 	font-size:13px;line-height:38px;
 	
 	a{
-		color:#e5e5e5
+		color:#e5e5e5;
 	}
 }
 
@@ -111,7 +122,7 @@ table.data th{background:#CED0D0;color:#000;font-size:15px;text-align:center}
 
 table.data td,table.data th{padding:5px 0px;border:2px solid #fff}
 
-table.data td{text-align:center}
+table.data td{text-align:center; border-bottom: 1px solid #f0dcc8;}
 
 table.data td.s1{background:#FFCC00}
 table.data td.s2{background:#FF99BB}

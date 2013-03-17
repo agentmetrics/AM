@@ -14,13 +14,13 @@ _header_template ='
 <div class="main-nav">
   <div class="wrap">
     <ul class="menu">
-      <li class="active"><a href="#">首頁</a></li>
-      <li><a href="#schedule">行事曆</a></li>
-      <li><a href="#customers">客戶資料</a></li>
-      <li><a href="#">目標設定</a></li>
-      <li><a href="#">保險資料庫</a></li>
-      <li><a href="#">訂閱頻道</a></li>
-      <li><a href="#">設定</a></li>
+      <li ref="#" ><a href="#">首頁</a></li>
+      <li ref="#schedule"><a href="#schedule">行事曆</a></li>
+      <li ref="#customers"><a href="#customers">客戶資料</a></li>
+      <li ref="#objective"><a href="#objective">目標設定</a></li>
+      <li ref="#insurance"><a href="#insurance">保險資料庫</a></li>
+      <li ref="#channel"><a href="#channel">訂閱頻道</a></li>
+      <li ref="#setting"><a href="#setting">設定</a></li>
     </ul>
 </div>
 '
@@ -36,6 +36,7 @@ class AM.View.HeaderView extends Backbone.View
 
 	initialize: ->
 		@render()
+		@setCurrentNav()
 
 	render:->
 		@$el.html(@template(
@@ -45,3 +46,7 @@ class AM.View.HeaderView extends Backbone.View
 	changeNav: (e)->
 		@$el.find("ul.menu li.active").removeClass("active")
 		$(e.currentTarget).addClass "active"
+
+	setCurrentNav: ->
+		nav = window.location.hash.split("/")[0]
+		$(@$el.find('li[ref=' + nav + ']')[0]).addClass "active"
