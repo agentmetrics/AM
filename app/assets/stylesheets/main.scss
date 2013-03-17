@@ -76,6 +76,11 @@ body {
 			
 		}
 	}
+
+	.schedule_widget {
+		@include border-radius(8px);
+		border:1px solid #e8e7e5;
+	}
 }
 
 .footer{

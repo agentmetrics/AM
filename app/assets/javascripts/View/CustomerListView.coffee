@@ -79,7 +79,12 @@ AM.View.CustomerListView = Backbone.View.extend
 	list_view_container: '<div class="span10 customer_list"></div>'
 
 	day_event_template: Handlebars.compile '
-		<div class="span2 panel cal">
+		<div class="span2 panel cal schedule_widget">
+				<div class="date-pick">
+					<a href="#" class="prev"></a>
+					<span class="date">2013-05-23</span>
+					<a href="#" class="next"></a>				
+				</div>
 			<table width="100%" border="0" class="data" border="5">
 			  <tr>
 				<th scope="col" width="15%">時間</th>
