@@ -12,9 +12,14 @@ Handlebars.registerHelper "event_day",  ->
 		i++
 	out
 
+
+
+_body_template = '<div class="body row"></div>'
+
 _tool_bar_template = '
 	<div class="span12 toolbar">
-		<input class="search" type="text" name="name" placeholder="搜尋名字">
+		{{label.customer_search}}
+		<input class="search input-small" type="text" name="name" >
 		{{label.grade}}
 		<select class="span1" name="grade">
 			<option>
@@ -44,13 +49,13 @@ _tool_bar_template = '
 			<option value="birthday">{{label.birthday_customer}}
 		</select>
 
-		<a class="new_btn btn btn-danger">新增客戶</a>
+		<a class="add_btn">{{label.new_customer}}</a>
 	</div>'
 
 
-_body_template = '<div class="body"></div>'
-
 AM.View.CustomerListView = Backbone.View.extend
+
+	className: "list_view"
 	
 	tool_bar_template: Handlebars.compile(_tool_bar_template)
 	
@@ -100,10 +105,13 @@ AM.View.CustomerListView = Backbone.View.extend
 	initialize: ->
 		@collection = @options.collection
 		$body_container = $(@body_template())
-		$body_container.html(@tool_bar_template({label: AM.String}) + @day_event_template() + @list_view_container)
+		$body_container.append @tool_bar_template({label: AM.String})
+		$body_container.append @day_event_template() 
+		$body_container.append @list_view_container
 		console.log $body_container
 
-		@$el.html(@header_template + $body_container.html())
+		@$el.append(@header_template)
+		@$el.append $body_container
 
 	gotoAddCustomer:->
   		AM.router.navigate "addcustomer", trigger: true

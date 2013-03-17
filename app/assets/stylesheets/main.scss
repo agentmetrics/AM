@@ -53,18 +53,29 @@ body {
 		}
 	}
 
-	.list_body {
+	.body {
 		padding:15px 15px 45px;
+		display:inline-block;
 		.toolbar {
-			clear:both;border-bottom:1px solid #e7e7e6;
+			border-bottom:1px solid #e7e7e6;
 			padding-bottom:10px;
-			color:#88766b;font-size:15px;
+			color:#88766b;
 			margin-bottom:15px;
+			clear:both;
+			input { margin-bottom: 0px;}
+			select { margin-bottom: 0px;}
+			.add_btn {
+				float:right;
+				background:url(../images/btn-addClient.png) no-repeat 0px 0px;
+				width:90px;
+				height:27px;
+				text-indent:-8888px;
+				display:block;
+				&:hover{background-position:0px -27px;}
+			}
+			
 		}
 	}
-	/*input[type="text"] {
-		margin-bottom: 0;
-	}*/
 }
 
 .footer{

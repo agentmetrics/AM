@@ -5,7 +5,6 @@ AM.String = {
 	add: "新增"
 	add_relationship: "新增好友"
 
-
 	basic_info: "基本資訊"
 	birthday: "生日"
 	boy: "子"
@@ -19,6 +18,7 @@ AM.String = {
 	company_phone: "公司電話"
 	content: "內容"
 	customer_type: "客戶類別"
+	customer_search: "客戶搜尋"
 	
 	female: "女"
 	friendship_info: "客戶人際關係"
