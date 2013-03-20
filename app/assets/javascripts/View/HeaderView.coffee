@@ -15,12 +15,12 @@ _header_template ='
   <div class="wrap">
     <ul class="menu">
       <li ref="#" ><a href="#">首頁</a></li>
-      <li ref="#schedule"><a href="#schedule"><span>行事曆</span></a></li>
-      <li ref="#customers"><a href="#customers"><span>客戶資料</span></a></li>
-      <li ref="#objective"><a href="#objective"><span>目標設定</span></a></li>
-      <li ref="#insurance"><a href="#insurance"><span>保險資料庫</span></a></li>
-      <li ref="#channel"><a href="#channel"><span>訂閱頻道</span></a></li>
-      <li ref="#setting"><a href="#setting"><span>設定</span></a></li>
+      <li ref="#schedule"><a href="#schedule">行事曆</a></li>
+      <li ref="#customers"><a href="#customers">客戶資料</a></li>
+      <li ref="#objective"><a href="#objective">目標設定</a></li>
+      <li ref="#insurance"><a href="#insurance">保險資料庫</a></li>
+      <li ref="#channel"><a href="#channel">訂閱頻道</a></li>
+      <li ref="#setting"><a href="#setting">設定</a></li>
     </ul>
 </div>
 '
