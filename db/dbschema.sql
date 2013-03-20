@@ -91,6 +91,7 @@ CREATE TABLE `customer` (
   `thumbnail` varchar(200) DEFAULT NULL,
   `company_category` int(11) DEFAULT NULL,
   `personality` varchar(1) DEFAULT NULL,
+  `is_paying` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `idx_customer` (`agent_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;

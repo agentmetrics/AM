@@ -27,10 +27,10 @@
 <div class="footer">
   <div class="wrap">
     <div class="left">
-      © Copyright 2013 Nvesto Co., Ltd. All Rights Reserved.
+      穢 Copyright 2013 Leishan., Ltd. All Rights Reserved.
     </div>
     <div class="right">
-      <a href="#">服務條款</a> | <a href="#">隱私政策</a> | <a href="#">聯絡我們</a>
+      <a href="#">���璇�狡</a> | <a href="#">�梁��輻�</a> | <a href="#">�舐窗���</a>
     </div>
   </div>
 </div>
