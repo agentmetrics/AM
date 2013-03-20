@@ -24,7 +24,8 @@ li{list-style:none;}
 #header {
 	height: 93px;
 	display: block;
-	background: $background_red;
+	//background: $background_red;
+	background:url(../images/header_red.png) repeat-x;
 	a {
 		color:#0873b9;
 		text-decoration:none;
@@ -72,27 +73,32 @@ li{list-style:none;}
 
 .main-nav { 
 	overflow:hidden;  
-	background:$dark_blue;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	//background:$dark_blue;
+	background:url(../images/header_black.png) repeat-x;
 	font-size:17px;
+	height:41px;
 	ul {
-		margin: 0px auto 0px auto;
-		display: inline-block;
+		margin: 0px auto;
+		display: table;
+		width: 80%;
+		float: left;
 	}
 	li {
-		background:url(../images/line-1.png) repeat-y top left;
-		float:left;
-		display: block;
-		padding:5px 20px;
-		text-align:center;
-		margin: auto 0px;
-		a {color:white;  text-decoration:none;}
+		background:url(../images/line-1.png) repeat-y left top;
+		display:table-cell;
+		vertical-align:middle;
+		width: 1%;
+		height:39px;
+		a {
+			color:white;  
+			text-decoration:none;
+			text-align: center;
+			display: block;
+		}
 		&:hover, &.active {
+			background:url(../images/nav-h.png) repeat-x top left;
 			a{
 				color:#313c44;
-				display:block;
-				background: #D8DDE2;
 			}
 		}
 	}
