@@ -35,7 +35,7 @@ class Container extends Control {
  
         if ( !class_exists($controlName) ) {
             $controlFilepath = $controlName . '.php';
- 						
+ 			
             //load Class
             if ( file_exists($controlFilepath) ) {
                 require_once $controlFilepath;
@@ -58,6 +58,7 @@ class Container extends Control {
     
  
     function run() {
+
         if ( $this->control === false) {
             return $this->index();
         }

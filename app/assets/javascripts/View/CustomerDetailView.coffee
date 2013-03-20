@@ -223,6 +223,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 				label: AM.String
 			})
 		)
+		@$el.append("<p>test</p>")
 
 	modify: ->
 		AM.router.navigate "customer/" + @options.customer_id + "/modify",  trigger: true

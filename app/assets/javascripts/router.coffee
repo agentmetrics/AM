@@ -8,6 +8,7 @@ class AM.Router extends Backbone.Router
 		"customers":   "listCustomers"
 		"customer/:id/:action": "modifyCustomer"
 		"customer/:id": "showCustomer"
+		"schedule" : "listSchedule"
 
 	addCustomer: ->
 		AM.VM.showView new AM.View.NewCustomerView(collection: AM.customers)
@@ -28,3 +29,6 @@ class AM.Router extends Backbone.Router
 				customer_id: id
 				collection: AM.customers
 			)
+	listSchedule: ->
+		console.log "listSchedule"
+		AM.VM.showView new AM.View.ScheduleListView()

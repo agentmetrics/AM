@@ -299,26 +299,29 @@ DROP TABLE IF EXISTS `schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `schedule` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `start_time` varchar(100) NOT NULL,
   `end_time` varchar(100) NOT NULL,
   `detail` text,
-  `customer_visit_history_id` int(11) DEFAULT NULL,
+  -- `customer_visit_history_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `start_day` int(11) NOT NULL,
   `end_day` int(11) NOT NULL,
   `start_month` int(11) NOT NULL,
   `end_month` int(11) NOT NULL,
   `start_year` int(11) NOT NULL,
   `end_year` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL,
   `account_id` int(11) NOT NULL,
+  `schedule_type` tinyint(1) NOT NULL,
   `create_time` varchar(100) DEFAULT NULL,
   `modify_time` varchar(100) DEFAULT NULL,
   `delete_time` varchar(100) DEFAULT NULL,
   `creator` int(11) DEFAULT NULL,
   `modifier` int(11) DEFAULT NULL,
+  `complete` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `pk_schedule_0` (`customer_visit_history_id`),
+  -- UNIQUE KEY `pk_schedule_0` (`customer_visit_history_id`),
   KEY `idx_schedule` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -329,6 +332,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
+INSERT INTO `schedule` VALUES (1,'19473013497549','19473013497549','約鈞塘吃飯。',1,3,3,2,2,2013,2013,'約鈞塘吃飯。',1,1,'19473013497549','19473013497549','19473013497549',1,1,0);
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
