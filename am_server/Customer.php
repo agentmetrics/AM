@@ -1,7 +1,6 @@
 <?php
 
-class Customer extends Control implements RESTfulInterface 
-{
+class Customer extends Control implements RESTfulInterface {
 	private $db = null;
 	
 	function __construct() {
@@ -28,7 +27,15 @@ class Customer extends Control implements RESTfulInterface
 			case "partial":		//get partial info
 				$result = $this->getCustomerPartial();
 				break;
-				
+			case "paying":		//get paying customer list of this month  
+				$result = $this->getPayingCustomer();
+				break;
+			case "birthday":	//get birthday customer list of this month
+				$result = $this->getBirthdayCustomer();
+				break;
+			case "new":			//get new customer list of this month
+				$result = $this->getNewCustomer();
+				break;
 			default:
 				$result = $this->getCustomer($segments[0]);
 				break;
@@ -63,7 +70,7 @@ class Customer extends Control implements RESTfulInterface
 		$customer['child_boy'] = $data["child"]['boy'];
 		$customer['child_girl'] = $data["child"]['girl'];
 		$customer['note'] = $data["note"];
-    $customer['personality'] = $data["personality"];
+    	$customer['personality'] = $data["personality"];
 		$customer['company_name'] = $data["company"]['name'];
 		$customer['company_address'] = $data["company"]["address"];
 		$customer['company_phone'] = $data["company"]["phone"];
@@ -97,16 +104,16 @@ class Customer extends Control implements RESTfulInterface
   }
 	
  
-  function restPut($segments) {
-  	$data = json_decode( file_get_contents('php://input'), true );
-  	//var_dump($data);
+  	function restPut($segments) {
+  		$data = json_decode( file_get_contents('php://input'), true );
+  		//var_dump($data);
   	
-  	if( !is_array($data) )
+  		if( !is_array($data) )
 			self::exceptionResponse(400, "Request is not a valid json format. ");
   	
-  	if( !isset($data["id"]) or empty($data["id"]) )
-  		self::exceptionResponse(400, "Request is not a valid json format. ");
-  	
+	  	if( !isset($data["id"]) or empty($data["id"]) )
+	  		self::exceptionResponse(400, "Request is not a valid json format. ");
+	  	
 		$customer['name'] = $data["name"];
 		$customer['address'] = $data["address"];
 		$customer['identify_no'] = $data["identify_no"];
@@ -122,7 +129,7 @@ class Customer extends Control implements RESTfulInterface
 		$customer['child_boy'] = $data["child"]['boy'];
 		$customer['child_girl'] = $data["child"]['girl'];
 		$customer['note'] = $data["note"];
-    $customer['personality'] = $data["personality"];
+    	$customer['personality'] = $data["personality"];
 		$customer['company_name'] = $data["company"]['name'];
 		$customer['company_address'] = $data["company"]["address"];
 		$customer['company_phone'] = $data["company"]["phone"];
@@ -133,7 +140,7 @@ class Customer extends Control implements RESTfulInterface
 		$result = $this->db->update("agent_metrics.customer", $customer, array("id"=>$data["id"]));
 		
 		if( $result ) {
-			
+				
 			/*FIXME, add checking db record*/
 			$this->insertEvaluation($data["id"], $data["evaluation"]);
 			$this->insertTags($data["id"], $data["tags"]);
@@ -148,7 +155,7 @@ class Customer extends Control implements RESTfulInterface
 		else {
 			self::exceptionResponse(500, "can not insert data into DB!");
 		}
-  }
+	}
  
   
 	function restDelete($segments) {
@@ -158,7 +165,7 @@ class Customer extends Control implements RESTfulInterface
 			self::exceptionResponse(500, "can not insert data into DB!");
 		else
 			echo TRUE;
-  }
+  	}
   
   
   
@@ -166,8 +173,7 @@ class Customer extends Control implements RESTfulInterface
    * request: customer id, evaluation[]
    * response: boolean
    */
-  private function insertEvaluation($customer_id, $data)
-  {
+  private function insertEvaluation($customer_id, $data) {
   	$evaluation['customer_id'] = $customer_id;
   	$evaluation['age'] = $data["age"];
   	$evaluation['contact_difficulty'] = $data["contact_difficulty"];
@@ -197,8 +203,7 @@ class Customer extends Control implements RESTfulInterface
    * request: customer id, tags[]
    * response: boolean
    */
-  private function insertTags($customer_id, $data)
-  {
+  private function insertTags($customer_id, $data) {
   	/*
   	"tags" : ["可愛","大方","健談","辣妹"]
   	*/
@@ -230,8 +235,7 @@ class Customer extends Control implements RESTfulInterface
    * request: customer id, relationship[]
    * response: boolean
    */
-  private function insertRelationship($customer_id, $data)
-  {
+  private function insertRelationship($customer_id, $data) {
   	$now = time();
   	
   	//Do delete record first
@@ -337,7 +341,17 @@ class Customer extends Control implements RESTfulInterface
   function getCustomerPartial() {
   	$data = array();
   	
-  	$sql = "SELECT id, name, cellphone, gender, personality FROM customer ";
+  	$sql = "SELECT 
+  				id, 
+  				name, 
+  				cellphone, 
+  				gender, 
+  				personality, 
+  				birthday, 
+  				create_time, 
+  				is_paying 
+  			FROM 
+  				customer ";
   	
   	$result = $this->db->queryAll($sql);
   	if( !$result ) 
@@ -346,6 +360,12 @@ class Customer extends Control implements RESTfulInterface
   	foreach($result as $customer) {
   		$partial = array();
   		$partial = $customer;
+  		
+  		//check this month birthdy.
+  		$partial["is_birthday"] = $this->is_current_month($customer["birthday"]);
+  		
+  		//check 
+  		$partial["is_new"] = $this->is_current_month($customer["create_time"]);
   		
   		//visit_history
   		$last_visit = $this->getLastVisit($customer["id"]);
@@ -382,15 +402,15 @@ class Customer extends Control implements RESTfulInterface
    */
   function getLastVisit($customer_id) {
   	$sql = "SELECT 
-  						detail, 
-  						place, 
-  						time 
-  					FROM 
-  						customer_visit_history 
-  					WHERE 
-  						customer_id=? 
-  					ORDER BY 
-  						create_time DESC LIMIT 1";
+  				detail, 
+  				place, 
+  				time 
+  			FROM 
+  				customer_visit_history 
+  			WHERE 
+  				customer_id=? 
+  			ORDER BY 
+  				create_time DESC LIMIT 1";
   	
   	$result = $this->db->query($sql, array($customer_id));
   
@@ -506,6 +526,18 @@ class Customer extends Control implements RESTfulInterface
 		
 		$result = $this->db->queryAll($sql, array($customer_id), PDO::FETCH_COLUMN);
 		
+		return $result;
+	}
+	
+	
+	function is_current_month( $time ) {
+		$result = "0";
+		$time_array = getdate($time);
+		$current_month = strtolower(date("F"));
+		if(strtolower($time_array["month"]) == $current_month) {
+			$result = "1";
+			//var_dump($current_month);
+		}
 		return $result;
 	}
 	
