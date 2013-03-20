@@ -12,9 +12,12 @@ Handlebars.registerHelper "event_day",  ->
 		i++
 	out
 
+_body_template = '<div class="body row"></div>'
+
 _tool_bar_template = '
 	<div class="span12 toolbar">
-		<input class="search" type="text" name="name" placeholder="搜尋名字">
+		{{label.customer_search}}
+		<input class="search input-small" type="text" name="name" >
 		{{label.grade}}
 		<select class="span1" name="grade">
 			<option>
@@ -44,11 +47,13 @@ _tool_bar_template = '
 			<option value="birthday">{{label.birthday_customer}}
 		</select>
 
-		<a class="new_btn btn btn-danger">新增客戶</a>
-	</div>
-	'
+		<a class="add_btn">{{label.new_customer}}</a>
+	</div>'
+
 
 AM.View.CustomerListView = Backbone.View.extend
+
+	className: "list_view"
 	
 	tool_bar_template: Handlebars.compile(_tool_bar_template)
 	
@@ -67,11 +72,17 @@ AM.View.CustomerListView = Backbone.View.extend
 		{{/each}}
 		</tbody></table>
 	'
+	header_template: '<div class="hd"><h2>客戶表列</h2></div>'
 
-	list_view_container: '<div class="span10 customer_list"></div>'
+	list_view_container: '<div class="span8  customer_list"></div>'
 
 	day_event_template: Handlebars.compile '
-		<div class="span2 panel cal">
+		<div class="span3 panel cal schedule_widget">
+				<div class="date_pick">
+					<a href="#" class="prev"></a>
+					<span class="date">2013-05-23</span>
+					<a href="#" class="next"></a>				
+				</div>
 			<table width="100%" border="0" class="data" border="5">
 			  <tr>
 				<th scope="col" width="15%">時間</th>
@@ -81,8 +92,10 @@ AM.View.CustomerListView = Backbone.View.extend
 			</table>
 		</div>'
 
+	body_template: Handlebars.compile(_body_template)
+
 	events: 
-		"click .new_btn": "gotoAddCustomer"
+		"click .add_btn": "gotoAddCustomer"
 		"change select[name='gender']": "render"
 		"change select[name='personality']": "render"
 		"change input[name='name']": "render"
@@ -94,9 +107,14 @@ AM.View.CustomerListView = Backbone.View.extend
 
 	initialize: ->
 		@collection = @options.collection
-		@$el.html(@tool_bar_template({
-			label: AM.String
-		}) + @day_event_template() + @list_view_container)
+		$body_container = $(@body_template())
+		$body_container.append @tool_bar_template({label: AM.String})
+		$body_container.append @day_event_template() 
+		$body_container.append @list_view_container
+		console.log $body_container
+
+		@$el.append(@header_template)
+		@$el.append $body_container
 
 	gotoAddCustomer:->
   		AM.router.navigate "addcustomer", trigger: true

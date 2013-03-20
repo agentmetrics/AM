@@ -3,11 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-	$("#am_menu li").click ->
-		$("#am_menu li.active").removeClass("active")
-		$(@).addClass "active"
 
-	AM.customers = new AM.Collection.CustomerCollection
+    new AM.View.HeaderView()
+   
+	AM.customers = new AM.Collection.CustomerCollection()
 	AM.customers.fetch(
 		success: (collection, response) ->
             collection.each( (customer) ->

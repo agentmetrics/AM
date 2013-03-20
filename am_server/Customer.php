@@ -461,7 +461,7 @@ class Customer extends Control implements RESTfulInterface
    * response: relationship[]
    */
   function getRelationship($customer_id) {
-    $first_tier_relationship = $this->_getRelationship($customer_id);
+    $first_tier_relationship = $this->_getRelationship($customer_id, -1);
     $result = array();
     foreach($first_tier_relationship as $relationship) {
       $record = array();

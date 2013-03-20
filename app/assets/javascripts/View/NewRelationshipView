@@ -26,23 +26,27 @@ class AM.View.NewRelationshipView extends Backbone.View
 		_.bindAll @
 		@collection = @options.collection
 
-
 	render: ->
 		html = @friend_selection_template(
 			options: {
 				relationship: AM.Setting.Relationship
 			}
 			label: AM.String
-		))
+		)
 		$('.friend_name').typeahead(
 			source: @getFriendList
 			updater: (item)->
 				item.split(',')[0]
 		)
 		return html
-		
+
 	getFriendList: (query, process) ->
 		@collection.map((customer)->
 			customer.get('name') + ", " + customer.get('cellphone')
 		)
 
+	getRelationship: ->
+		{
+			relationship_id: 0
+    	related: 0
+    }

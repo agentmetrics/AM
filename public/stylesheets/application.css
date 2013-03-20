@@ -1,4 +1,4 @@
-/*!
+@charset "UTF-8";/*!
  * Bootstrap v2.2.2
  *
  * Copyright 2012 Twitter, Inc
@@ -6118,6 +6118,12 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
+
+/* line 18, /Users/mac/git/AM/app/assets/stylesheets/_base.scss */
+input[type="text"] {
+  padding: 4px 6px;
+}
+
 /* line 17, /Users/mac/.rvm/gems/ruby-1.9.3-p385/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -6183,32 +6189,144 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+/* line 18, /Users/mac/git/AM/app/assets/stylesheets/_base.scss */
+input[type="text"] {
+  padding: 4px 6px;
+}
+
 /* line 17, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 body {
   word-wrap: break-word;
-  font-size: 15px;
-  color: #666;
-  font-family: Verdana,\5FAE\8EDF\6B63\9ED1\9AD4,\65B0\7D30\660E\9AD4;
-  background: white;
+  font-size: 14px;
+  line-height: 1.3em;
+  color: #535353;
+  font-family: "Helvetica Neue", Trebuchet MS, 微軟正黑體, "Microsoft JhengHei";
+  background: url(../images/bg.png) repeat;
 }
 
-/* line 25, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 29, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+.left {
+  float: left;
+}
+
+/* line 30, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+.right {
+  float: right;
+}
+
+/* line 32, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 #content_panel {
-  background: #f2f2f2;
+  background: white;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 26px;
   width: 980px;
+  min-height: 600px;
   display: block;
-  /*input[type="text"] {
-  	margin-bottom: 0;
-  }*/
 }
-/* line 32, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
-#content_panel .toolbar {
+/* line 41, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .hd {
+  background: url(../images/widget-hd.png) no-repeat left top;
   height: 40px;
 }
+/* line 44, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .hd h2 {
+  font-size: 18px;
+  color: #fff;
+  line-height: 38px;
+  text-shadow: 1px 1px 0px #525252;
+  background: url(../images/icon-2.png) no-repeat 12px 8px;
+  padding-left: 45px;
+}
+/* line 53, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .body {
+  padding: 15px 15px 45px;
+  display: inline-block;
+}
+/* line 56, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .body .toolbar {
+  border-bottom: 1px solid #e7e7e6;
+  padding-bottom: 10px;
+  color: #88766b;
+  margin-bottom: 15px;
+  clear: both;
+}
+/* line 62, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .body .toolbar input {
+  margin-bottom: 0px;
+}
+/* line 63, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .body .toolbar select {
+  margin-bottom: 0px;
+}
+/* line 64, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .body .toolbar .add_btn {
+  float: right;
+  background: url(../images/btn-addClient.png) no-repeat 0px 0px;
+  width: 90px;
+  height: 27px;
+  text-indent: -8888px;
+  display: block;
+}
+/* line 71, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .body .toolbar .add_btn:hover {
+  background-position: 0px -27px;
+}
+/* line 76, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .schedule_widget {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  border: 1px solid #e8e7e5;
+  padding: 15px 10px;
+}
+/* line 80, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .schedule_widget .date-pick {
+  font-size: 15px;
+  color: #88766b;
+  margin-bottom: 5px;
+}
+/* line 84, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .schedule_widget .prev, #content_panel .schedule_widget .next {
+  display: inline-block;
+  height: 21px;
+  width: 21px;
+  margin-bottom: -6px;
+  margin: 0 3px -6px 3px;
+}
+/* line 88, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .schedule_widget .prev:hover, #content_panel .schedule_widget .next:hover {
+  background-position: 0 -21px;
+}
+/* line 90, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .schedule_widget .prev {
+  background: url(../images/arrow-prev.png) no-repeat 0px 0px;
+}
+/* line 94, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+#content_panel .schedule_widget .next {
+  background: url(../images/arrow-next.png) no-repeat 0px 0px;
+}
 
-/* line 40, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 100, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+.footer {
+  background: url(../images/footer.png) repeat-x;
+  height: 38px;
+  border-top: #2a313a 1px solid;
+  text-align: center;
+  clear: both;
+  margin-top: 30px;
+  color: #e5e5e5;
+  font-size: 13px;
+  line-height: 38px;
+}
+/* line 108, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+.footer a {
+  color: #e5e5e5;
+}
+
+/* line 113, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 form.form-horizontal .control-group {
   margin-bottom: 10px;
   /*.radio.inline, .checkbox.inline {
@@ -6218,13 +6336,13 @@ form.form-horizontal .control-group {
 
 /* table data
 ---------------------------------------------------------*/
-/* line 49, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 122, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data {
   font-size: 15px;
   color: #000;
 }
 
-/* line 51, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 124, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data th {
   background: #CED0D0;
   color: #000;
@@ -6232,46 +6350,47 @@ table.data th {
   text-align: center;
 }
 
-/* line 53, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 126, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data td, table.data th {
   padding: 5px 0px;
   border: 2px solid white;
 }
 
-/* line 55, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 128, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data td {
   text-align: center;
+  border-bottom: 1px solid #f0dcc8;
 }
 
-/* line 57, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 130, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data td.s1 {
   background: #FFCC00;
 }
 
-/* line 58, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 131, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data td.s2 {
   background: #FF99BB;
 }
 
-/* line 59, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 132, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data td.s3 {
   background: #8DD4F2;
 }
 
 /* table data-1
 ---------------------------------------------------------*/
-/* line 63, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 136, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data-1 {
   font-size: 24px;
   color: #000;
 }
 
-/* line 64, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 137, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data-1 td {
   padding: 5px 0px;
 }
 
-/* line 66, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
+/* line 139, /Users/mac/git/AM/app/assets/stylesheets/main.scss */
 table.data-1 .nu {
   color: #FF0000;
   font-size: 55px;
@@ -6342,6 +6461,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+/* line 18, /Users/mac/git/AM/app/assets/stylesheets/_base.scss */
+input[type="text"] {
+  padding: 4px 6px;
+}
+
 /* line 8, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
   margin: 0;
@@ -6391,157 +6515,104 @@ li {
 }
 
 /* line 18, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header {
+.wrap {
   width: 980px;
-  height: 100px;
-  clear: both;
-  display: block;
-  border-bottom: 10px solid #ced0d0;
-  background: #cd0920;
-  margin: 0px auto 20px auto;
+  margin: 0 auto;
+  overflow: hidden;
 }
-/* line 27, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header a {
+
+/* line 24, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header {
+  height: 93px;
+  display: block;
+  background: #cd0940;
+}
+/* line 28, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header a {
   color: #0873b9;
   text-decoration: none;
 }
 /* line 32, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header a, .header input {
-  outline: none;
-  /* for Firefox Google Chrome  */
-  behavior: expression(this.onFocus=this.blur());
-  /* for IE */
-}
-/* line 37, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .wrap {
-  width: 970px;
-  margin: 0 auto;
-}
-/* line 42, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .container {
-  width: 970px;
-  margin: 0 auto;
-  display: table;
-  padding: 12px 0 20px 0;
-}
-/* line 48, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main {
-  width: 650px;
-  float: left;
-}
-/* line 52, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .logo a {
-  width: 271px;
-  height: 50px;
+#header .logo {
+  width: 300px;
+  height: 57px;
   display: block;
-  background: url(../images/logo.png);
+  margin-top: 18px;
+  background: url(../images/logo.png) no-repeat left top;
+  margin-bottom: 18px;
   float: left;
-  margin-top: 3px;
 }
-/* line 59, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav {
+/* line 41, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header .top-nav {
   float: right;
-  margin-top: 17px;
+  margin-top: 36px;
 }
-/* line 62, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li {
-  -webkit-box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
-  -moz-box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
-  box-shadow: rgba(34, 25, 25, 0.4), 0, 1px, 3px;
+/* line 44, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header .top-nav li {
   list-style: none;
   float: left;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-  background: #FFCC00;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   margin-left: 10px;
-  -webkit-transition: background 0.5s ease;
-  -moz-transition: background 0.5s ease;
-  -o-transition: background 0.5s ease;
-  transition: background 0.5s ease;
+  background: url(../images/account-nav.png) repeat-x left top #2daae7;
+  padding: 3px 8px 4px 15px;
+  border: 1px solid #1a8ab3;
+  line-height: 18px;
 }
-/* line 69, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li:hover {
-  background: #FF9900;
+/* line 53, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header .top-nav li:hover {
+  background: url(../images/account-nav-h.png) repeat-x left top #44c6ef;
 }
-/* line 71, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li a {
+/* line 56, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header .top-nav li a {
   display: block;
-  padding: 5px 8px;
-  color: #000;
-  font-size: 15px;
-  text-shadow: 2px 1px 0px #ffdd55;
+  color: #fff;
+  text-decoration: none;
+  padding: 0px 8px 0px 18px;
+  text-shadow: 1px 1px 0px #525252;
 }
-/* line 78, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li.signup {
-  background: url(../images/icon-1.png) no-repeat 7px 7px #ffcc00;
-  padding-left: 17px;
+/* line 62, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header .top-nav li a.signup {
+  background: url(../images/icon-1.png) no-repeat 0 3px;
 }
-/* line 82, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li.signup:hover {
-  background: url(../images/icon-1.png) no-repeat 7px 7px white;
+/* line 65, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+#header .top-nav li a.login {
+  background: url(../images/icon-1.png) no-repeat 0 -24px;
 }
-/* line 87, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li.login {
-  background: url(../images/icon-2.png) no-repeat 7px 7px #ffcc00;
-  padding-left: 14px;
+
+/* line 73, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+.main-nav {
+  overflow: hidden;
+  background: #313c44;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 17px;
+}
+/* line 79, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+.main-nav ul {
+  margin: 0px auto 0px auto;
+  display: inline-block;
+}
+/* line 83, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+.main-nav li {
+  background: url(../images/line-1.png) repeat-y top left;
+  float: left;
+  display: block;
+  padding: 5px 20px;
+  text-align: center;
+  margin: auto 0px;
 }
 /* line 90, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .top-nav li.login:hover {
-  background: url(../images/icon-2.png) no-repeat 7px 7px white;
-}
-/* line 97, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav {
-  overflow: hidden;
-  width: 100%;
-  padding-top: 19px;
-}
-/* line 102, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav ul {
-  margin-left: 5px;
-}
-/* line 105, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav li {
-  float: left;
-  padding: 5px 20px;
-  background: #4C4C4C;
-  font-size: 16px;
-  text-align: center;
-  margin-right: 4px;
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-top-left-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-top-right-radius: 3px;
-  -webkit-transition: background 0.5s ease;
-  -moz-transition: background 0.5s ease;
-  -o-transition: background 0.5s ease;
-  transition: background 0.5s ease;
-  text-shadow: 2px 1px 0px black;
-}
-/* line 117, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav li a {
+.main-nav li a {
   color: white;
+  text-decoration: none;
 }
-/* line 120, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav li:hover {
-  background: #6d6d6d;
-}
-/* line 122, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav li:hover a {
-  color: white;
-  diplsy: block;
-}
-/* line 127, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav li.active {
-  background: #ced0d0;
-  text-shadow: none;
-}
-/* line 130, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
-.header .main-nav li.active a {
-  color: black;
-  font-weight: bold;
+/* line 92, /Users/mac/git/AM/app/assets/stylesheets/menu.scss */
+.main-nav li:hover a, .main-nav li.active a {
+  color: #313c44;
+  display: block;
+  background: #D8DDE2;
 }

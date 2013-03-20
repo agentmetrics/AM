@@ -4,7 +4,8 @@ $middle_grey: #CED0D0;
 $light_grey:  #F2F2F2;
 
 // red color
-$background_red: #CD0920;
+$background_red: #CD0940;
+$dark_blue: #313c44;
 
 $shadow_color: #221919;
 
@@ -14,3 +15,4 @@ $background_white: #ffffff;
 @import "compass/reset";
 @import "compass/utilities";
 
+input[type="text"]{padding:4px 6px;}

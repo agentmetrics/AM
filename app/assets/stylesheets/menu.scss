@@ -15,122 +15,84 @@ abbr,acronym {border:0;}
 textarea { overflow: auto; }
 li{list-style:none;}
 
-.header {
-	width: 980px;
-	height: 100px;
-	clear: both;
-	display: block;
-	border-bottom: 10px solid $middle_grey;
-	background: $background_red;
-	margin: 0px auto 20px auto;
+.wrap{
+	width:980px;
+	margin:0 auto; 
+	overflow:hidden;
+}
 
+#header {
+	height: 93px;
+	display: block;
+	background: $background_red;
 	a {
 		color:#0873b9;
 		text-decoration:none;
 	}
-
-	a, input{
-		outline: none; /* for Firefox Google Chrome  */
-		behavior:expression(this.onFocus=this.blur()); /* for IE */
-	}
-
-	.wrap{
-		width:970px;
-		margin:0 auto; 
-	}
-
-	.container{
-		width:970px;margin:0 auto;
-		display:table;
-		padding:12px 0 20px 0;
-	}
-
-	.main {
-		width:650px;float:left;
-	}
-
-	.logo a{
-		width:271px;height:50px;
+	.logo {
+		width:300px;
+		height:57px;
 		display:block;
-		background:url(../images/logo.png);
-		float:left;margin-top:3px;
+		margin-top:18px;
+		background:url(../images/logo.png) no-repeat left top;
+		margin-bottom:18px;
+		float:left;
 	}
-
 	.top-nav{
-		float:right;margin-top:17px;
-
+		float:right;
+		margin-top:36px;
 		li{
-			@include box-shadow(rgba($shadow_color, 0.4), 0, 1px, 3px);
-			list-style:none;float:left;
-			@include border-radius(3px);
-			background:#FFCC00;margin-left:10px;
-			@include single-transition(background, 0.5s, ease);
-
-			&:hover{background:#FF9900;}
-
+			list-style:none;
+			float:left;
+			@include border-radius(20px);
+			margin-left:10px;
+			background:url(../images/account-nav.png) repeat-x left top #2daae7;
+			padding:3px 8px 4px 15px;
+			border:1px solid #1a8ab3;
+			line-height:18px;
+			&:hover{
+				background:url(../images/account-nav-h.png) repeat-x left top #44c6ef;
+			}
 			a{
-				display:block;padding:5px 8px;
-				color:#000;
-				font-size:15px;
-				text-shadow: 2px 1px 0px #FFDD55;
-			}
-
-			&.signup {
-				background:url(../images/icon-1.png) no-repeat 7px 7px #FFCC00;
-				padding-left:17px;
-
-				&:hover{
-					background:url(../images/icon-1.png) no-repeat 7px 7px #fff;
+				display:block;
+				color:#fff;
+				text-decoration:none;
+				padding:0px 8px 0px 18px;
+				text-shadow:1px 1px 0px #525252;
+				&.signup {
+					background:url(../images/icon-1.png) no-repeat 0 3px;
 				}
-			}
-
-			&.login {
-				background:url(../images/icon-2.png) no-repeat 7px 7px #FFCC00;
-				padding-left:14px;
-				&:hover {
-					background:url(../images/icon-2.png) no-repeat 7px 7px #fff;
+				&.login {
+					background:url(../images/icon-1.png) no-repeat 0 -24px;
 				}
 			}
 		}		
 	}
+}
 
-	.main-nav { 
-		overflow:hidden; 
-		width: 100%; 
-		padding-top:19px;
-
-		ul {
-			margin-left: 5px;
-		}
-		li {
-			float:left;
-			padding:5px 20px;
-			background:#4C4C4C;
-			
-			font-size:16px;
-			text-align:center;margin-right:4px;
-
-			@include border-top-radius(3px);
-			@include single-transition(background, 0.5s, ease);
-			text-shadow: 2px 1px 0px #000;
-
-			a {
-				color:white;
-			}
-			&:hover {
-				background:$dark_grey;
-				a{
-					color:white;
-					diplsy:block;
-				}
-			}
-			&.active {
-				background: $middle_grey;
-				text-shadow:none;
-				a { 
-					color:black;
-					font-weight:bold;
-				}
+.main-nav { 
+	overflow:hidden;  
+	background:$dark_blue;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size:17px;
+	ul {
+		margin: 0px auto 0px auto;
+		display: inline-block;
+	}
+	li {
+		background:url(../images/line-1.png) repeat-y top left;
+		float:left;
+		display: block;
+		padding:5px 20px;
+		text-align:center;
+		margin: auto 0px;
+		a {color:white;  text-decoration:none;}
+		&:hover, &.active {
+			a{
+				color:#313c44;
+				display:block;
+				background: #D8DDE2;
 			}
 		}
 	}
