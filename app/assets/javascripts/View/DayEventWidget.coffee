@@ -21,10 +21,15 @@ AM.View.DayEventWidget = Backbone.View.extend
 	events: 
 		"click .prev" : "previousDay"
 		"click .next" : "nextDay"
+		"dragenter .time_slot": "handleDrop"
+		"dragover .time_slot": "handleDrop"
+		"drop .time_slot": "createEvent"
+
 
 	targetDate: new Date()
 
 	initialize: ->
+		@collection = @options.collection
 		@
 
 	render: ->
@@ -41,3 +46,15 @@ AM.View.DayEventWidget = Backbone.View.extend
 	nextDay: ->
 		@targetDate.setDate( @targetDate.getDate() + 1 )
 		@render()
+
+	handleDrop: (e)->
+		e.preventDefault()
+		e.stopPropagation()
+
+	createEvent: (e)->
+		e.preventDefault()
+		e.stopPropagation()
+		customer_id = e.originalEvent.dataTransfer.getData('customer_id')
+		customer = @collection.get(customer_id)
+		$(e.target).html(customer.get("name"))
+		$(e.target).popover('show')

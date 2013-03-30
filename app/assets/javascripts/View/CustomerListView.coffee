@@ -86,13 +86,10 @@ AM.View.CustomerListView = Backbone.View.extend
 		"change select[name='personality']": "render"
 		"change input[name='name']": "render"
 		"dragstart .indicator": "handleDragStart" 
-		"dragenter .time_slot": "handleDrop"
-		"dragover .time_slot": "handleDrop"
-		"drop .time_slot": "createEvent"
-
+	
 	initialize: ->
 		@collection = @options.collection
-		dateWidget = new AM.View.DayEventWidget()
+		dateWidget = new AM.View.DayEventWidget(collection: @collection)
 		$body_container = $(@body_template())
 		$body_container.append @tool_bar_template({label: AM.String})
 		$body_container.append dateWidget.render().el
@@ -107,18 +104,6 @@ AM.View.CustomerListView = Backbone.View.extend
 
 	handleDragStart: (e) ->
   		e.originalEvent.dataTransfer.setData('customer_id', $(e.target).attr('data-customer-id'))
-
-	handleDrop: (e)->
-		e.preventDefault()
-		e.stopPropagation()
-
-	createEvent: (e)->
-		e.preventDefault()
-		e.stopPropagation()
-		customer_id = e.originalEvent.dataTransfer.getData('customer_id')
-		customer = @collection.get(customer_id)
-		$(e.target).html(customer.get("name"))
-		$(e.target).popover('show')
 
 	render: ->
 		filtered = @collection

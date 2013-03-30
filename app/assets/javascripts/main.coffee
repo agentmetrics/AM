@@ -12,7 +12,6 @@ $ ->
             collection.each( (customer) ->
                 customer.isPartial = true
             )
-            console.log collection
             AM.router = new AM.Router()
             Backbone.history.start()
 
