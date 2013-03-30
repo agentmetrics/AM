@@ -1,6 +1,6 @@
 AM.View or (AM.View = {})
 
-_header_template ='
+_template ='
 <div id="header">
 	<div class="wrap">
 	    <div class="logo"><a href="#"></a></div>    
@@ -22,17 +22,33 @@ _header_template ='
       <li ref="#channel"><a href="#channel">訂閱頻道</a></li>
       <li ref="#setting"><a href="#setting">設定</a></li>
     </ul>
+  </div>
 </div>
+
+<div id="content_panel" class="row container">
+</div>
+
+<div class="footer">
+  <div class="wrap">
+	<div class="left">
+		© Copyright 2013 Nvesto Co., Ltd. All Rights Reserved.
+	</div>
+	<div class="right">
+		<a href="#">服務條款</a> | <a href="#">隱私政策</a> | <a href="#">聯絡我們</a>
+	</div>
+  </div>
+</div>
+
 '
 
-class AM.View.HeaderView extends Backbone.View
+class AM.View.MainView extends Backbone.View
 
-	el: '#hd'
+	el: 'body'
 
 	events:
 		"click ul.menu li": "changeNav"
 
-	template: Handlebars.compile(_header_template)
+	template: Handlebars.compile(_template)
 
 	initialize: ->
 		@render()

@@ -76,23 +76,9 @@ AM.View.CustomerListView = Backbone.View.extend
 
 	list_view_container: '<div class="span8  customer_list"></div>'
 
-	day_event_template: Handlebars.compile '
-		<div class="span3 panel cal schedule_widget">
-				<div class="date_pick">
-					<a href="#" class="prev"></a>
-					<span class="date">2013-05-23</span>
-					<a href="#" class="next"></a>				
-				</div>
-			<table width="100%" border="0" class="data" border="5">
-			  <tr>
-				<th scope="col" width="15%">時間</th>
-				<th scope="col" width="40%">今天(12/7)</th>
-			  </tr>
-			  {{#event_day}}{{/event_day}}
-			</table>
-		</div>'
-
 	body_template: Handlebars.compile(_body_template)
+
+	targetDay: new Date()
 
 	events: 
 		"click .add_btn": "gotoAddCustomer"
@@ -104,12 +90,12 @@ AM.View.CustomerListView = Backbone.View.extend
 		"dragover .time_slot": "handleDrop"
 		"drop .time_slot": "createEvent"
 
-
 	initialize: ->
 		@collection = @options.collection
+		dateWidget = new AM.View.DayEventWidget()
 		$body_container = $(@body_template())
 		$body_container.append @tool_bar_template({label: AM.String})
-		$body_container.append @day_event_template() 
+		$body_container.append dateWidget.render().el
 		$body_container.append @list_view_container
 		console.log $body_container
 

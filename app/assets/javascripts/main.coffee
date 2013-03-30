@@ -4,7 +4,7 @@
 
 $ ->
 
-    new AM.View.HeaderView()
+    new AM.View.MainView()
    
 	AM.customers = new AM.Collection.CustomerCollection()
 	AM.customers.fetch(

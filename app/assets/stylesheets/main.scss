@@ -77,9 +77,12 @@ body {
 		@include border-radius(8px);
 		border:1px solid #e8e7e5;
 		padding: 15px 10px;
-		.date-pick{
+		text-align: center; 
+		.date_pick{
 			font-size:15px;
-			color:#88766b;margin-bottom:5px;
+			color:#88766b;
+			margin: 0px auto 5px auto;
+			display:inline-block;
 		}
 		.prev, .next{
 			display:inline-block;
