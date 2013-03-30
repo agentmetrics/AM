@@ -120,23 +120,27 @@ form.form-horizontal .control-group {
 	}*/
 }
 
-/* table data
----------------------------------------------------------*/
-table.data{font-size:15px;color:#000}
-
-table.data th{background:#CED0D0;color:#000;font-size:15px;text-align:center}
-
-table.data td,table.data th{padding:5px 0px;border:2px solid #fff}
-
-table.data td{text-align:center; border-bottom: 1px solid #f0dcc8;}
-
-table.data td.s1{background:#FFCC00}
-table.data td.s2{background:#FF99BB}
-table.data td.s3{background:#8DD4F2}
-
-/* table data-1
----------------------------------------------------------*/
-table.data-1{font-size:24px;color:#000}
-table.data-1 td{padding:5px 0px;}
-
-table.data-1 .nu{color:#FF0000;font-size:55px;line-height:55px;}
+table.data {
+	font-size:15px;
+	color:#000;
+	th {
+		padding:5px 0px;
+		background:#CED0D0;
+		color:#000;font-size:15px;text-align:center
+	}
+	td {
+		padding:5px 0px;
+		text-align:center; 
+		border-bottom: 1px solid #f0dcc8;
+		div {
+			display: inline-block;
+			margin: 0 auto;
+		}
+		&.time_clock {
+			width: 64px;
+		}
+		&.time_slot {
+			width: 156px;
+		}
+	}
+}

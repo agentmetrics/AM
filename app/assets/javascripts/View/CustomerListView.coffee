@@ -1,16 +1,5 @@
 AM.View or (AM.View = {})
 
-Handlebars.registerHelper "event_day",  ->
-	i = 6
-	l = 24
-	out = ""
-	while i <= l
-		out += "<tr>"
-		out += "<td>" + i + ":00"+ "</td>"
-		out += "<td class='time_slot' data-toggle='popover' data-placement='left' data-content='' title='' data-original-title='New Task'> </td>"
-		out + "</tr>"
-		i++
-	out
 
 _body_template = '<div class="body row"></div>'
 

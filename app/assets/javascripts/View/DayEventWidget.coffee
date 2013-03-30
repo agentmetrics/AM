@@ -1,18 +1,31 @@
 AM.View or (AM.View = {})
 
+Handlebars.registerHelper "event_day",  ->
+	i = 6
+	l = 24
+	out = ""
+	while i <= l
+		out += "<tr>"
+		out += "<td class='time_clock'>" + i + ":00"+ "</td>"
+		out += "<td class='time_slot' data-toggle='popover' data-placement='left' data-content='' title='' data-original-title='New Task'> </td>"
+		out + "</tr>"
+		i++
+	out
+
+
 AM.View.DayEventWidget = Backbone.View.extend
 
 	template: Handlebars.compile '
 		<div class="span3 panel cal schedule_widget">
-				<div class="date_pick">
-					<a href="#" class="prev"></a>
-					<span class="date">{{dateStr}}</span>
-					<a href="#" class="next"></a>				
-				</div>
+			<div class="date_pick">
+				<a href="#" class="prev"></a>
+				<span class="date">{{dateStr}}</span>
+				<a href="#" class="next"></a>				
+			</div>
 			<table width="100%" border="0" class="data" border="5">
 			  <tr>
-				<th scope="col" width="15%"></th>
-				<th scope="col" width="40%"></th>
+				<th></th>
+				<th></th>
 			  </tr>
 			  {{#event_day}}{{/event_day}}
 			</table>
@@ -56,5 +69,5 @@ AM.View.DayEventWidget = Backbone.View.extend
 		e.stopPropagation()
 		customer_id = e.originalEvent.dataTransfer.getData('customer_id')
 		customer = @collection.get(customer_id)
-		$(e.target).html(customer.get("name"))
+		$(e.target).html("<div>" + customer.get("name") + "</div>")
 		$(e.target).popover('show')
