@@ -22,11 +22,7 @@ AM.View.DayEventWidget = Backbone.View.extend
 				<span class="date">{{dateStr}}</span>
 				<a href="#" class="next"></a>				
 			</div>
-			<table width="100%" border="0" class="data" border="5">
-			  <tr>
-				<th></th>
-				<th></th>
-			  </tr>
+			<table width="100%" border="0" class="data">
 			  {{#event_day}}{{/event_day}}
 			</table>
 		</div>'

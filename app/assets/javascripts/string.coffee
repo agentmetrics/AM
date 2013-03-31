@@ -31,6 +31,8 @@ AM.String = {
 
 	job_category: "工作類別"
 	job_title: "職位"
+
+	last_visit: "最後連絡時間"
 	
 	male: "男"
 	marriage: "婚姻"
@@ -50,5 +52,6 @@ AM.String = {
 	value_info:"額外資訊"
 	visit_history: "訪談記錄"
 
+	warm:"溫馨小提醒：可點選下方姓名拖曳至左方行程表"
 	weight: "評等"
 }

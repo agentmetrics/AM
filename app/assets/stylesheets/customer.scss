@@ -1,0 +1,69 @@
+@import "base";
+@import "compass/css3/images";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+
+
+.list_view {
+	font-family: "Helvetica Neue",Trebuchet MS,微軟正黑體,"Microsoft JhengHei";
+	.schedule_widget {
+		@include border-radius(8px);
+		border:1px solid #e8e7e5;
+		padding: 15px 10px;
+		text-align: center; 
+		font-size:15px;
+		.date_pick{
+			font-size:15px;
+			color:#88766b;
+			margin: 0px auto 5px auto;
+			display:inline-block;
+		}
+		.prev, .next{
+			display:inline-block;
+			height:21px;width:21px;margin-bottom:-6px;
+			margin:0 3px -6px 3px;
+			&:hover{background-position:0 -21px}
+		}
+		.prev{
+			background:url(../images/arrow-prev.png) no-repeat 0px 0px;
+
+		}
+		.next{
+			background:url(../images/arrow-next.png) no-repeat 0px 0px;
+		}
+
+		table.data {
+			background:url(../images/line-2.png) repeat-y left 8px;
+			color:#000;
+			td {
+				padding:8px 9px;
+				border-bottom:1px solid #f0dcc8;
+				div {
+					display: inline-block;
+					margin: 0 auto;
+				}
+				&.time_clock {
+					width: 64px;
+				}
+				&.time_slot {
+					width: 156px;
+				}
+			}
+		}
+	}
+
+	.msg.warm{color:#7fa23b; margin-bottom:10px;}
+
+	.customer_list {
+		.f a {color:#f46a6a;}
+		.m a {color:#2e96c3;}
+		tr.th {
+			background: #e8e7e5;
+			color: #000;
+			th {
+				font-weight: normal;
+			}
+		}
+	}
+}

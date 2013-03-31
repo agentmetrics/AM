@@ -47,9 +47,10 @@ AM.View.CustomerListView = Backbone.View.extend
 	tool_bar_template: Handlebars.compile(_tool_bar_template)
 	
 	list_view_template: Handlebars.compile '
-		<table class="table table-striped">
+		<div class="msg warm">{{label.warm}}</div>
+		<table class="table">
 		<tbody>
-		<tr><th>姓名</th><th>級別</th><th>個性</th><th>手機電話</th><th>最後連絡時間</th></tr>
+		<tr class="th"><th>{{label.name}}}</th><th>{{label.grade}}</th><th>{{label.personality}}</th><th>{{label.cellphone}}</th><th>{{label.last_visit}}</th></tr>
 		{{#each customerlist}}
 			<tr class="{{gender}}">
 			<td><a class="indicator" draggable="true" data-customer-id={{id}} href="#customer/{{id}}">{{name}}</a></td>
@@ -122,7 +123,8 @@ AM.View.CustomerListView = Backbone.View.extend
   				personality: customer.get('personality')
   				cellphone: customer.get("cellphone")
   				gender: customer.get("gender")
-  				date: (if date_str then new Date(parseInt(date_str)).toGMTString() else "")
+  				date: (if date_str then new Date(parseInt(date_str)).toLocaleDateString() else "")
   				id: customer.id
+  			label:AM.String
   		))
   				
