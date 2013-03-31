@@ -5,16 +5,6 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/transition";
 
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;	padding:0;}
-table {border-collapse:collapse;border-spacing:0;}
-fieldset,img {border:0;}
-address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:normal;}
-caption,th {text-align:left;}
-q:before,q:after {content:'';}
-abbr,acronym {border:0;}
-textarea { overflow: auto; }
-li{list-style:none;}
-
 .wrap{
 	width:980px;
 	margin:0 auto; 
@@ -24,7 +14,9 @@ li{list-style:none;}
 #header {
 	height: 93px;
 	display: block;
-	//background: $background_red;
+	font-size:14px ;
+	line-height:1.3em;
+	font-family: "Helvetica Neue",Trebuchet MS,微軟正黑體,"Microsoft JhengHei";
 	
 	background:url(../images/header_red.png) repeat-x;
 	a {

@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-
     new AM.View.MainView()
    
 	AM.customers = new AM.Collection.CustomerCollection()

@@ -9,6 +9,7 @@ class AM.Router extends Backbone.Router
 		"customer/:id/:action": "modifyCustomer"
 		"customer/:id": "showCustomer"
 		"schedule" : "listSchedule"
+		"*path" : "defaultPage"
 
 	addCustomer: ->
 		AM.VM.showView new AM.View.NewCustomerView(collection: AM.customers)
@@ -30,5 +31,7 @@ class AM.Router extends Backbone.Router
 				collection: AM.customers
 			)
 	listSchedule: ->
-		console.log "listSchedule"
 		AM.VM.showView new AM.View.ScheduleListView()
+
+	defaultPage: ->
+		$('#content_panel').html('<h1>Not implemented</h1>')
