@@ -18,9 +18,9 @@ AM.View.DayEventWidget = Backbone.View.extend
 	template: Handlebars.compile '
 		<div class="span3 panel cal schedule_widget">
 			<div class="date_pick">
-				<a href="#" class="prev"></a>
+				<a class="prev"></a>
 				<span class="date">{{dateStr}}</span>
-				<a href="#" class="next"></a>				
+				<a class="next"></a>				
 			</div>
 			<table width="100%" border="0" class="data">
 			  {{#event_day}}{{/event_day}}

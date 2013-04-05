@@ -4,11 +4,16 @@ Handlebars.registerHelper "sec_to_date", (time)->
   return new Date(parseInt(time)).toLocaleDateString()
 
 _basic_info_template = '
+<div class="hd">
+	<h2>客戶資料</h2>
+</div>
 <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
-        {{label.basic_info}}
-      </a>
+    	<h3 class="icon_info">
+	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
+	        {{label.basic_info}}
+	      </a>
+      	</h3>
     </div>
 	<div class="accordion-body collapse in" id="basic_info">
 		<div class="accordion-inner">
