@@ -14,5 +14,19 @@ $background_white: #ffffff;
 
 @import "compass/reset";
 @import "compass/utilities";
+@import "compass/css3/box-shadow";
 
-input[type="text"]{padding:4px 6px;}
+select,textarea,input[type="text"],input[type="password"]{
+	padding:4px 6px;
+	background-color:#fff;
+	border:1px solid #b2c4d4;
+	box-shadow:inset 1px 1px 3px rgba(178,196,212,0.8);
+}
+
+
+.widget h2{
+	font-size:18px;color:#fff;
+	font-family: "Helvetica Neue",Arial,微軟正黑體,"Microsoft JhengHei";
+	line-height:38px;
+	text-shadow:1px 1px 0px #525252;
+}

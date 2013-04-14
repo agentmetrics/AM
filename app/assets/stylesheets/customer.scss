@@ -67,3 +67,18 @@
 		}
 	}
 }
+
+.add_customer {
+	font-family: "Helvetica Neue",Trebuchet MS,微軟正黑體,"Microsoft JhengHei";
+	.control-label {
+		color: hsl(0, 0%, 33%);
+		
+		text-align:left;
+	}
+
+	.control-group .controls {
+		margin-left: 12%;
+		color: hsl(23, 34%, 53%);
+		line-height: 21px;
+	}
+}

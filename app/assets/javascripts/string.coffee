@@ -20,7 +20,7 @@ AM.String = {
 	customer_type: "客戶類別"
 	customer_search: "客戶搜尋"
 	
-	female: "女"
+	female: "女性"
 	friendship_info: "客戶人際關係"
 	
 	grade: "級別"
@@ -34,7 +34,7 @@ AM.String = {
 
 	last_visit: "最後連絡時間"
 	
-	male: "男"
+	male: "男性"
 	marriage: "婚姻"
 	modify: "修改"
 

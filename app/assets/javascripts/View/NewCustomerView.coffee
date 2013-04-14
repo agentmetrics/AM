@@ -38,8 +38,10 @@ _basic_info_template = '
       </a>
     </div>
 	<div class="accordion-body collapse in" id="basic_info">
-		<div class="accordion-inner">
-			<form class="form-horizontal">
+		<div class="accordion-inner row">
+			<div class="span2">
+			</div>
+			<form class="form-horizontal span8">
 				<div class="control-group">
 					<label class="control-label">{{label.name}}</label>
 					<div class="controls">
@@ -49,8 +51,8 @@ _basic_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.gender}}</label>
 					<div class="controls">
-						<label class="radio inline"><input name="gender" type="radio" value="m">{{label.male}}</label>
 						<label class="radio inline"><input name="gender" type="radio" value="f">{{label.female}}</label>
+						<label class="radio inline"><input name="gender" type="radio" value="m">{{label.male}}</label>
 					</div>
 				</div>
 				<div class="control-group">
@@ -62,15 +64,15 @@ _basic_info_template = '
 				<div class="control-group">
 					<label class="control-label">{{label.birthday}}</label>
 					<div class="controls">
-						<select class="span2" name="month">
-							{{#list_month}}{{/list_month}}
-						</select>
-						<select class="span2" name="day">
-							{{#list_day}}{{/list_day}}
-						</select>
 						<select name="year">
 							{{#list_year}}{{/list_year}}
-						</select>
+						</select>年
+						<select class="span2" name="month">
+							{{#list_month}}{{/list_month}}
+						</select>月
+						<select class="span2" name="day">
+							{{#list_day}}{{/list_day}}
+						</select>日
 					</div>
 				</div>
 				<div class="control-group">
@@ -293,6 +295,8 @@ _friend_selection_template ='
 </div>
 '
 
+_header_template = '<div class="hd"><h2>{{label.new_customer}}</h2></div>'
+
 _footer_template = '<div class="btn create">{{label.submit}}</div>'
 
 class AM.View.NewCustomerView extends Backbone.View
@@ -303,11 +307,14 @@ class AM.View.NewCustomerView extends Backbone.View
 	friendship_template: Handlebars.compile(_friendship_template)
 	footer_template: Handlebars.compile(_footer_template)
 	friend_selection_template: Handlebars.compile(_friend_selection_template)
+	header_template: Handlebars.compile(_header_template)
 
 	events: 
 		"click .create": "submit"
 		"click .add_relationship": "addFriend"
 		"change select[name=job_category]": "updateJobCategory"
+
+	className: "widget add_customer"
 
 	remove: ->
 		@undelegateEvents() 
@@ -408,7 +415,10 @@ class AM.View.NewCustomerView extends Backbone.View
 		)
 
 	render: ->
-		@$el.html('<div class="accordion" id="accordion2">' + 
+
+		@$el.html(
+			@header_template(label:AM.String) +
+			'<div class="accordion" id="accordion2">' + 
 			@_getBasicInfoTemplate() + 
 			@_getCompanyInfoTemplate() + 
 			@_getValueInfoTemplate() + 
