@@ -51,7 +51,12 @@ class Personalsetting extends Control implements RESTfulInterface
 			self::exceptionResponse(400, "Request is not a valid json format.");
 		}
 		else {
-			$this->insertTarget($segments[0], $data);
+			$result = $this->insertTarget($segments[0], $data);
+			if(!$result) {
+				self::exceptionResponse(501, "Server Error!");
+			} else {
+				print_r(json_encode( array("id"=>$segments[0], "record"=>$result) ));
+			}
 		}
 		
 	}
@@ -127,30 +132,7 @@ class Personalsetting extends Control implements RESTfulInterface
 	
 	
 	private function insertTarget($agent_id, $data) {
-		/*
-		 {
-		"year": {
-		"criteria": "120000",
-		"result": "88000",
-		"receive": "98000"
-		},
-		"race": {
-		"criteria": "580000",
-		"result": "400000",
-		"receive": "400000"
-		},
-		"customer": {
-		"criteria": "900000",
-		"result": "450000",
-		"receive": "550000"
-		},
-		"promote": {
-		"criteria": "36000",
-		"result": "35990",
-		"receive": "35990"
-		}
-		}
-		*/
+		$count = 0;
 
 		foreach($data as $type => $item) {
 			//get type id
@@ -163,8 +145,15 @@ class Personalsetting extends Control implements RESTfulInterface
 				$insert_data["value"] = $value;
 					
 				$result = $this->db->insert("agent_metrics.personal_target", $insert_data);
+				if( !$result ) {
+					return FALSE;
+				}
+				
+				$count ++;
 			}
 		}
+		
+		return $count;
 	}
 	
 	private function deleteTarget($agent_id) {
