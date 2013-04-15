@@ -33,7 +33,7 @@ Handlebars.registerHelper "list_day",  ->
 _basic_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
+      <a class="accordion-toggle icon_info" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
         {{label.basic_info}}
       </a>
     </div>
@@ -58,19 +58,19 @@ _basic_info_template = '
 				<div class="control-group">
 						<label class="control-label">{{label.cellphone}}</label>
 						<div class="controls">
-							<input size="50" maxlength="50" class="input-medium" name="cellphone" type="text" value="{{data.cellphone}}">
+							<input size="50" maxlength="50" class="input-large" name="cellphone" type="text" value="{{data.cellphone}}">
 						</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{label.birthday}}</label>
 					<div class="controls">
-						<select name="year">
+						<select class="span2" name="year">
 							{{#list_year}}{{/list_year}}
 						</select>年
-						<select class="span2" name="month">
+						<select class="span1" name="month">
 							{{#list_month}}{{/list_month}}
 						</select>月
-						<select class="span2" name="day">
+						<select class="span1" name="day">
 							{{#list_day}}{{/list_day}}
 						</select>日
 					</div>
@@ -118,13 +118,15 @@ _basic_info_template = '
 _company_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#company_info">
+      <a class="accordion-toggle icon_info" data-toggle="collapse" data-parent="#accordion2" href="#company_info">
         {{label.company_info}}
       </a>
     </div>
 	<div class="accordion-body collapse in" id="company_info">
-		<div class="accordion-inner">
-			<form class="form-horizontal">
+		<div class="accordion-inner row">
+			<div class="span2">
+			</div>
+			<form class="form-horizontal span8">
 				<div class="control-group">
 					<label class="control-label">{{label.company_name}}</label>
 					<div class="controls">
@@ -167,13 +169,15 @@ _company_info_template = '
 _value_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#value_info">
+      <a class="accordion-toggle icon_info" data-toggle="collapse" data-parent="#accordion2" href="#value_info">
         {{label.value_info}}
       </a>
     </div>
 	<div class="accordion-body collapse in" id="value_info">
-		<div class="accordion-inner">
-			<form class="form-horizontal">
+		<div class="accordion-inner row">
+			<div class="span2">
+			</div>
+			<form class="form-horizontal span8">
 				<div class="control-group">
 					<label class="control-label">{{personality.title}}</label>
 					<div class="controls">
@@ -261,7 +265,7 @@ _value_info_template = '
 _friendship_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#friendship_info">
+      <a class="accordion-toggle icon_info" data-toggle="collapse" data-parent="#accordion2" href="#friendship_info">
         {{label.friendship_info}}
       </a>
     </div>
@@ -297,18 +301,27 @@ _friend_selection_template ='
 
 _header_template = '<div class="hd"><h2>{{label.new_customer}}</h2></div>'
 
-_footer_template = '<div class="btn create">{{label.submit}}</div>'
+_body_template = '<div class="body"><div class="accordion">
+	{{basic}}
+	{{company}}
+	{{value}}
+	{{friendship}}
+</div></div>'
+
+_footer_template = '<div class="ft"><div class="btn create">{{label.submit}}</div></div>'
 
 class AM.View.NewCustomerView extends Backbone.View
+
+	header_template: Handlebars.compile(_header_template)
+	body_template: Handlebars.compile(_body_template)
+	footer_template: Handlebars.compile(_footer_template)
 
 	basic_info_template: Handlebars.compile(_basic_info_template)
 	value_info_template: Handlebars.compile(_value_info_template)
 	company_info_template: Handlebars.compile(_company_info_template)
 	friendship_template: Handlebars.compile(_friendship_template)
-	footer_template: Handlebars.compile(_footer_template)
 	friend_selection_template: Handlebars.compile(_friend_selection_template)
-	header_template: Handlebars.compile(_header_template)
-
+	
 	events: 
 		"click .create": "submit"
 		"click .add_relationship": "addFriend"
@@ -321,8 +334,6 @@ class AM.View.NewCustomerView extends Backbone.View
 		@$el.html()
 
 	initialize: ->
-		_.bindAll @
-		
 		@jobCategoryIndex = 0
 
 		@collection = @options.collection
@@ -414,17 +425,19 @@ class AM.View.NewCustomerView extends Backbone.View
 			}
 		)
 
-	render: ->
+	_getBodyTemplate: ->
+		return @body_template({
+			basic: @_getBasicInfoTemplate() 
+			company: @_getCompanyInfoTemplate()  
+			value: @_getValueInfoTemplate()  
+			friendship: @_getFriendshipTemplate() 
+		})
 
+	render: ->
 		@$el.html(
 			@header_template(label:AM.String) +
-			'<div class="accordion" id="accordion2">' + 
-			@_getBasicInfoTemplate() + 
-			@_getCompanyInfoTemplate() + 
-			@_getValueInfoTemplate() + 
-			@_getFriendshipTemplate() + 
-		  '</div>' + 
-		  @_getFooterTemplate()
+			@_getBodyTemplate() +
+		  	@_getFooterTemplate()
 		)
 
 		if @customer and  @customer.get("evaluation")
@@ -463,7 +476,6 @@ class AM.View.NewCustomerView extends Backbone.View
 
 
 	submit: ->
-		console.log 'submit'
 		customer_info = {
 			name: $('input[name="full_name"]').val()
 			cellphone: $('input[name="cellphone"]').val()
