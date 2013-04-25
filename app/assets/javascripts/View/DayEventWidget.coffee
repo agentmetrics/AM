@@ -7,7 +7,7 @@ Handlebars.registerHelper "event_day",  ->
 	while i <= l
 		out += "<tr>"
 		out += "<td class='time_clock'>" + i + ":00"+ "</td>"
-		out += "<td class='time_slot' data-toggle='popover' data-placement='left' data-content='' title='' data-original-title='New Task'> </td>"
+		out += "<td class='time_slot' data-time=" + i + "> </td>"
 		out + "</tr>"
 		i++
 	out
@@ -27,13 +27,34 @@ AM.View.DayEventWidget = Backbone.View.extend
 			</table>
 		</div>'
 
+	event_template: Handlebars.compile '
+		<div>內容:</div><input size="50" maxlength="50" class="input-medium" type="text">
+		<div>開始時間:</div>{{day}} {{start_time}}
+		<div>結束時間:</div>{{day}} {{end_time}}
+		<div>客戶:</div>{{name}}
+		<div>
+		<div>分類</div>
+			<select class="span2" name="category">
+				<option>銷售拜訪 
+				<option>服務拜訪 
+				<option>增員拜訪 
+				<option>陌生拜訪 
+				<option>教育訓練 
+				<option>行政事項 
+				<option>公司活動
+				<option>其他			
+			</select>
+		</div>
+		<button class="btn btn-mini" type="button">確認</button>
+		<button class="btn btn-mini" type="button">取消</button>
+	'
+
 	events: 
 		"click .prev" : "previousDay"
 		"click .next" : "nextDay"
 		"dragenter .time_slot": "handleDrop"
 		"dragover .time_slot": "handleDrop"
 		"drop .time_slot": "createEvent"
-
 
 	targetDate: new Date()
 
@@ -65,5 +86,18 @@ AM.View.DayEventWidget = Backbone.View.extend
 		e.stopPropagation()
 		customer_id = e.originalEvent.dataTransfer.getData('customer_id')
 		customer = @collection.get(customer_id)
-		$(e.target).html("<div>" + customer.get("name") + "</div>")
-		$(e.target).popover('show')
+		start_time = parseInt($(e.currentTarget).attr('data-time'))
+		end_time = start_time + 1
+		popover = @event_template({
+			id: customer_id
+			name: customer.get('name')
+			day: @targetDate.toLocaleDateString()
+			start_time: start_time + ":00"
+			end_time: end_time + ":00"
+		})
+		$(e.target).popover({
+			content: popover
+			html : true
+			title: ""
+			}).popover('show')
+		$('.popover-title').hide()

@@ -4,9 +4,6 @@ Handlebars.registerHelper "sec_to_date", (time)->
   return new Date(parseInt(time)).toLocaleDateString()
 
 _basic_info_template = '
-<div class="hd">
-	<h2>客戶資料</h2>
-</div>
 <div class="accordion-group">
     <div class="accordion-heading">
     	<h3 class="icon_info">
@@ -17,15 +14,15 @@ _basic_info_template = '
     </div>
 	<div class="accordion-body collapse in" id="basic_info">
 		<div class="accordion-inner">
-			<div class="row"><div class="span2"><p class="pull-right">{{label.name}}</p></div><div class="span10">{{data.name}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.gender}}</p></div><div class="span10">{{data.gender}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.cellphone}}</p></div><div class="span9">{{data.cellphone}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.birthday}}</p></div><div class="span9">{{data.birthday}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">Email</p></div><div class="span9">{{data.email}}</div></div>	
-			<div class="row"><div class="span2"><p class="pull-right">{{label.address}}</p></div><div class="span9">{{data.address}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.identify_no}}</p></div><div class="span9">{{data.identify_no}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.marriage}}</p></div><div class="span9">{{data.marriage}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.children}}</p></div><div class="span9">{{data.children}}</div></div>
+			<div ><div ><p >{{label.name}}</p></div><div >{{data.name}}</div></div>
+			<div ><div ><p >{{label.gender}}</p></div><div >{{data.gender}}</div></div>
+			<div ><div ><p >{{label.cellphone}}</p></div><div >{{data.cellphone}}</div></div>
+			<div ><div ><p >{{label.birthday}}</p></div><div >{{data.birthday}}</div></div>
+			<div ><div ><p >Email</p></div><div >{{data.email}}</div></div>	
+			<div ><div ><p >{{label.address}}</p></div><div >{{data.address}}</div></div>
+			<div ><div ><p >{{label.identify_no}}</p></div><div >{{data.identify_no}}</div></div>
+			<div ><div ><p >{{label.marriage}}</p></div><div >{{data.marriage}}</div></div>
+			<div ><div ><p >{{label.children}}</p></div><div >{{data.children}}</div></div>
 		</div>
 	</div>
 </div>'
@@ -39,11 +36,11 @@ _company_info_template = '
     </div>
 	<div class="accordion-body collapse in" id="company_info">
 		<div class="accordion-inner">
-			<div class="row"><div class="span2"><p class="pull-right">{{label.company_name}}</p></div><div class="span10">{{data.company_name}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.company_address}}</p></div><div class="span10">{{data.company_address}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.company_phone}}</p></div><div class="span10">{{data.company_phone}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.job_title}}</p></div><div class="span10">{{data.job_title}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">{{label.job_category}}</p></div><div class="span10">{{data.job_category}}</div></div>	
+			<div ><div ><p >{{label.company_name}}</p></div><div >{{data.company_name}}</div></div>
+			<div ><div ><p >{{label.company_address}}</p></div><div >{{data.company_address}}</div></div>
+			<div ><div ><p >{{label.company_phone}}</p></div><div >{{data.company_phone}}</div></div>
+			<div ><div ><p >{{label.job_title}}</p></div><div >{{data.job_title}}</div></div>
+			<div ><div ><p >{{label.job_category}}</p></div><div >{{data.job_category}}</div></div>	
 		</div>
 	</div>
 </div>'
@@ -57,12 +54,12 @@ _value_info_template = '
     </div>
 	<div class="accordion-body collapse in" id="value_info">
 		<div class="accordion-inner">
-			<div class="row"><div class="span2"><p class="pull-right">個性</p></div><div class="span9">{{personality}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">月收入</p></div><div class="span9">{{wage}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">撫養人數</p></div><div class="span9">{{raise_count}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">接觸難度</p></div><div class="span9">{{contact_difficulty}}</div></div>
-			<div class="row"><div class="span2"><p class="pull-right">聯絡頻率</p></div><div class="span9">{{contact_frequency}}</div></div>	
-			<div class="row"><div class="span2"><p class="pull-right">備註</p></div><div class="span9">{{description}}</div></div>
+			<div ><div ><p >個性</p></div><div >{{personality}}</div></div>
+			<div ><div ><p >月收入</p></div><div >{{wage}}</div></div>
+			<div ><div ><p >撫養人數</p></div><div >{{raise_count}}</div></div>
+			<div ><div ><p >接觸難度</p></div><div >{{contact_difficulty}}</div></div>
+			<div ><div ><p >聯絡頻率</p></div><div >{{contact_frequency}}</div></div>	
+			<div ><div ><p >備註</p></div><div >{{description}}</div></div>
 		</div>
 	</div>
 </div>
@@ -80,11 +77,11 @@ _visit_history_template= '
 		</div>
 			<table class="table">
 				<tbody>
-				<tr><th class="span3">{{label.time}}</th><th class="span9">{{label.content}}</th>
+				<tr><th class="span3">{{label.time}}</th><th >{{label.content}}</th>
 				{{#each history}}
 					<tr>
 					<td class="span3 pull-right">{{#sec_to_date time}}{{/sec_to_date}}</td>
-					<td class="span9">{{content}}</td>
+					<td >{{content}}</td>
 					</tr>
 				{{/each}}
 				</tbody>
@@ -104,16 +101,28 @@ _friendship_template = '
 			{{#each data}}
 				<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</p></div>
 					{{#each this.link}}
-						<div><div class="span2"/><a  class="second span2" href="#customer/{{this.id}}">{{this.name}}</a> <p>{{this.relation}}</p>
+						<div><div /><a  class="second span2" href="#customer/{{this.id}}">{{this.name}}</a> <p>{{this.relation}}</p>
 					{{/each}}
 			{{/each}}
 		</div>
 	</div>
 </div>'
 
+_header_template = '<div class="hd"><h2>{{label.new_customer}}</h2></div>'
+
+_body_template = '<div class="body"><div class="accordion">
+	{{basic}}
+	{{company}}
+	{{value}}
+	{{friendship}}
+</div></div>'
+
 _commit_button = '<div class="btn modify">{{label.modify}}</div>'
 
 AM.View.CustomerDetailView = Backbone.View.extend
+
+	header_template: Handlebars.compile(_header_template)
+	body_template: Handlebars.compile(_body_template)
 
 	basic_info: Handlebars.compile(_basic_info_template)
 	company_info: Handlebars.compile(_company_info_template)
@@ -125,6 +134,8 @@ AM.View.CustomerDetailView = Backbone.View.extend
 	events: {
 		"click .modify": "modify"
 	}
+
+	className: "widget add_customer"
 
 	initialize:->
 		@collection = @options.collection
@@ -151,7 +162,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		else 
 			return ""
 
-	_getFriendShipTemplate: ->
+	_getFriendshipTemplate: ->
 		relationship = @customer.get('relationship')
 		console.log relationship
 		if relationship
@@ -186,49 +197,67 @@ AM.View.CustomerDetailView = Backbone.View.extend
 				return key
 		return null
 
+	_getBasicInfoTemplate: ->	
+		evaluation = @customer.get('evaluation')
+		@basic_info({
+			data: {
+				name: @customer.get('name')
+				gender: if @customer.get('gender') is "m" then AM.String['male'] else AM.String['female']
+				cellphone: @customer.get('cellphone')
+				birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
+				email:  @customer.get('email')
+				address:  @customer.get('address')
+				identify_no:  @customer.get('identify_no')
+				marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])] 
+				}
+			label: AM.String
+		})
+
+	_getCompanyInfoTemplate: ->
+		company = @customer.get('company')
+		
+		@company_info({
+			data: {
+				company_name: company['name']
+				company_address: company['address']
+				company_phone: company['phone']
+				job_title: company['title']
+				job_category: AM.Setting.JobCategory[parseInt(company['category'])]
+			}
+			label: AM.String
+		})
+
+	_getValueInfoTemplate: ->
+		evaluation = @customer.get('evaluation')
+
+		@value_info({
+			personality: @customer.get('personality')
+			wage: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])]
+			raise_count: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])]
+			contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
+			contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
+			label: AM.String
+		})
+
+	_getBodyTemplate: ->
+		return @body_template({
+			basic: @_getBasicInfoTemplate() 
+			company: @_getCompanyInfoTemplate()  
+			value: @_getValueInfoTemplate()  
+			friendship: @_getFriendshipTemplate() 
+		})
+
 	render: ->
 		if @customer.isPartial 
 			return 
-
-		company = @customer.get('company')
-		evaluation = @customer.get('evaluation')
-
-		@$el.html(@basic_info({
-				data: {
-					name: @customer.get('name')
-					gender: if @customer.get('gender') is "m" then AM.String['male'] else AM.String['female']
-					cellphone: @customer.get('cellphone')
-					birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
-					email:  @customer.get('email')
-					address:  @customer.get('address')
-					identify_no:  @customer.get('identify_no')
-					marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])] 
-				}
-				label: AM.String
-			}) + @company_info({
-				data: {
-					company_name: company['name']
-					company_address: company['address']
-					company_phone: company['phone']
-					job_title: company['title']
-					job_category: AM.Setting.JobCategory[parseInt(company['category'])]
-				}
-				label: AM.String
-			}) + @value_info({
-				personality: @customer.get('personality')
-				wage: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])]
-				raise_count: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])]
-				contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
-				contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
-				label: AM.String
-			}) + 
-			@_getFriendShipTemplate() +
+		@$el.html( 
+			@header_template(label:AM.String) +
+			@_getBodyTemplate()+ 
 			@_getVisitHistoryTemplate() + 
 			@commit_button({
 				label: AM.String
 			})
 		)
-		@$el.append("<p>test</p>")
 
 	modify: ->
 		AM.router.navigate "customer/" + @options.customer_id + "/modify",  trigger: true
