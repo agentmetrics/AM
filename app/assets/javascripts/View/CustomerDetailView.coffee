@@ -13,16 +13,20 @@ _basic_info_template = '
       	</h3>
     </div>
 	<div class="accordion-body collapse in" id="basic_info">
-		<div class="accordion-inner">
-			<div ><div ><p >{{label.name}}</p></div><div >{{data.name}}</div></div>
-			<div ><div ><p >{{label.gender}}</p></div><div >{{data.gender}}</div></div>
-			<div ><div ><p >{{label.cellphone}}</p></div><div >{{data.cellphone}}</div></div>
-			<div ><div ><p >{{label.birthday}}</p></div><div >{{data.birthday}}</div></div>
-			<div ><div ><p >Email</p></div><div >{{data.email}}</div></div>	
-			<div ><div ><p >{{label.address}}</p></div><div >{{data.address}}</div></div>
-			<div ><div ><p >{{label.identify_no}}</p></div><div >{{data.identify_no}}</div></div>
-			<div ><div ><p >{{label.marriage}}</p></div><div >{{data.marriage}}</div></div>
-			<div ><div ><p >{{label.children}}</p></div><div >{{data.children}}</div></div>
+		<div class="accordion-inner row">
+			<div class="span2">
+			</div>
+			<div class="span8">
+				<div class="jo"><div class="span2">{{label.name}}</div><div class="span5">{{data.name}}</div></div>
+				<div><div class="span2">{{label.gender}}</div><div class="span5">{{data.gender}}</div></div>
+				<div><div class="span2">{{label.cellphone}}</div><div class="span5">{{data.cellphone}}</div></div>
+				<div><div class="span2">{{label.birthday}}</div><div class="span5">{{data.birthday}}</div></div>
+				<div><div class="span2">Email</div><div class="span5">{{data.email}}</div></div>
+				<div><div class="span2">{{label.address}}</div><div class="span5">{{data.address}}</div></div>
+				<div><div class="span2">{{label.identify_no}}</div><div class="span5">{{data.identify_no}}</div></div>
+				<div><div class="span2">{{label.marriage}}</div><div class="span5">{{data.marriage}}</div></div>
+				<div><div class="span2">{{label.children}}</div><div class="span5">{{data.children}}</div></div>
+			</div>
 		</div>
 	</div>
 </div>'
@@ -36,11 +40,11 @@ _company_info_template = '
     </div>
 	<div class="accordion-body collapse in" id="company_info">
 		<div class="accordion-inner">
-			<div ><div ><p >{{label.company_name}}</p></div><div >{{data.company_name}}</div></div>
-			<div ><div ><p >{{label.company_address}}</p></div><div >{{data.company_address}}</div></div>
-			<div ><div ><p >{{label.company_phone}}</p></div><div >{{data.company_phone}}</div></div>
-			<div ><div ><p >{{label.job_title}}</p></div><div >{{data.job_title}}</div></div>
-			<div ><div ><p >{{label.job_category}}</p></div><div >{{data.job_category}}</div></div>	
+			<div ><div ><p >{{label.company_name}}</div><div >{{data.company_name}}</div></div>
+			<div ><div ><p >{{label.company_address}}</div><div >{{data.company_address}}</div></div>
+			<div ><div ><p >{{label.company_phone}}</div><div >{{data.company_phone}}</div></div>
+			<div ><div ><p >{{label.job_title}}</div><div >{{data.job_title}}</div></div>
+			<div ><div ><p >{{label.job_category}}</div><div >{{data.job_category}}</div></div>	
 		</div>
 	</div>
 </div>'
@@ -54,12 +58,12 @@ _value_info_template = '
     </div>
 	<div class="accordion-body collapse in" id="value_info">
 		<div class="accordion-inner">
-			<div ><div ><p >個性</p></div><div >{{personality}}</div></div>
-			<div ><div ><p >月收入</p></div><div >{{wage}}</div></div>
-			<div ><div ><p >撫養人數</p></div><div >{{raise_count}}</div></div>
-			<div ><div ><p >接觸難度</p></div><div >{{contact_difficulty}}</div></div>
-			<div ><div ><p >聯絡頻率</p></div><div >{{contact_frequency}}</div></div>	
-			<div ><div ><p >備註</p></div><div >{{description}}</div></div>
+			<div ><div ><p >個性</div><div >{{personality}}</div></div>
+			<div ><div ><p >月收入</div><div >{{wage}}</div></div>
+			<div ><div ><p >撫養人數</div><div >{{raise_count}}</div></div>
+			<div ><div ><p >接觸難度</div><div >{{contact_difficulty}}</div></div>
+			<div ><div ><p >聯絡頻率</div><div >{{contact_frequency}}</div></div>	
+			<div ><div ><p >備註</div><div >{{description}}</div></div>
 		</div>
 	</div>
 </div>
@@ -99,16 +103,16 @@ _friendship_template = '
 	<div class="accordion-body" id="friendship_info">
 		<div id="relationship_block">
 			{{#each data}}
-				<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</p></div>
+				<div><a class="first span4" href="#customer/{{this.id}}">{{this.name}}</a> <p >{{this.relation}}</div>
 					{{#each this.link}}
-						<div><div /><a  class="second span2" href="#customer/{{this.id}}">{{this.name}}</a> <p>{{this.relation}}</p>
+						<div><div /><a  class="second span2" href="#customer/{{this.id}}">{{this.name}}</a> {{this.relation}}
 					{{/each}}
 			{{/each}}
 		</div>
 	</div>
 </div>'
 
-_header_template = '<div class="hd"><h2>{{label.new_customer}}</h2></div>'
+_header_template = '<div class="hd"><h2>{{label.customer_profile}}</h2></div>'
 
 _body_template = '<div class="body"><div class="accordion">
 	{{basic}}
@@ -135,7 +139,7 @@ AM.View.CustomerDetailView = Backbone.View.extend
 		"click .modify": "modify"
 	}
 
-	className: "widget add_customer"
+	className: "customer_widget customer_profile"
 
 	initialize:->
 		@collection = @options.collection

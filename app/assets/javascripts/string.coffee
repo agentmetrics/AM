@@ -19,6 +19,7 @@ AM.String = {
 	content: "內容"
 	customer_type: "客戶類別"
 	customer_search: "客戶搜尋"
+	customer_profile: "客戶資料"
 	
 	female: "女性"
 	friendship_info: "客戶人際關係"

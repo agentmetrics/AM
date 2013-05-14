@@ -45,13 +45,15 @@ AM.View.DayEventWidget = Backbone.View.extend
 				<option>其他			
 			</select>
 		</div>
-		<button class="btn btn-mini" type="button">確認</button>
-		<button class="btn btn-mini" type="button">取消</button>
+		<button class="btn btn-mini ok" type="button">確認</button>
+		<button class="btn btn-mini cancel" type="button">取消</button>
 	'
 
 	events: 
 		"click .prev" : "previousDay"
 		"click .next" : "nextDay"
+		"click .ok" : "addEvent"
+		"click .cancel" : "dismissOverLay"
 		"dragenter .time_slot": "handleDrop"
 		"dragover .time_slot": "handleDrop"
 		"drop .time_slot": "createEvent"
@@ -77,6 +79,14 @@ AM.View.DayEventWidget = Backbone.View.extend
 		@targetDate.setDate( @targetDate.getDate() + 1 )
 		@render()
 
+	addEvent: (e)->
+		
+		@
+
+	dismissOverLay: (e)->
+		@popover.popover('hide')
+		@
+
 	handleDrop: (e)->
 		e.preventDefault()
 		e.stopPropagation()
@@ -84,6 +94,10 @@ AM.View.DayEventWidget = Backbone.View.extend
 	createEvent: (e)->
 		e.preventDefault()
 		e.stopPropagation()
+
+		if @popover 
+			@popover.popover('hide')
+
 		customer_id = e.originalEvent.dataTransfer.getData('customer_id')
 		customer = @collection.get(customer_id)
 		start_time = parseInt($(e.currentTarget).attr('data-time'))
@@ -95,7 +109,8 @@ AM.View.DayEventWidget = Backbone.View.extend
 			start_time: start_time + ":00"
 			end_time: end_time + ":00"
 		})
-		$(e.target).popover({
+		@popover = $(e.target)
+		@popover.popover({
 			content: popover
 			html : true
 			title: ""

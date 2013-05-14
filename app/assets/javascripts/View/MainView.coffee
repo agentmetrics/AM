@@ -25,7 +25,7 @@ _template ='
   </div>
 </div>
 
-<div id="content_panel" class="row container">
+<div id="content_panel" class="container">
 </div>
 
 <div class="footer">

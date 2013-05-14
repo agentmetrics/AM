@@ -94,7 +94,7 @@ class Schedule extends Control implements RESTfulInterface
   	if( !isset($data["id"]) or empty($data["id"]) )
   		self::exceptionResponse(400, "Request is not a valid json format:" . file_get_contents('php://input'));
   	
-		$schedule['start_time'] = $data['start_time'];
+		  $schedule['start_time'] = $data['start_time'];
   		$schedule['end_time'] = $data['end_time'];
   		$schedule['detail'] = $data['detail'];
   		$schedule['customer_id'] = $data['customer_id'];

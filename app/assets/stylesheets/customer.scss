@@ -68,14 +68,11 @@
 	}
 }
 
-.add_customer {
-
+.customer_widget {
 	background: url(../images/widget-bottom.png) no-repeat left bottom;
-
-	font-family: "Helvetica Neue",Trebuchet MS,微軟正黑體,"Microsoft JhengHei";
+	font-family: "Helvetica Neue","Trebuchet MS","微軟正黑體","Microsoft JhengHei";
 	.control-label {
 		color: hsl(0, 0%, 33%);
-		
 		text-align:left;
 	}
 
@@ -99,3 +96,24 @@
 		border:0px;
 	}
 }
+
+.customer_profile {
+
+	h2 {
+		background:url(../images/icon-2.png) no-repeat 12px 8px;
+	}
+
+	.jo {
+		display: inline-block;
+	}
+}
+
+.add_customer {
+
+	h2 {
+		background:url(../images/icon-6.png) no-repeat 12px 8px;
+	}
+
+	
+}
+

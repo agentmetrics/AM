@@ -327,7 +327,7 @@ class AM.View.NewCustomerView extends Backbone.View
 		"click .add_relationship": "addFriend"
 		"change select[name=job_category]": "updateJobCategory"
 
-	className: "widget add_customer"
+	className: "customer_widget add_customer"
 
 	remove: ->
 		@undelegateEvents() 
