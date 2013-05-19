@@ -70,7 +70,9 @@ class Personalsetting extends Control implements RESTfulInterface
 	
 	
 	function restDelete($segments) {
-		
+		$result = $this->deleteTarget($segments[0]);
+		if( !$result )
+			self::exceptionResponse(501, "Server Error");
 	}
 	
 	
@@ -133,6 +135,11 @@ class Personalsetting extends Control implements RESTfulInterface
 	
 	private function insertTarget($agent_id, $data) {
 		$count = 0;
+		
+		//delete existing record first.
+		$result = $this->deleteTarget($agent_id);
+		if(!$result)
+			return FALSE; 
 
 		foreach($data as $type => $item) {
 			//get type id
@@ -145,9 +152,8 @@ class Personalsetting extends Control implements RESTfulInterface
 				$insert_data["value"] = $value;
 					
 				$result = $this->db->insert("agent_metrics.personal_target", $insert_data);
-				if( !$result ) {
+				if( !$result )
 					return FALSE;
-				}
 				
 				$count ++;
 			}
