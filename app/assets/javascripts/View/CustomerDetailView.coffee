@@ -3,71 +3,58 @@ AM.View or (AM.View = {})
 Handlebars.registerHelper "sec_to_date", (time)->
   return new Date(parseInt(time)).toLocaleDateString()
 
+_data_list_template = '
+<div class="accordion-inner row">
+	<div class="span2">
+	</div>
+	<div class="span8">
+		{{#each info}}
+		<div class="data-group">
+			<div class="data-label">{{this.label}}</div><div class="data">{{this.data}}</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+'
+
 _basic_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
     	<h3 class="icon_info">
 	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#basic_info">
-	        {{label.basic_info}}
+	        {{title}}
 	      </a>
       	</h3>
     </div>
-	<div class="accordion-body collapse in" id="basic_info">
-		<div class="accordion-inner row">
-			<div class="span2">
-			</div>
-			<div class="span8">
-				<div class="jo"><div class="span2">{{label.name}}</div><div class="span5">{{data.name}}</div></div>
-				<div><div class="span2">{{label.gender}}</div><div class="span5">{{data.gender}}</div></div>
-				<div><div class="span2">{{label.cellphone}}</div><div class="span5">{{data.cellphone}}</div></div>
-				<div><div class="span2">{{label.birthday}}</div><div class="span5">{{data.birthday}}</div></div>
-				<div><div class="span2">Email</div><div class="span5">{{data.email}}</div></div>
-				<div><div class="span2">{{label.address}}</div><div class="span5">{{data.address}}</div></div>
-				<div><div class="span2">{{label.identify_no}}</div><div class="span5">{{data.identify_no}}</div></div>
-				<div><div class="span2">{{label.marriage}}</div><div class="span5">{{data.marriage}}</div></div>
-				<div><div class="span2">{{label.children}}</div><div class="span5">{{data.children}}</div></div>
-			</div>
-		</div>
-	</div>
-</div>'
+	<div class="accordion-body collapse in" id="basic_info">' + 
+	_data_list_template +
+	'</div></div>'
 
 _company_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
+    <h3 class="icon_info">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#company_info">
-        {{label.company_info}}
+        {{title}}
       </a>
+    </h3>
     </div>
-	<div class="accordion-body collapse in" id="company_info">
-		<div class="accordion-inner">
-			<div ><div ><p >{{label.company_name}}</div><div >{{data.company_name}}</div></div>
-			<div ><div ><p >{{label.company_address}}</div><div >{{data.company_address}}</div></div>
-			<div ><div ><p >{{label.company_phone}}</div><div >{{data.company_phone}}</div></div>
-			<div ><div ><p >{{label.job_title}}</div><div >{{data.job_title}}</div></div>
-			<div ><div ><p >{{label.job_category}}</div><div >{{data.job_category}}</div></div>	
-		</div>
-	</div>
-</div>'
+	<div class="accordion-body collapse in" id="company_info">' +
+	_data_list_template +
+	'</div></div>'
 
 _value_info_template = '
 <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#value_info">
-        {{label.value_info}}
-      </a>
+    	<h3 class="icon_info">
+	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#value_info">
+	        {{title}}
+	      </a>
+    	</h3>
     </div>
-	<div class="accordion-body collapse in" id="value_info">
-		<div class="accordion-inner">
-			<div ><div ><p >個性</div><div >{{personality}}</div></div>
-			<div ><div ><p >月收入</div><div >{{wage}}</div></div>
-			<div ><div ><p >撫養人數</div><div >{{raise_count}}</div></div>
-			<div ><div ><p >接觸難度</div><div >{{contact_difficulty}}</div></div>
-			<div ><div ><p >聯絡頻率</div><div >{{contact_frequency}}</div></div>	
-			<div ><div ><p >備註</div><div >{{description}}</div></div>
-		</div>
-	</div>
-</div>
-'
+	<div class="accordion-body collapse in" id="value_info">' +
+	_data_list_template +
+	'</div></div>'
 
 _visit_history_template= '
 <div class="accordion-group">
@@ -204,43 +191,45 @@ AM.View.CustomerDetailView = Backbone.View.extend
 	_getBasicInfoTemplate: ->	
 		evaluation = @customer.get('evaluation')
 		@basic_info({
-			data: {
-				name: @customer.get('name')
-				gender: if @customer.get('gender') is "m" then AM.String['male'] else AM.String['female']
-				cellphone: @customer.get('cellphone')
-				birthday: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') 
-				email:  @customer.get('email')
-				address:  @customer.get('address')
-				identify_no:  @customer.get('identify_no')
-				marriage: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])] 
-				}
-			label: AM.String
+			title: AM.String.basic_info
+			info: [
+				{ label: AM.String.name, data: @customer.get('name') },
+				{ label: AM.String.gender, data: if @customer.get('gender') is "m" then AM.String['male'] else AM.String['female']},
+				{ label: AM.String.cellphone, data: @customer.get('cellphone')},
+				{ label: AM.String.birthday, data: new Date(parseInt(@customer.get('birthday'))) if @customer.get('birthday') },
+				{ label: "Email", data:  @customer.get('email')},
+				{ label: AM.String.address, data:  @customer.get('address')},
+				{ label: AM.String.identify_no, data:  @customer.get('identify_no')},
+				{ label: AM.String.marriage, data: AM.Setting.Marriage.label[@_getKeyByValue(AM.Setting.Marriage.value, evaluation['marriage'])]} 
+			]
 		})
 
 	_getCompanyInfoTemplate: ->
 		company = @customer.get('company')
 		
 		@company_info({
-			data: {
-				company_name: company['name']
-				company_address: company['address']
-				company_phone: company['phone']
-				job_title: company['title']
-				job_category: AM.Setting.JobCategory[parseInt(company['category'])]
-			}
-			label: AM.String
+			title: AM.String.company_info
+			info: [
+				{ label: AM.String.company_name, data: company['name'] },
+				{ label: AM.String.company_address, data: company['address'] },
+				{ label: AM.String.company_phone, data: company['phone'] },
+				{ label: AM.String.job_title, data: company['title'] },
+				{ label: AM.String.job_category, data: AM.Setting.JobCategory[parseInt(company['category'])] }
+			]
 		})
 
 	_getValueInfoTemplate: ->
 		evaluation = @customer.get('evaluation')
 
 		@value_info({
-			personality: @customer.get('personality')
-			wage: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])]
-			raise_count: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])]
-			contact_difficulty: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])]
-			contact_frequency: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])]
-			label: AM.String
+			title: AM.String.value_info 
+			info: [
+				{ label: AM.String.personality, data: @customer.get('personality') },
+				{ label: AM.String.wage, data: AM.Setting.Wage.label[@_getKeyByValue(AM.Setting.Wage.value, evaluation['income_monthly'])] },
+				{ label: AM.String.raise_count, data: AM.Setting.Raise.label[@_getKeyByValue(AM.Setting.Raise.value, evaluation['dependent_count'])] },
+				{ label: AM.String.contact_difficulty, data: AM.Setting.ContactDifficulty.label[@_getKeyByValue(AM.Setting.ContactDifficulty.value, evaluation['contact_difficulty'])] },
+				{ label: AM.String.contact_frequency, data: AM.Setting.ContactFrequency.label[@_getKeyByValue(AM.Setting.ContactFrequency.value, evaluation['contact_frequency'])] }
+			]
 		})
 
 	_getBodyTemplate: ->

@@ -103,8 +103,21 @@
 		background:url(../images/icon-2.png) no-repeat 12px 8px;
 	}
 
-	.jo {
-		display: inline-block;
+	.data-group {
+		overflow: hidden;
+		padding: 8px 0 5px;
+		font-size: 15px;
+
+		.data-label {
+			width: 15%;
+			float: left;
+		}
+
+		.data {
+			margin-left: 15%;
+			color: $color_data;
+			line-height: 21px;
+		}
 	}
 }
 

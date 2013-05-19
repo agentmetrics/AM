@@ -20,6 +20,10 @@ AM.String = {
 	customer_type: "客戶類別"
 	customer_search: "客戶搜尋"
 	customer_profile: "客戶資料"
+	contact_difficulty: "接觸難度"
+	contact_frequency: "聯絡頻率"
+
+	description: "備註"
 	
 	female: "女性"
 	friendship_info: "客戶人際關係"
@@ -47,12 +51,14 @@ AM.String = {
 	personality: "個性"
 
 	relationship: "關係"
+	raise_count: "撫養人數"
 	
 	time: "時間"
 	
 	value_info:"額外資訊"
 	visit_history: "訪談記錄"
 
+	wage: "月收入"
 	warm:"溫馨小提醒：可點選下方姓名拖曳至左方行程表"
 	weight: "評等"
 }
